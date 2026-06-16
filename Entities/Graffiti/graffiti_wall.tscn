@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dqkv08k0ox1ys"]
+
+[ext_resource type="Script" uid="uid://chm5wsg1pjtqc" path="res://Interactable.gd" id="1_ar5cd"]
+[ext_resource type="Script" uid="uid://br1iokmf1eudi" path="res://Entities/Graffiti/graffiti_wall.gd" id="1_kj8x5"]
+[ext_resource type="Texture2D" uid="uid://7v02krt5dpkj" path="res://Assets/Textures/Graffiti.png" id="3_t5uu5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_y80iw"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y80iw"]
+data = PackedVector3Array(-0.5, 0.5, 0.049999997, 0.5, 0.5, 0.049999997, -0.5, -0.5, 0.049999997, 0.5, 0.5, 0.049999997, 0.5, -0.5, 0.049999997, -0.5, -0.5, 0.049999997, 0.5, 0.5, -0.049999997, -0.5, 0.5, -0.049999997, 0.5, -0.5, -0.049999997, -0.5, 0.5, -0.049999997, -0.5, -0.5, -0.049999997, 0.5, -0.5, -0.049999997, 0.5, 0.5, 0.049999997, 0.5, 0.5, -0.049999997, 0.5, -0.5, 0.049999997, 0.5, 0.5, -0.049999997, 0.5, -0.5, -0.049999997, 0.5, -0.5, 0.049999997, -0.5, 0.5, -0.049999997, -0.5, 0.5, 0.049999997, -0.5, -0.5, -0.049999997, -0.5, 0.5, 0.049999997, -0.5, -0.5, 0.049999997, -0.5, -0.5, -0.049999997, 0.5, 0.5, 0.049999997, -0.5, 0.5, 0.049999997, 0.5, 0.5, -0.049999997, -0.5, 0.5, 0.049999997, -0.5, 0.5, -0.049999997, 0.5, 0.5, -0.049999997, -0.5, -0.5, 0.049999997, 0.5, -0.5, 0.049999997, -0.5, -0.5, -0.049999997, 0.5, -0.5, 0.049999997, 0.5, -0.5, -0.049999997, -0.5, -0.5, -0.049999997)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en5bi"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = ExtResource("3_t5uu5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_kj8x5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_en5bi")
+
+[node name="GraffitiWall" type="Node3D" unique_id=1181943328]
+script = ExtResource("1_kj8x5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1620023508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 2
+mesh = SubResource("BoxMesh_y80iw")
+
+[node name="InteractBody" type="StaticBody3D" parent="." unique_id=1370945205]
+unique_name_in_owner = true
+collision_layer = 3
+script = ExtResource("1_ar5cd")
+message = "Paint"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractBody" unique_id=1649791516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("ConcavePolygonShape3D_y80iw")
+
+[node name="Graffiti" type="MeshInstance3D" parent="." unique_id=327232670]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.066)
+layers = 2
+mesh = SubResource("QuadMesh_kj8x5")
+
+[connection signal="interacted" from="InteractBody" to="." method="on_interacted"]

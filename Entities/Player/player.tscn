@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://kokmc5j1e5vk"]
+
+[ext_resource type="Script" uid="uid://bwytawsontbcv" path="res://Entities/Player/player.gd" id="1_3uyv8"]
+[ext_resource type="PackedScene" uid="uid://cgu7tljoj2ba1" path="res://Entities/Utility/FollowerCamera/follower_camera.tscn" id="2_lu8i8"]
+[ext_resource type="PackedScene" uid="uid://bhah8swppe2ur" path="res://Entities/Player/player_character.tscn" id="3_lu8i8"]
+[ext_resource type="Script" uid="uid://yxlsmc2nsmwk" path="res://Entities/Utility/FollowerCamera/follower_camera.gd" id="3_tekja"]
+[ext_resource type="Script" uid="uid://cx55lsprfdfes" path="res://Entities/Player/player_driver.gd" id="5_5c2io"]
+
+[node name="Player" type="Node3D" unique_id=492139098]
+script = ExtResource("1_3uyv8")
+
+[node name="FollowerCamera" parent="." unique_id=1289591327 node_paths=PackedStringArray("target", "player_root") instance=ExtResource("2_lu8i8")]
+unique_name_in_owner = true
+top_level = true
+script = ExtResource("3_tekja")
+target = NodePath("../PlayerCharacter")
+player_root = NodePath("..")
+
+[node name="PlayerCharacter" parent="." unique_id=718966718 node_paths=PackedStringArray("player_root") instance=ExtResource("3_lu8i8")]
+unique_name_in_owner = true
+player_root = NodePath("..")
+
+[node name="PlayerDriver" type="Node3D" parent="." unique_id=363118984 node_paths=PackedStringArray("player_root")]
+unique_name_in_owner = true
+top_level = true
+script = ExtResource("5_5c2io")
+player_root = NodePath("..")

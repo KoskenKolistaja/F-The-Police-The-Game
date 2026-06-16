@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cute41yhrol6k"
+path="res://.godot/imported/train-tram-modern.obj-4950c8cd5725b53de63bebb8d292953d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-tram-modern.obj-4950c8cd5725b53de63bebb8d292953d.mesh"]
+
+source_file="res://Assets/kenney_train-kit/Models/OBJ format/train-tram-modern.obj"
+dest_files=["res://.godot/imported/train-tram-modern.obj-4950c8cd5725b53de63bebb8d292953d.mesh", "res://.godot/imported/train-tram-modern.obj-4950c8cd5725b53de63bebb8d292953d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

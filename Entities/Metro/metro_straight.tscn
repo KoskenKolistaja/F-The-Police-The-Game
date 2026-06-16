@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://b3l4hc8uuhgh0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st28b"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_334dl"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -2, 2, 2, 4),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAABQABAAMAAgAGAAQABQADAAcABgAHAAQABgAFAAcA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAAAAAAAAAAAAD/////AAD//wAA//8AAP////8AAAAA//8AAAAAAAD///////8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_et0o3"]
+resource_name = "Metro_Cube_002"
+_surfaces = [{
+"aabb": AABB(-1, -1, -2, 2, 2, 4),
+"attribute_data": PackedByteArray("/1////+f/7//X/+//5////9f/3//n/8//1//P/+f/3//H/9//1//P/8f/z//X/9//5//f//f/z//n/8//9//fw=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": SubResource("StandardMaterial3D_st28b"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAP//qioAAP//AACqKgAAAAAAAKoqAAD/////qir//wAAAACqKv///////6oq//8AAP//qir/////AACqKgAAAAAAAP8///8AAP///z8AAAAA////P///AAAAAP8//////wAAAAAAAP////8AAP///////wAAAAD//wAAAACqKqoqqiqqKqoqqiqqKqoqVNVU1VTVVNVU1VTVVNVU1f///3////9/////f////3//f/8//3//P/9//z//f/8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_334dl")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_42meg"]
+data = PackedVector3Array(-1, -1, 2, -1, 1, -2, -1, -1, -2, -1, -1, 2, -1, 1, 2, -1, 1, -2, 1, -1, -2, 1, 1, 2, 1, -1, 2, 1, -1, -2, 1, 1, -2, 1, 1, 2, -1, -1, -2, 1, -1, 2, -1, -1, 2, -1, -1, -2, 1, -1, -2, 1, -1, 2, 1, 1, -2, -1, 1, 2, 1, 1, 2, 1, 1, -2, -1, 1, -2, -1, 1, 2)
+
+[node name="MetroStraight" type="StaticBody3D" unique_id=1889192058]
+
+[node name="Cube_002" type="MeshInstance3D" parent="." unique_id=1987026282]
+layers = 4
+mesh = SubResource("ArrayMesh_et0o3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=276695484]
+shape = SubResource("ConcavePolygonShape3D_42meg")

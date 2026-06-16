@@ -1,0 +1,367 @@
+[gd_scene format=4 uid="uid://bp3kl6se1b1ne"]
+
+[ext_resource type="Script" uid="uid://uw757bqg4ic" path="res://Entities/Roads/lane.gd" id="1_ost5d"]
+[ext_resource type="Script" uid="uid://cgtjmjgyybdpt" path="res://Entities/Roads/t_section.gd" id="1_xlnf2"]
+[ext_resource type="Script" uid="uid://dmn1cb7q7j5qr" path="res://Entities/Roads/socket.gd" id="2_xlnf2"]
+[ext_resource type="PackedScene" uid="uid://lxej57hkqw8c" path="res://Entities/Road/road_intersection.tscn" id="4_f2gsc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4uto"]
+resource_name = "Material.008"
+cull_mode = 2
+albedo_color = Color(0.32910407, 0.32910407, 0.32910407, 1)
+roughness = 0.6732283
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1bsu"]
+resource_name = "Material.007"
+cull_mode = 2
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_my1dx"]
+resource_name = "Material.006"
+cull_mode = 2
+albedo_color = Color(0.6139234, 0.6139234, 0.6139234, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4kchk"]
+_surfaces = [{
+"aabb": AABB(-2, -0.09999999, -3, 5, 0.19999999, 6),
+"format": 34896613377,
+"index_count": 366,
+"index_data": PackedByteArray("IwAkACUAFQAjACUAFQATACMAFwAVACUAFgATABUAFgAOABMAEwASACMAEwAPABIAEgAmACMAIwAmACQADwAnABIAEgAoACYAJwAoABIADwANACcADAANAA8ADAAKAA0ADQAQACcADQALABAAJwApACgAEAApACcACwARABAAEAARACkACwAqABEAKQARACoACQAqAAsAKAApAAAAKQAqAAAACQArACoAAAAqACsACAArAAkAKAAAACwAJgAoACwAAAArAC0ALAAAAC0ACAADACsALQArAAMABQAIAAkABQADAAgABQAJAAoALQADAAEABQABAAMALAAtAC4ALgAtAAEAJgAsAC8ALwAsAC4AJAAmAC8AMAAFAAoAMAAKAAwAMAAHAAUABQAHAAQABQAEAAEAMAAGAAcABgAEAAcAMQAwAAwAMQAGADAAMQAMAA4ABgACAAQAAQAEAAIAMQAfAAYAHwACAAYAMgAxAA4AMgAfADEAMgAOABYAGAAyABYAGAAWABkAMgAgAB8AGAAgADIAHwAzAAIAIAAzAB8AAQACADQANAACADMALgABADQANQAuADQALwAuADUANAAzADYANQA0ADYAIAAeADMANgAzAB4AIQAeACAAGAAhACAAIQAiAB4AHQAhABgAHQAiACEANwAeACIANgAeADcANwAiAB0AOAA1ADYAOAA2ADcAOQAvADUAOQA1ADgAJAAvADkAOgA4ADcAOgA3AB0AOwA5ADgAOwA4ADoAPAAkADkAPAA5ADsAJQAkADwAJQA8AD0AFwAlAD0AFAA8ADsAPQA8ABQAPgA7ADoAFAA7AD4APQAUABoAGgAUAD4APwA9ABoAPwAXAD0AGgA+AD8APgA6AEAAPwA+AEAAQAA6AB0AQQAXAD8APwBAAEEAQQAZABcAQAAdABwAQQBAABwAGwAcAB0AQQAcABsAGwAZAEEAGwAdABgAGwAYABkA"),
+"lods": [0.00068940455, PackedByteArray("AAABAAIAAAADAAEAAQAEAAIABQAEAAEABQABAAMABgACAAQABQAHAAQABgAEAAcABgAHAAUABQADAAgABQAIAAkACAADAAkABQAJAAoABgAFAAoACQADAAsABgAKAAwADAAKAA0ABgAMAA4ADAANAA8ADQALABAACwADABEACwARABAAEQADAAAADQAQABIADwANABIAEAARABIAEwAPABIAFAARAAAAEgARABQAFQATABIAFgATABUAFgAOABMAFwAVABIAGAAOABYAGAAGAA4AGAAWABkAFwASABoAGgAZABcAEgAUABoAGwAZABoAGwAYABkAGgAUABwAGgAcABsAFAAdABwAGwAcAB0AGwAdABgAFAAAAB0AHQAAAB4AAAACAB4AHwACAAYAGAAfAAYAHwAeAAIAGAAgAB8AIAAeAB8AGAAhACAAIQAeACAAHQAhABgAIQAiAB4AHQAeACIAHQAiACEA")],
+"name": "Material.008",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 66,
+"vertex_data": PackedByteArray("kl8AAFTVAADMzAAAVNUAAP//AACqqgAAzMwAAP//AAD//wAAVNUAAMzM//9U1QAA/////6qqAAD/////VNUAAMzM/////wAAOW3/////AAA5bf//VNUAAJJf/////wAAOW3//6qqAACSX///VNUAADlt////fwAAkl///6qqAAAAAP////8AAAAAAAD//wAAAAD//6qqAACSX////38AAAAAAAAAAAAAkl///1VVAAA5bf//VVUAAJJf//+qKgAAzMz//6oqAAA5bf//qioAAAAA//8AAAAAzMz//wAAAADMzAAAAAAAAMzMAACqKgAA//8AAFVVAAD//////38AAP////9VVQAA/////6oqAAD//wAAqioAAAAA////fwAAAAAAAFVVAAAAAP//VVUAAAAAAAD/fwAAAAD//1TVAAAAAAAAqqoAAAAAAABU1QAAkl8AAP//AAA5bQAA//8AAJJfAACqqgAAOW0AAFTVAAA5bQAAqqoAAJJfAAD/fwAAzMz//6qqAADMzP///38AAMzM//9VVQAA//8AAP9/AADMzAAAqqoAADltAAD/fwAAzMwAAP9/AADMzAAAVVUAADltAABVVQAAkl8AAFVVAAA5bQAAqioAAJJfAACqKgAAAAAAAKoqAAAAAP//qioAAJJfAAAAAAAAkl///wAAAAA5bQAAAAAAADlt//8AAAAA")
+}, {
+"aabb": AABB(-0.13333333, 0.1, -2, 0.26666665, 1e-05, 5),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
+"name": "Material.007",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//8AAMzMAAAAAAAA//8AAAAAAADMzAAA//8AAP//AAD//wAAAAAAAAAAAAAzMwAAAAAAAAAAAAD//wAAMzMAAP//AABmZgAAAAAAAJmZAAAAAAAAZmYAAP//AACZmQAA")
+}, {
+"aabb": AABB(-3, -0.099999964, -3, 6, 0.19999993, 6),
+"format": 34896613377,
+"index_count": 108,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYACAAJAAoACAALAAkADAAKAAkACwAMAAkADQAIAAoACwAIAA0ADAAOAAoADQAKAA4ACwAPAAwACwANAA8ADwAOAAwADwANAA4AEAARABIAEAATABEAFAASABEAEwAUABEAFQAQABIAEwAQABUAFAAWABIAFQASABYAEwAXABQAEwAVABcAFwAWABQAFwAVABYA"),
+"lods": [0.71414316, PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA")],
+"name": "Material.006",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAACqKv//AAAAAKoqAAD//wAAqir/////AACqKgAAAAAAAFTVAACqKgAAVNX//wAAAABU1f//qioAAFTVAAAAAAAA/////wAAAAD//wAAqioAAP////+qKgAA//8AAAAAAABU1QAA//8AAFTV//9U1QAAVNX/////AABU1QAAVNUAAP////9U1QAA//8AAP//AAD///////8AAP//AABU1QAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tgs2a"]
+resource_name = "Road_Cube_002"
+_surfaces = [{
+"aabb": AABB(-2, -0.09999999, -3, 5, 0.19999999, 6),
+"attribute_data": PackedByteArray("3T2qSv9fqkr/X1RV/1+qSv9f/z//H/8//1+qav8f/3//X1R1/19Udf9f/3//n/9//19Udf+fVHX/X/9/IcJVVSHCqkr/31RV3b1VVSHC/1//3/8/IcL/P929qkohwqpqIcJUdd29qmr/3/9/3b1Udf+f/3//n1R13b3/X/+fVHX/n6pq/5//X/+fVVX/n6pK/5+qSt29/z//n/8//5////9f////n6nq/1//v/+f/7//n6pK/1//P/+f/z//X6pK/58hIv9f/z//n90d/5//P/9fAAD/nwAA/5//v/9f/3//n/9//1//v/+fVVX/X6pK/5+qSv9fVFX/n/9f/1+qav+fqmr/n1R1/19Udf+fqkr/X6pK/1+qSv+fqkr/X1R1/59Udf+fVHX/X1R1/5//3/9fVNX/n1TV/1+pyv9f/9//n6nK/1+p6v+fVPX/X1T1IUJVVf9fVFX/X/9f/1//XyFC/1//X6pqIUKqaiFCVHUhQv9/3T3/f909VHX/H1R13T2qav8fqmrdPf9f/x//X909VVX/H1VVIUKqSiFC/z/dPf8//x+qSiHC/3//31R1/9+qat29/3//3/9f/9+qSv+fqmr/n/9f/59VVf9f3R3/XyEi/58hov9f3Z3/n92d/18hov9f/18="),
+"format": 34896613399,
+"index_count": 366,
+"index_data": PackedByteArray("SwBMAE0ATQBMAE4ASwBPAEwATQBOAFAAUABOACoAUAAqACsAKQBPAEsAKQBRAE8AUgBRACkAUgBTAFEAJwBTAFIAJwAoAFMAVAABAFUAAQADAAIAAQACAFUAVQACAFYAVQBWAFcAVwBWAAYAWABVAFcAWABUAFUAVwAGAFkAWQAGAAkAWQAJAAgAWgBXAFkAWgBYAFcAWwBZAAgAWwBaAFkAXABbAAgAXAAIAAoAXQBbAFwAXQBeAFsAXgBaAFsABwBeAF0ABwBfAF4AXgBgAFoAXwBgAF4AYABYAFoAXwBhAGAAYABiAFgAYQBiAGAAYgBUAFgAYQBjAGIAYwBkAGIAYgBkAFQAYwBlAGQAZABmAFQAVABmAAEAZgAEAAEAZgBnAAQAZAAAAGYAAABnAGYAZQAAAGQAAABoAGcAZQBpAAAAaQBoAAAAaQAFAGgAagBrABoAagAYAGsAGABsAGsAbQAYAGoAGAAXAGwAbQAbABgAHAAbAG0AFwBuAGwAHAAdABsAFwATAG4AEwARAG4AGQATABcAHQAZABsAEwAPABEADwBvABEAGQAeABMADwAQAG8AEAAUAG8AEAAVABQAEgAQAA8AEgAWABAAcAAeABkAHQBwABkAHQAgAHAAHQAfACAAcAAgACEAcABxAB4AcAAhAHEAcQASAB4AcQAhACIAcQByABIAcQAiAHIAcgAWABIAcgAiACQAcgAkACMAcgAjABYAIwAlABYAIwAmACUACwAMAA0ACwAOAAwALAAtAC4ALAAvAC0AMABzADIAMgBzADQAMgA0ADUAMAB0AHMAMwB0ADAAMwAxAHQAdQB2AHcAdwB2ADcAdwA3ADgAdQB4AHYANgB4AHUANgA5AHgAOgA7ADwAOgA9ADsAPgA9ADoAPgB5AD0AQAB5AD4AQAA/AHkAQQA/AEAAQQBCAD8AQwBEAEUAQwBGAEQARwBIAEkARwBKAEgA"),
+"lods": [0.00068940455, PackedByteArray("AAABAAIAAQADAAIAAAAEAAEABQAEAAAAAAACAAYABwAFAAAACAAAAAYABwAAAAgACAAGAAkABwAIAAoACwAMAA0ACwAOAAwADwAQABEAEgAQAA8AEwAPABEAEAAUABEAEAAVABQAEgAWABAAFwATABEAGAAXABEAGQATABcAGAARABoAGgAbABgAHAAbABoAHAAdABsAHQAZABsAGQAeABMAHQAeABkAHQAfACAAHQAgACEAHQAhACIAHQAiAB4AIgASAB4AIgAWABIAIgAjABYAIgAkACMAIwAlABYAIwAmACUAJwAoACkAKQAoACoAKQAqACsALAAtAC4ALAAvAC0AMAAxADIAMwAxADAAMgAxADQAMgA0ADUANgA3ADgANgA5ADcAOgA7ADwAOgA9ADsAPgA9ADoAPgA/AD0AQAA/AD4AQQA/AEAAQQBCAD8AQwBEAEUAQwBGAEQARwBIAEkARwBKAEgA")],
+"material": SubResource("StandardMaterial3D_c4uto"),
+"name": "Material.008",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 122,
+"vertex_data": PackedByteArray("kl8AAFTV/7/MzAAAVNX/v///AACqqv+///8AAFTV/7/MzAAA////vwAAAAD///+///8AAFVV/78AAAAAAAD/v8zMAACqKv+///8AAKoq/7/MzAAAAAD/v8zM//8AAFTVzMwAAKoqVNXMzP//qipU1czMAAAAAFTVkl///6qq//+SX///VNX//wAA//+qqv//OW3//6qq//+SX////3///wAA////////kl////////85bf//VNX//5Jf//9VVf//kl///6oq//85bf//VVX//wAA//8AAP//OW3//6oq///MzP//AAD//8zM//+qKv//OW3///9/////////qir/v/////9VVf+///////9//7//////qqr/v8zM//9U1f///////1TV/785bf///////8zM////////AAD/////VNUAAAAA//9U1QAA//+qqlTVAAAAAAAAVNUAAP//AABU1czM//9U1VTVzMwAAP//VNXMzP////9U1czMAABU1VTVOW3//////7/MzAAA////v5Jf//////+/zMz//////78AAAAA////vwAA//////+/AAD//wAA///MzAAAAAD//8zM//8AAP//AAAAAAAA////////qqpU1f//AABU1VTV/////1TVVNX//wAAqqpU1f//////f1TV//8AAFVVVNX/////VVVU1f////+qKlTV//8AAKoqVNXMzP//VNX+f///AABU1f5/zMwAAFTV/n//////VNX+f8zMAACqKv///////6oq///MzP//qir/////AACqKv//AAD///9/VNUAAAAAVVVU1QAA//9VVVTVAAAAAKoqVNUAAAAA/39U1QAA//+qKlTVAAAAAKqqVNUAAP//VNVU1QAAAABU1VTVOW0AAKqq/7/MzAAAqqr/v///AAD/f/+/zMwAAP9//785bQAA/3//v8zMAABVVf+/OW0AAFVV/785bQAAqir/vzltAAAAAP+/kl8AAAAA/7+SXwAAqir/vwAAAACqKv+/kl8AAFVV/78AAAAAVVX/v5JfAAD/f/+/AAAAAP9//7+SXwAAqqr/vwAAAACqqv+/OW0AAFTV/785bQAA////v5JfAAD///+/AAAAAFTV/7+SX///AAD//wAA//+qKv//AAD//1VV//85bf//AAD//wAA////f///AAD//1TV///MzP//VVX//8zM////f///zMz//6qq//+SXwAA////vzltAAD///+/kl///wAA//85bQAAAAD//zlt//8AAP//kl8AAAAA/////wAA/39U1QAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/qiqqKqoqqiqqKqoqqiqqKv9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7////9/////f////3////9//3//v////3//f/+//3//v1TVVNVU1VTVVNVU1VTVVNVU1VTVqiqqKqoqqiqqKqoqqiqqKv////////////////////////////////+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoqqiqqKqoqqiqqKqoqqiqqKqoqqir/f////3////9/////f///////f////3////9/////f1TVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1QAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7////////////+//7//v/+//7//v/+//7+qKqoq")
+}, {
+"aabb": AABB(-0.13333333, 0.1, -2, 0.26666665, 1e-05, 5),
+"attribute_data": PackedByteArray("3b2qSiHC/z8hwqpK3b3/P929VHUhwqpqIcJUdd29qmrdvf9fIcJVVSHC/1/dvVVV"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
+"material": SubResource("StandardMaterial3D_i1bsu"),
+"name": "Material.007",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//8AAMzM//8AAAAA/////wAAAADMzP////8AAP///////wAAAAD//wAAAAAzM///AAAAAAAA/////wAAMzP/////AABmZv//AAAAAJmZ//8AAAAAZmb/////AACZmf///3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
+}, {
+"aabb": AABB(-3, -0.099999964, -3, 6, 0.19999993, 6),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8//1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8//1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 108,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUA"),
+"lods": [0.71414316, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA")],
+"material": SubResource("StandardMaterial3D_my1dx"),
+"name": "Material.006",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 72,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD//6oq//8AAP//AAD//wAA//+qKgAAAAD//6oqAAAAAFTVqir/////VNWqKv//AABU1aoqAAD//1TVqioAAP///78AAP//////v6oq//////+/AAAAAP///78AAAAAAAD/v6oqAAD///+/qioAAAAA/78AAAAA////v6oq//8AAP//AAD///////8AAP//AAD//6oq////////VNUAAKoqVNVU1f//AABU1VTV//+qKlTVVNUAAAAAVNVU1QAAAAD///////8AAP//VNX//wAA/////wAAAAD/////AAAAAFTV/////6oqVNX/////AABU1f//AACqKlTV//8AAKoq/79U1f//qir/v/////+qKv+/VNUAAKoq/79U1QAAAAD/v///AACqKv+///8AAAAA/79U1QAAqir/v/////8AAP//VNX//6oq//9U1f//AAD///////+qKv//VNUAAP//VNVU1f//VNVU1VTV/////1TVVNUAAFTVVNVU1QAAVNX///////9U1f//VNX//1TV/////wAAVNX/////AABU1VTV////////VNX/////VNVU1f//AAD//1TV//8AAP///79U1f//////v/////////+/VNUAAP///79U1QAAVNX/v///AAD///+///8AAFTV/79U1QAA////v/////9U1f//VNX///////9U1f//VNX/////////////VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_4kchk")
+
+[sub_resource type="Curve3D" id="Curve3D_f2gsc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 1, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ap2wq"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_iwfe5"]
+material = SubResource("StandardMaterial3D_ap2wq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtiei"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7gqou"]
+material = SubResource("StandardMaterial3D_mtiei")
+
+[sub_resource type="Curve3D" id="Curve3D_7gqou"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1.5, 1, 0, 3, -1.5, 0, 0, 0, 0, 0, 3, 0, 1),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlnf2"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_f2gsc"]
+material = SubResource("StandardMaterial3D_xlnf2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwfe5"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hrwkr"]
+material = SubResource("StandardMaterial3D_iwfe5")
+
+[sub_resource type="Curve3D" id="Curve3D_ost5d"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1, 0, -3, 0, 0, 0, 0, 0, 0, -1, 0, 3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_hrwkr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 2, -1, 0, -3, -2, 0, 0, 0, 0, 0, 3, 0, 1),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_xlnf2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, -1.5, 0, 0, 3, 0, -1, 0, 0, 1.5, 0, 0, 0, 1, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_iwfe5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, -2, 0, 0, 3, 0, -1, 0, 0, -2, 0, 0, 0, -1, 0, 3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="TSection" type="Node3D" unique_id=1049789990]
+script = ExtResource("1_xlnf2")
+
+[node name="Road" type="Node3D" parent="." unique_id=417271392]
+
+[node name="T-Section" type="MeshInstance3D" parent="Road" unique_id=875658675]
+visible = false
+layers = 2
+mesh = SubResource("ArrayMesh_tgs2a")
+
+[node name="LaneSN" type="Node3D" parent="." unique_id=1577102746 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("1_ost5d")
+path = NodePath("SNPath")
+in_socket = NodePath("FInSocket")
+out_socket = NodePath("FOutSocket")
+
+[node name="SNPath" type="Path3D" parent="LaneSN" unique_id=1842482646]
+unique_name_in_owner = true
+curve = SubResource("Curve3D_f2gsc")
+
+[node name="FOutSocket" type="Node3D" parent="LaneSN" unique_id=250614398 node_paths=PackedStringArray("lane") groups=["out_socket"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneSN/FOutSocket" unique_id=545786569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("SphereMesh_iwfe5")
+
+[node name="FInSocket" type="Node3D" parent="LaneSN" unique_id=2101239752 node_paths=PackedStringArray("lane") groups=["in_socket"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneSN/FInSocket" unique_id=1231881274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("SphereMesh_7gqou")
+
+[node name="LaneSE" type="Node3D" parent="." unique_id=614626511 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("1_ost5d")
+path = NodePath("SEPath")
+lane_speed = 0.2
+in_socket = NodePath("BInSocket")
+out_socket = NodePath("BOutSocket")
+
+[node name="SEPath" type="Path3D" parent="LaneSE" unique_id=366974775]
+curve = SubResource("Curve3D_7gqou")
+
+[node name="BOutSocket" type="Node3D" parent="LaneSE" unique_id=1261690245 node_paths=PackedStringArray("lane") groups=["out_socket"]]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 3, 0, 1)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneSE/BOutSocket" unique_id=1251398238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("SphereMesh_f2gsc")
+metadata/_edit_lock_ = true
+
+[node name="BInSocket" type="Node3D" parent="LaneSE" unique_id=171938241 node_paths=PackedStringArray("lane") groups=["in_socket"]]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 1, 0, 3)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneSE/BInSocket" unique_id=2048078310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("SphereMesh_hrwkr")
+metadata/_edit_lock_ = true
+
+[node name="LaneNS" type="Node3D" parent="." unique_id=1862092812 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("1_ost5d")
+path = NodePath("NSPath")
+in_socket = NodePath("BInSocket")
+out_socket = NodePath("BOutSocket")
+
+[node name="NSPath" type="Path3D" parent="LaneNS" unique_id=1666599908]
+curve = SubResource("Curve3D_ost5d")
+
+[node name="BOutSocket" type="Node3D" parent="LaneNS" unique_id=2053752753 node_paths=PackedStringArray("lane") groups=["out_socket"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1, 0, 3)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneNS/BOutSocket" unique_id=321217144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("SphereMesh_f2gsc")
+
+[node name="BInSocket" type="Node3D" parent="LaneNS" unique_id=508790293 node_paths=PackedStringArray("lane") groups=["in_socket"]]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 0, -3)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneNS/BInSocket" unique_id=715492475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("SphereMesh_hrwkr")
+
+[node name="LaneNE" type="Node3D" parent="." unique_id=1942972553 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("1_ost5d")
+path = NodePath("NEPath")
+lane_speed = 0.5
+in_socket = NodePath("BInSocket")
+out_socket = NodePath("BOutSocket")
+
+[node name="NEPath" type="Path3D" parent="LaneNE" unique_id=786680469]
+curve = SubResource("Curve3D_hrwkr")
+
+[node name="BOutSocket" type="Node3D" parent="LaneNE" unique_id=1182160321 node_paths=PackedStringArray("lane") groups=["out_socket"]]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 3, 0, 1)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneNE/BOutSocket" unique_id=1841425760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("SphereMesh_f2gsc")
+
+[node name="BInSocket" type="Node3D" parent="LaneNE" unique_id=589449462 node_paths=PackedStringArray("lane") groups=["in_socket"]]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 0, -3)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneNE/BInSocket" unique_id=1309974233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("SphereMesh_hrwkr")
+
+[node name="LaneEN" type="Node3D" parent="." unique_id=76613695 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("1_ost5d")
+path = NodePath("ENPath")
+lane_speed = 0.2
+in_socket = NodePath("BInSocket")
+out_socket = NodePath("BOutSocket")
+
+[node name="ENPath" type="Path3D" parent="LaneEN" unique_id=2011743370]
+curve = SubResource("Curve3D_xlnf2")
+
+[node name="BOutSocket" type="Node3D" parent="LaneEN" unique_id=1843223219 node_paths=PackedStringArray("lane") groups=["out_socket"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneEN/BOutSocket" unique_id=942743553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("SphereMesh_f2gsc")
+metadata/_edit_lock_ = true
+
+[node name="BInSocket" type="Node3D" parent="LaneEN" unique_id=1681411780 node_paths=PackedStringArray("lane") groups=["in_socket"]]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 3, 0, -1)
+visible = false
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneEN/BInSocket" unique_id=839880300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("SphereMesh_hrwkr")
+metadata/_edit_lock_ = true
+
+[node name="LaneES" type="Node3D" parent="." unique_id=1782789806 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("1_ost5d")
+path = NodePath("ESPath")
+lane_speed = 0.3
+in_socket = NodePath("BInSocket")
+out_socket = NodePath("BOutSocket")
+
+[node name="ESPath" type="Path3D" parent="LaneES" unique_id=1721403982]
+curve = SubResource("Curve3D_iwfe5")
+
+[node name="BOutSocket" type="Node3D" parent="LaneES" unique_id=50810684 node_paths=PackedStringArray("lane") groups=["out_socket"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1, 0, 3)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneES/BOutSocket" unique_id=2033467420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("SphereMesh_f2gsc")
+metadata/_edit_lock_ = true
+
+[node name="BInSocket" type="Node3D" parent="LaneES" unique_id=559620102 node_paths=PackedStringArray("lane") groups=["in_socket"]]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 3, 0, -1)
+script = ExtResource("2_xlnf2")
+lane = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaneES/BInSocket" unique_id=1164958633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("SphereMesh_hrwkr")
+metadata/_edit_lock_ = true
+
+[node name="RoadIntersection" parent="." unique_id=1977881949 instance=ExtResource("4_f2gsc")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)

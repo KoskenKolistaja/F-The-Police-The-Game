@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dlg4bd5xdkxo5"
+path="res://.godot/imported/railroad-curve.obj-cd14b4d3c3f12d1308a19e61a99b9270.mesh"
+
+[deps]
+
+files=["res://.godot/imported/railroad-curve.obj-cd14b4d3c3f12d1308a19e61a99b9270.mesh"]
+
+source_file="res://Assets/kenney_train-kit/Models/OBJ format/railroad-curve.obj"
+dest_files=["res://.godot/imported/railroad-curve.obj-cd14b4d3c3f12d1308a19e61a99b9270.mesh", "res://.godot/imported/railroad-curve.obj-cd14b4d3c3f12d1308a19e61a99b9270.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

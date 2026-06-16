@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ctui5pvh6re8f"]
+
+[ext_resource type="ArrayMesh" uid="uid://b0huvijbnxapb" path="res://Assets/Metro/short.obj" id="1_jb4bw"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wxohc"]
+data = PackedVector3Array(-1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, -1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, -1)
+
+[node name="MetroStraight" type="StaticBody3D" unique_id=1889192058]
+
+[node name="Short" type="MeshInstance3D" parent="." unique_id=875448604]
+layers = 4
+mesh = ExtResource("1_jb4bw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1871612053]
+shape = SubResource("ConcavePolygonShape3D_wxohc")

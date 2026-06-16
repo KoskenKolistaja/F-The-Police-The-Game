@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b5gx68hnucgwy"]
+
+[ext_resource type="PackedScene" uid="uid://6s1wn4n87x3u" path="res://Entities/Menu/3D/menu_model.tscn" id="1_i7pk0"]
+
+[sub_resource type="Environment" id="Environment_l7s55"]
+background_mode = 1
+
+[node name="MainMenu" type="Control" unique_id=509823439]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuWorld" type="Node3D" parent="." unique_id=420122515]
+
+[node name="MenuModel" parent="MenuWorld" unique_id=822727170 instance=ExtResource("1_i7pk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.097937524, 0, -0.012778401)
+pistol = true
+
+[node name="MenuModel2" parent="MenuWorld" unique_id=380705786 instance=ExtResource("1_i7pk0")]
+transform = Transform3D(1.0000001, 0, 0, 0, -1, -8.7422784e-08, 0, 8.742278e-08, -1.0000001, 0.13529968, 0, 0.70733476)
+dead = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MenuWorld" unique_id=137356701]
+environment = SubResource("Environment_l7s55")
+
+[node name="Camera3D" type="Camera3D" parent="MenuWorld" unique_id=64879634]
+transform = Transform3D(0.63470346, 0.3585872, -0.68451935, 0, 0.88581586, 0.46403688, 0.7727558, -0.2945258, 0.5622304, -0.27663565, 1.2224488, 2.260657)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MenuWorld" unique_id=295728141]
+transform = Transform3D(1, 0, 0, 0, -0.7767944, 0.6297543, 0, -0.6297543, -0.7767944, 0, 0, 0)
+visible = false
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MenuWorld" unique_id=1546093583]
+transform = Transform3D(0.6034725, -0.6393479, 0.4765032, 0, 0.5975832, 0.8018069, -0.7973839, -0.48386836, 0.360625, 1.2011713, 1.4170411, 1.6704366)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MenuWorld" unique_id=655239902]
+transform = Transform3D(-0.55433613, 0, -0.8322929, 0, 1, 0, 0.8322929, 0, -0.55433613, -1.9591565, 0, -1.2406182)
+light_color = Color(0.05074145, 0.27633762, 0.9457235, 1)
+light_energy = 3.595
+
+[node name="Label" type="Label" parent="." unique_id=1815003885]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 100.0
+offset_right = 44.0
+offset_bottom = 123.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "MAFIA CITY"

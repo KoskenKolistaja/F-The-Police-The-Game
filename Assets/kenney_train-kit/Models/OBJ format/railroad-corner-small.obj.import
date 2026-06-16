@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://v1i1nmyc0vlw"
+path="res://.godot/imported/railroad-corner-small.obj-5a0e57251968f6dabf958e3efea0b8df.mesh"
+
+[deps]
+
+files=["res://.godot/imported/railroad-corner-small.obj-5a0e57251968f6dabf958e3efea0b8df.mesh"]
+
+source_file="res://Assets/kenney_train-kit/Models/OBJ format/railroad-corner-small.obj"
+dest_files=["res://.godot/imported/railroad-corner-small.obj-5a0e57251968f6dabf958e3efea0b8df.mesh", "res://.godot/imported/railroad-corner-small.obj-5a0e57251968f6dabf958e3efea0b8df.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
