@@ -50,14 +50,15 @@ func _ready() -> void:
 	decide_npc_look()
 	pick_new_wander_target()
 	money *= randi_range(1, 5)
-	investigation_need *= randf_range(0.5, 5.0)
+	investigation_need *= randf_range(2.0, 5.0)
 
 func _physics_process(delta: float) -> void:
 	if robbery_countdown > 0 and not dead:
 		robbery_countdown -= delta
 		
 		if robbery_countdown <= 0:
-			start_fleeing_from_robbery()
+			if current_robber:
+				start_fleeing_from_robbery(current_robber)
 			return
 		
 		_freeze_and_apply_gravity(delta)
@@ -96,6 +97,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		if %RobberyTimer.is_paused():
 			%RobberyTimer.set_paused(false)
+		%InvestigationParticles.emitting = false
 	
 	if dead:
 		return
@@ -138,15 +140,24 @@ func interact(player: Node3D, hand_item: String) -> void:
 				player.remove_item_from_inventory("handcuffs")
 
 func being_robbed(robber_node: Node3D) -> void:
-	if not active or money <= 0 or robbed_recently:
+	if not active:
 		return
 	
-	state_machine.travel("interact-right")
-	var vector = robber_node.global_position - self.global_position
-	rotate_towards(vector)
+	
+	
+	
+	%TearParticles.emitting = true
+	%TearParticles2.emitting = true
+	
 	
 	current_robber = robber_node
 	robber = robber_node 
+	if money <= 0 or robbed_recently:
+		start_fleeing_from_robbery(robber_node)
+		return
+	state_machine.travel("interact-right")
+	var vector = robber_node.global_position - self.global_position
+	rotate_towards(vector)
 	robbery_countdown = 0.2 
 	move_direction = Vector3.ZERO 
 
@@ -159,6 +170,9 @@ func investigate(investigator: Node3D) -> void:
 		%RobbedIcon.hide()
 	else:
 		return
+	
+	if dead:
+		%InvestigationParticles.emitting = true
 	
 	%RobberyTimer.wait_time += 0.1
 	
@@ -182,7 +196,7 @@ func investigate(investigator: Node3D) -> void:
 		%RobbedIcon.hide()
 		%Speech.hide()
 		%SpeechPlayer.stop()
-		investigation_need *= randf_range(0.5, 5.0)
+		investigation_need *= randf_range(2.0, 5.0)
 
 func dispense_money_tick() -> void:
 	if money <= 0 or not active:
@@ -196,9 +210,10 @@ func dispense_money_tick() -> void:
 			current_robber.money += 50
 			
 	if money <= 0:
-		start_fleeing_from_robbery()
+		if current_robber:
+			start_fleeing_from_robbery(current_robber)
 
-func start_fleeing_from_robbery() -> void:
+func start_fleeing_from_robbery(robber_node) -> void:
 	robbery_countdown = 0.0
 	rob_tick_timer = 0.0
 	robbed_recently = true
@@ -206,9 +221,10 @@ func start_fleeing_from_robbery() -> void:
 	
 	%RobbedIcon.show()
 	%RobberyTimer.start()
-	
-	if is_instance_valid(current_robber):
-		flee_away_from(current_robber)
+	%TearParticles.emitting = false
+	%TearParticles2.emitting = false
+	if is_instance_valid(robber_node):
+		flee_away_from(robber_node)
 
 func flee_away_from(robber_node: Node3D) -> void:
 	if not active or not is_instance_valid(robber_node): 
@@ -302,6 +318,8 @@ func die(exp_killer = null) -> void:
 	dead = true
 	deactivate()
 	state_machine.travel("die")
+	%TearParticles.emitting = false
+	%TearParticles2.emitting = false
 	%ArrestHandcuffs.hide()
 	%RobbedIcon.hide()
 

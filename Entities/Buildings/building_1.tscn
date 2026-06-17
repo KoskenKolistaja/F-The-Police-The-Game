@@ -2,6 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://twpyvont61p5" path="res://Assets/kenney_city-kit-commercial_2.1 (1)/Models/OBJ format/building-a.obj" id="1_o3s6c"]
 [ext_resource type="Script" uid="uid://lkvg6173dq6y" path="res://Entities/Buildings/ClimbObject.gd" id="2_syw3r"]
+[ext_resource type="Script" uid="uid://d2lsuncseryhy" path="res://Entities/Buildings/path_target.gd" id="3_l3x6h"]
 [ext_resource type="Script" uid="uid://cabitlksqmguq" path="res://Entities/Buildings/climb_object_area.gd" id="3_p58io"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_syw3r"]
@@ -36,13 +37,20 @@ script = ExtResource("2_syw3r")
 [node name="PathFollow3D" type="PathFollow3D" parent="ClimbObject" unique_id=1643421332]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.0009151697, 0.012856558, -2.9325485e-05)
 loop = false
+script = ExtResource("3_l3x6h")
 
-[node name="ClimbObjectArea" type="Area3D" parent="ClimbObject" unique_id=194291635 node_paths=PackedStringArray("parent", "path_target")]
+[node name="PathFollow3D2" type="PathFollow3D" parent="ClimbObject" unique_id=565101120]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.0009151697, 0.012856558, -2.9325485e-05)
+loop = false
+script = ExtResource("3_l3x6h")
+
+[node name="ClimbObjectArea" type="Area3D" parent="ClimbObject" unique_id=194291635 node_paths=PackedStringArray("parent", "path_target", "path_target2")]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("3_p58io")
 parent = NodePath("..")
 path_target = NodePath("../PathFollow3D")
+path_target2 = NodePath("../PathFollow3D2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ClimbObject/ClimbObjectArea" unique_id=195335995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2897913, 0)

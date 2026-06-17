@@ -3628,28 +3628,28 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4438228e-15, 0.17625, -0.02875)
 bones/3/enabled = true
 bones/3/position = Vector3(-1.4438228e-15, 0.17625, -0.02875)
-bones/3/rotation = Quaternion(-0.037720412, 0, 0, 0.9992883)
+bones/3/rotation = Quaternion(-0.00074228883, 0, 0, 0.9999998)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "arm-left"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09989677, 0.1115, 0.0115)
 bones/4/enabled = true
 bones/4/position = Vector3(0.09989677, 0.1115, 0.0115)
-bones/4/rotation = Quaternion(0, 0, -0.2829528, 0.95913386)
+bones/4/rotation = Quaternion(0, 0, -0.38062513, 0.9247294)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "arm-right"
 bones/5/parent = 3
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09989677, 0.1115, 0.0115)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.09989677, 0.1115, 0.0115)
-bones/5/rotation = Quaternion(0, 0, 0.2829528, 0.95913386)
+bones/5/rotation = Quaternion(0, 0, 0.38062513, 0.9247294)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "head"
 bones/6/parent = 3
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8196893e-09, 0.167, 0.026388777)
 bones/6/enabled = true
 bones/6/position = Vector3(1.8196893e-09, 0.167, 0.026388777)
-bones/6/rotation = Quaternion(0, 0.037720412, 0, 0.9992883)
+bones/6/rotation = Quaternion(0, 0.00074228883, 0, 0.9999998)
 bones/6/scale = Vector3(1, 1, 1)
 
 [node name="body1" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=243361739]
@@ -3818,7 +3818,7 @@ tip_bone = &"arm-right"
 target_node = NodePath("../../../HandTarget")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/character-male-a/Skeleton3D" unique_id=2100685627]
-transform = Transform3D(0.83987546, -0.54277915, 0, 0.5412346, 0.8374855, 0.07538714, -0.04091857, -0.06331581, 0.99715436, -0.09989677, 0.28829965, -0.025688391)
+transform = Transform3D(0.71024895, -0.7039506, 0, 0.7039498, 0.7102482, 0.0014845771, -0.001045069, -0.0010544193, 0.9999989, -0.09989677, 0.28776693, -0.017415542)
 bone_name = "arm-right"
 bone_idx = 5
 
@@ -3860,7 +3860,8 @@ transform = Transform3D(0.4702499, 0.3982228, 0.7875808, -0.09938824, 0.91062814
 [node name="ClimbObjectArea" type="Area3D" parent="Visual" unique_id=1450745345]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35775265, 0.27818254)
-collision_mask = 17
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Visual/ClimbObjectArea" unique_id=115443733]
 shape = SubResource("SphereShape3D_lobkq")

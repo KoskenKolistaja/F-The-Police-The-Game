@@ -14,6 +14,9 @@ var spread = 0.5
 
 
 func use():
+	if player_character.is_police():
+		return
+	
 	var npcs = %Area3D.get_overlapping_bodies()
 	
 	for npc in npcs:

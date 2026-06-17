@@ -16,12 +16,7 @@ var city
 
 var inventory_index = 0
 var inventory = [
-	"none",
-	"graffiti_bottle",
-	"pistol",
-	"camera",
-	"handcuffs",
-	"spyglass"
+	"none"
 ]
 
 var hand_item = "none"
@@ -60,6 +55,10 @@ func _ready():
 	city = get_tree().get_first_node_in_group("city")
 	%HandIK.start()
 	set_inventory_item(0)
+	if player_root.is_police:
+		set_police()
+	else:
+		set_civilian()
 
 func _physics_process(delta):
 	if not active:
@@ -123,8 +122,11 @@ func _physics_process(delta):
 
 	if jump_just_pressed and is_on_floor() and not is_blending_in:
 		velocity.y = JUMP_VELOCITY
-		climb_object = null
+		if climb_object:
+			climb_object.reset()
+			climb_object = null
 	elif jump_just_pressed and climb_object:
+		climb_object.reset()
 		climb_object = null
 		velocity.y = JUMP_VELOCITY
 		is_blending_in = false
@@ -202,10 +204,14 @@ func handle_climbing():
 
 func check_climb_object():
 	var objects = %ClimbObjectArea.get_overlapping_areas()
+	if climb_object:
+		return
+	
 	if not objects.is_empty():
 		var object = objects[0]
 		climb_object = object.get_path_target()
-		object.setup_path_target(global_position.y + 0.3)
+		if climb_object:
+			object.setup_path_target(climb_object,global_position.y + 0.3)
 
 func rotate_towards_delta(exp_vector, delta):
 	var target_y = atan2(exp_vector.x, exp_vector.z)
@@ -279,9 +285,20 @@ func get_player_root():
 
 func set_police():
 	for c in %Skeleton3D.get_children():
+		if c is BoneAttachment3D:
+			continue
 		c.hide()
 	%policebody.show()
 	%policehead.show()
+	inventory.push_back("camera")
+	inventory.push_back("pistol")
+	inventory.push_back("spyglass")
+	inventory.push_back("handcuffs")
+
+func set_civilian():
+	inventory.push_back("graffiti_bottle")
+	inventory.push_back("pistol")
+
 
 func die(exp_killer = null):
 	deactivate()
@@ -310,6 +327,8 @@ func get_message():
 func get_arrested():
 	active = false
 	state_machine.travel("holding-both")
+	inventory_index = 0
+	set_inventory_item(0)
 	%ArrestHandcuffs.show()
 
 # --- GLOBAL PROFILE STATUS CHECK ---
@@ -338,17 +357,31 @@ func interact(player, incoming_hand_item):
 
 # --- INDIVIDUAL CRIME INFRACTION ENTRY POINTS ---
 func add_graffiti_suspicion():
+	if is_police():
+		return
 	suspicion = 20.0
 	pending_crime_score += CrimeManager.graffiti_score
 
 func add_murder_suspicion():
+	if is_police():
+		if inventory.has("pistol"):
+			inventory.erase("pistol")
 	suspicion = 20.0
 	pending_crime_score += CrimeManager.kill_score
 
 func add_gunfire_suspicion():
+	if is_police():
+		return
 	suspicion = 20.0
 	pending_crime_score += CrimeManager.graffiti_score
 
 func add_robbery_suspicion():
+	if player_root.is_police:
+		return
 	suspicion = 20.0
 	pending_crime_score += CrimeManager.robbery_score
+
+
+
+func is_police():
+	return player_root.is_police

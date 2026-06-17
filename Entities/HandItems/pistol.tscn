@@ -176,6 +176,7 @@ _data = {
 [sub_resource type="QuadMesh" id="QuadMesh_3ir7o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b82n3"]
+resource_local_to_scene = true
 transparency = 1
 cull_mode = 2
 shading_mode = 0
