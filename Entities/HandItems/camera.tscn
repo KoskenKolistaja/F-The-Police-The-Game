@@ -57,7 +57,9 @@ border_width_bottom = 10
 script = ExtResource("1_jw72i")
 
 [node name="Camera" type="MeshInstance3D" parent="." unique_id=2085600299]
+unique_name_in_owner = true
 transform = Transform3D(-1.93, 0, -2.9142188e-07, 0, 1.93, 0, 2.9142188e-07, 0, -1.93, 0, 0, 0)
+layers = 6
 material_override = SubResource("StandardMaterial3D_ixnfd")
 mesh = SubResource("ArrayMesh_g2hq6")
 

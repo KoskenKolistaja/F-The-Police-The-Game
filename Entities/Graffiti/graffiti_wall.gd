@@ -23,7 +23,7 @@ func investigate():
 		return
 	
 	if investigated > 100.0:
-		CrimeManager.add_crime_score(painter,CrimeManager.graffiti_score)
+		CrimeManager.bank_evidence(painter,CrimeManager.graffiti_score)
 		reset()
 
 func paint(player):

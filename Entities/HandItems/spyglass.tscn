@@ -50,7 +50,9 @@ radius = 1.0612977
 script = ExtResource("1_plnmc")
 
 [node name="Spyglass" type="MeshInstance3D" parent="." unique_id=136585959]
+unique_name_in_owner = true
 transform = Transform3D(1.59, 0, 0, 0, 1.59, 0, 0, 0, 1.59, 0, -0.013648622, 0)
+layers = 6
 mesh = SubResource("ArrayMesh_ury2r")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2070654088]

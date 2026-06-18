@@ -16,6 +16,8 @@ func _ready():
 		%Pistol.hide()
 	else:
 		%GPUParticles3D.emitting = true
+	
+	%Pistol.set_visual_layer(1,true)
 
 func _physics_process(delta):
 	if pistol:

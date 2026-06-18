@@ -3599,6 +3599,7 @@ shape = SubResource("CapsuleShape3D_mv1ah")
 unique_name_in_owner = true
 
 [node name="character-male-a" type="Node3D" parent="Visual" unique_id=1708738009]
+unique_name_in_owner = true
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Visual/character-male-a" unique_id=1795439620]
 unique_name_in_owner = true
@@ -3628,33 +3629,34 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4438228e-15, 0.17625, -0.02875)
 bones/3/enabled = true
 bones/3/position = Vector3(-1.4438228e-15, 0.17625, -0.02875)
-bones/3/rotation = Quaternion(-0.00074228883, 0, 0, 0.9999998)
+bones/3/rotation = Quaternion(0.0039339503, 0, 0, 0.99999225)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "arm-left"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09989677, 0.1115, 0.0115)
 bones/4/enabled = true
 bones/4/position = Vector3(0.09989677, 0.1115, 0.0115)
-bones/4/rotation = Quaternion(0, 0, -0.38062513, 0.9247294)
+bones/4/rotation = Quaternion(0, 0, -0.3792947, 0.9252759)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "arm-right"
 bones/5/parent = 3
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09989677, 0.1115, 0.0115)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.09989677, 0.1115, 0.0115)
-bones/5/rotation = Quaternion(0, 0, 0.38062513, 0.9247294)
+bones/5/rotation = Quaternion(0, 0, 0.3792947, 0.9252759)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "head"
 bones/6/parent = 3
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8196893e-09, 0.167, 0.026388777)
 bones/6/enabled = true
 bones/6/position = Vector3(1.8196893e-09, 0.167, 0.026388777)
-bones/6/rotation = Quaternion(0, 0.00074228883, 0, 0.9999998)
+bones/6/rotation = Quaternion(0, -0.0039339503, 0, 0.99999225)
 bones/6/scale = Vector3(1, 1, 1)
 
 [node name="body1" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=243361739]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_tycix")
 skin = SubResource("Skin_kac1p")
 skeleton = NodePath("..")
@@ -3662,6 +3664,7 @@ skeleton = NodePath("..")
 [node name="body2" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=436030384]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_wyjne")
 skin = SubResource("Skin_aoqyc")
 skeleton = NodePath("..")
@@ -3669,6 +3672,7 @@ skeleton = NodePath("..")
 [node name="body3" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=871669972]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_ek4rp")
 skin = SubResource("Skin_1udqj")
 skeleton = NodePath("..")
@@ -3676,6 +3680,7 @@ skeleton = NodePath("..")
 [node name="body4" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=30534692]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_xo1qp")
 skin = SubResource("Skin_0ccav")
 skeleton = NodePath("..")
@@ -3683,6 +3688,7 @@ skeleton = NodePath("..")
 [node name="body5" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=1083860582]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_2s6bj")
 skin = SubResource("Skin_yt64c")
 skeleton = NodePath("..")
@@ -3690,6 +3696,7 @@ skeleton = NodePath("..")
 [node name="body6" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=1915864029]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_w0i0w")
 skin = SubResource("Skin_2in8m")
 skeleton = NodePath("..")
@@ -3697,12 +3704,14 @@ skeleton = NodePath("..")
 [node name="body7" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=256060866]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_efkaa")
 skin = SubResource("Skin_psgw4")
 skeleton = NodePath("..")
 
 [node name="businessbody" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=1800138967]
 unique_name_in_owner = true
+layers = 0
 mesh = SubResource("ArrayMesh_j3ia5")
 skin = SubResource("Skin_5rrui")
 skeleton = NodePath("..")
@@ -3710,6 +3719,7 @@ skeleton = NodePath("..")
 [node name="body9" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=770850212]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_jdtx5")
 skin = SubResource("Skin_pkli8")
 skeleton = NodePath("..")
@@ -3717,12 +3727,14 @@ skeleton = NodePath("..")
 [node name="workerbody" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=1908277499]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_pslqy")
 skin = SubResource("Skin_qtad4")
 skeleton = NodePath("..")
 
 [node name="head1" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=318628244]
 unique_name_in_owner = true
+layers = 0
 mesh = SubResource("ArrayMesh_0g14n")
 skin = SubResource("Skin_kac1p")
 skeleton = NodePath("..")
@@ -3730,6 +3742,7 @@ skeleton = NodePath("..")
 [node name="head2" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=827767743]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_uibr2")
 skin = SubResource("Skin_va2ii")
 skeleton = NodePath("..")
@@ -3737,6 +3750,7 @@ skeleton = NodePath("..")
 [node name="head3" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=1195419942]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_71g4k")
 skin = SubResource("Skin_aoqyc")
 skeleton = NodePath("..")
@@ -3744,6 +3758,7 @@ skeleton = NodePath("..")
 [node name="head4" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=1448780017]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_ksx1g")
 skin = SubResource("Skin_1udqj")
 skeleton = NodePath("..")
@@ -3751,6 +3766,7 @@ skeleton = NodePath("..")
 [node name="head5" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=998049893]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_jkdar")
 skin = SubResource("Skin_0ccav")
 skeleton = NodePath("..")
@@ -3758,6 +3774,7 @@ skeleton = NodePath("..")
 [node name="head6" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=268163311]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_jt65u")
 skin = SubResource("Skin_yt64c")
 skeleton = NodePath("..")
@@ -3765,6 +3782,7 @@ skeleton = NodePath("..")
 [node name="head7" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=803872141]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_pr76l")
 skin = SubResource("Skin_2in8m")
 skeleton = NodePath("..")
@@ -3772,6 +3790,7 @@ skeleton = NodePath("..")
 [node name="head8" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=834753061]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_ypgvx")
 skin = SubResource("Skin_psgw4")
 skeleton = NodePath("..")
@@ -3779,6 +3798,7 @@ skeleton = NodePath("..")
 [node name="head9" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=273880810]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_1x8uj")
 skin = SubResource("Skin_5rrui")
 skeleton = NodePath("..")
@@ -3786,6 +3806,7 @@ skeleton = NodePath("..")
 [node name="head10" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=931910826]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_j1l2b")
 skin = SubResource("Skin_pkli8")
 skeleton = NodePath("..")
@@ -3793,6 +3814,7 @@ skeleton = NodePath("..")
 [node name="workerhead" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=1365602161]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_6urhm")
 skin = SubResource("Skin_qtad4")
 skeleton = NodePath("..")
@@ -3800,6 +3822,7 @@ skeleton = NodePath("..")
 [node name="policebody" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=1119106715]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_lhoso")
 skin = SubResource("Skin_a6dfu")
 skeleton = NodePath("..")
@@ -3807,6 +3830,7 @@ skeleton = NodePath("..")
 [node name="policehead" type="MeshInstance3D" parent="Visual/character-male-a/Skeleton3D" unique_id=833000128]
 unique_name_in_owner = true
 visible = false
+layers = 0
 mesh = SubResource("ArrayMesh_b44ay")
 skin = SubResource("Skin_a6dfu")
 skeleton = NodePath("..")
@@ -3818,7 +3842,7 @@ tip_bone = &"arm-right"
 target_node = NodePath("../../../HandTarget")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/character-male-a/Skeleton3D" unique_id=2100685627]
-transform = Transform3D(0.71024895, -0.7039506, 0, 0.7039498, 0.7102482, 0.0014845771, -0.001045069, -0.0010544193, 0.9999989, -0.09989677, 0.28776693, -0.017415542)
+transform = Transform3D(0.7122711, -0.7019045, 0, 0.7018828, 0.71224904, -0.00786784, 0.0055224723, 0.005604035, 0.99996907, -0.09989677, 0.28765607, -0.016373092)
 bone_name = "arm-right"
 bone_idx = 5
 
@@ -3830,6 +3854,7 @@ transform = Transform3D(-0.537849, -0.115506664, 0.83509105, -0.3716483, 0.92160
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0.29368865, 0.20727807)
 visible = false
+layers = 0
 material_override = SubResource("StandardMaterial3D_b2vmj")
 mesh = SubResource("ArrayMesh_og2bn")
 

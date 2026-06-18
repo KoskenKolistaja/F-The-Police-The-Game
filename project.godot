@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 TrafficManager="*uid://delpf64ko0y3r"
 ItemData="*uid://qtcqtgcxdnip"
 CrimeManager="*uid://b66jimdjq23op"
+GameManager="*uid://54xuembnnsox"
+
+[display]
+
+window/size/mode=3
 
 [input]
 

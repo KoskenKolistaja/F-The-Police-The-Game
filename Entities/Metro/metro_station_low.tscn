@@ -117,6 +117,9 @@ data = PackedVector3Array(-1, -1, -1, 1, -1, 0, -1, -1, 0, -5, -1, -1, -1, -1, -
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_run1l"]
 data = PackedVector3Array(-1, -1, 2, -1, 1, -2, -1, -1, -2, -1, -1, 2, -1, 1, 2, -1, 1, -2, 1, -1, -2, 1, 1, 2, 1, -1, 2, 1, -1, -2, 1, 1, -2, 1, 1, 2, -1, -1, -2, 1, -1, 2, -1, -1, 2, -1, -1, -2, 1, -1, -2, 1, -1, 2, 1, 1, -2, -1, 1, 2, 1, 1, 2, 1, 1, -2, -1, 1, -2, -1, 1, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dsxxm"]
+size = Vector3(2, 2.5, 10)
+
 [node name="MetroStationLow" type="StaticBody3D" unique_id=230295096]
 
 [node name="Metro" type="Node3D" parent="." unique_id=641132951]
@@ -155,3 +158,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -3, 0)
 
 [node name="ExitPosition3" type="Node3D" parent="." unique_id=1831539473 groups=["exit_position"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -3, 3)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=729620079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -3, 0)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1627541216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_dsxxm")

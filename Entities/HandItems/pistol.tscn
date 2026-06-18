@@ -230,7 +230,9 @@ script = ExtResource("1_3ir7o")
 [node name="Items" type="Node3D" parent="." unique_id=382726770]
 
 [node name="Pistol" type="MeshInstance3D" parent="." unique_id=353552047]
+unique_name_in_owner = true
 transform = Transform3D(-1.375, 0, -2.0761922e-07, 0, 1.375, 0, 2.0761922e-07, 0, -1.375, 0, 0, 0)
+layers = 6
 material_override = SubResource("StandardMaterial3D_3ir7o")
 mesh = SubResource("ArrayMesh_yv8gj")
 
@@ -250,12 +252,16 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0.12823951, -0.37412173)
 top_level = true
 
 [node name="TrailMesh1" type="MeshInstance3D" parent="Trail" unique_id=42894497]
+unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.5033822)
+layers = 6
 mesh = SubResource("QuadMesh_3ir7o")
 surface_material_override/0 = SubResource("StandardMaterial3D_b82n3")
 
 [node name="TrailMesh2" type="MeshInstance3D" parent="Trail" unique_id=1040705463]
+unique_name_in_owner = true
 transform = Transform3D(-4.3711385e-08, -0.99999994, 4.3711385e-08, 0, -4.3711385e-08, -0.99999994, 0.99999994, -4.3711385e-08, 1.9106853e-15, 0, 0, -0.50338215)
+layers = 6
 mesh = SubResource("QuadMesh_3ir7o")
 surface_material_override/0 = SubResource("StandardMaterial3D_b82n3")
 
@@ -266,6 +272,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12823951, -0.37412173)
 [node name="MuzzleParticles" type="GPUParticles3D" parent="BarrelPosition" unique_id=855692703]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.024951637)
+layers = 6
 emitting = false
 lifetime = 0.2
 one_shot = true

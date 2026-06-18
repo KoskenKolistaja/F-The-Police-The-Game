@@ -3511,7 +3511,7 @@ _data = {
 
 [sub_resource type="Gradient" id="Gradient_ard28"]
 offsets = PackedFloat32Array(0, 0.36619717, 1)
-colors = PackedColorArray(0.42365062, 0.42365065, 0.42365062, 0, 0.8039216, 0.8039216, 0.8039216, 0.29411766, 0.30980393, 0.30980393, 0.30980393, 0)
+colors = PackedColorArray(0.42365062, 0.42365065, 0.42365062, 0, 0.8039216, 0.8039216, 0.8039216, 1, 0.30980393, 0.30980393, 0.30980393, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mq4rr"]
 gradient = SubResource("Gradient_ard28")
@@ -3796,6 +3796,7 @@ speed_scale = 0.1
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=599659231]
 unique_name_in_owner = true
 transform = Transform3D(0.99999964, 0, 0, 0, 0.9999988, 0, 0, 0, 0.999999, -0.4220734, 0.4371056, 0.06653938)
+emitting = false
 amount = 50
 lifetime = 20.0
 process_material = SubResource("ParticleProcessMaterial_mq4rr")

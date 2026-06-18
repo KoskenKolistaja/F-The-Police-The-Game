@@ -32,10 +32,11 @@ func _physics_process(delta):
 		else:
 			player_id = 0
 	
-	if %PlayerCharacter.global_position.y < -0.5:
+	if %PlayerCharacter.global_position.y < -1.5:
 		%FollowerCamera.show_metro()
 	else:
 		%FollowerCamera.show_upper()
+
 
 func set_player_driver(vehicle : Node3D):
 	%FollowerCamera.target = %PlayerDriver

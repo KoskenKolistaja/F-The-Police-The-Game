@@ -7,6 +7,8 @@ const DEADZONE = 0.2
 const WANDER_TIME_MIN = 1.0
 const WANDER_TIME_MAX = 3.0
 
+const SUSPICION_LENGTH = 60.0
+
 @export var player_root : Node3D
 @onready var state_machine : AnimationNodeStateMachinePlayback = %AnimationTree.get("parameters/playback")
 @onready var visual = %Visual
@@ -21,10 +23,12 @@ var inventory = [
 
 var hand_item = "none"
 
+var height_layer = -1
+
 # --- REFACTORED STATE ARCHITECTURE ---
 var confirmed_criminal: bool = false
 var suspicion: float = 0.0
-var pending_crime_score: int = 0
+var pending_crimes = []
 
 # Joypad Button State Trackers
 var prev_blend_pressed : bool = false
@@ -59,17 +63,20 @@ func _ready():
 		set_police()
 	else:
 		set_civilian()
+		GameManager.players_to_arrest.append(self)
 
 func _physics_process(delta):
 	if not active:
 		return
+	set_visual_layers(global_position.y)
+	
 	
 	# --- SUSPICION WINDOW EXPIRATION TICK ---
 	if suspicion > 0.0:
 		suspicion -= delta
 		if suspicion <= 0.0:
 			suspicion = 0.0
-			pending_crime_score = 0 # Missed opportunity! Safe for now.
+			pending_crimes.clear()
 	
 	player_root.hud.update_suspicion(suspicion)
 	
@@ -134,7 +141,7 @@ func _physics_process(delta):
 	var direction = Vector3.ZERO
 	
 	if climb_object:
-		handle_climbing()
+		handle_climbing(delta)
 	elif is_blending_in:
 		npc_wander_timer -= delta
 		if npc_wander_timer <= 0:
@@ -184,23 +191,85 @@ func _physics_process(delta):
 	handle_interact_ray(player_id)
 	move_and_slide()
 
-func handle_climbing():
+func handle_climbing(delta: float):
 	var player_id = player_root.player_id
-	var input_dir_y = Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
+	if not climb_object:
+		return
 	
-	if abs(input_dir_y) < 0.3:
-		input_dir_y = 0
-		state_machine.travel("idle")
-	else:
-		state_machine.travel("pick-up")
-	
-	if climb_object:
-		climb_object.progress -= input_dir_y * 0.1
+	# =========================================================================
+	# CASE 1: CLIMBING (Ladders / Vertical Structures)
+	# =========================================================================
+	if climb_object.is_climbable:
+		var input_dir_y = Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
+		
+		if abs(input_dir_y) < 0.3:
+			input_dir_y = 0
+			state_machine.travel("idle")
+		else:
+			state_machine.travel("pick-up")
+		
+		# Progress vertical climb smoothly using delta and standard SPEED
+		climb_object.progress -= input_dir_y * SPEED * delta
+		
 		var direction = climb_object.global_position - self.global_position
 		rotate_towards(direction)
+
+	# =========================================================================
+	# CASE 2: TIGHTROPE WALKING (Horizontal Paths)
+	# =========================================================================
+	else:
+		# 1. Match your normal walking camera-relative setup exactly
+		var input_dir = Vector2(
+			Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X),
+			Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
+		)
+		
+		if input_dir.length() < DEADZONE:
+			input_dir = Vector2.ZERO
+			
+		var walk_direction = Vector3.ZERO
+		if input_dir != Vector2.ZERO:
+			var camera = get_viewport().get_camera_3d()
+			if camera:
+				var cam_back = camera.global_transform.basis.z
+				var cam_right = camera.global_transform.basis.x
+				cam_back.y = 0
+				cam_right.y = 0
+				cam_back = cam_back.normalized()
+				cam_right = cam_right.normalized()
+				walk_direction = (cam_right * input_dir.x + cam_back * input_dir.y).normalized()
+
+		# 2. Sample the rope's local path vector at this exact point
+		var current_pos = climb_object.global_position
+		var orig_progress = climb_object.progress
+		climb_object.progress += 0.1 # Peek down the track
+		var forward_pos = climb_object.global_position
+		climb_object.progress = orig_progress # Reset position state
+		
+		var rope_dir = (forward_pos - current_pos).normalized()
+		rope_dir.y = 0 # Keep calculations flat on the walking plane
+
+		# 3. Project your walking intent onto the tightrope line (Dot Product)
+		var move_factor = walk_direction.dot(rope_dir) if walk_direction != Vector3.ZERO else 0.0
+		
+		# 4. Advance progress matching normal walking SPEED precisely
+		climb_object.progress += move_factor * SPEED * delta
+
+		# 5. Mirror normal ground locomotion transitions and turning feel
+		if abs(move_factor) > 0.05:
+			state_machine.travel("walk")
+			# Face whichever direction along the rope the player is forcing movement
+			var look_direction = rope_dir if move_factor > 0.0 else -rope_dir
+			rotate_towards_delta(look_direction, delta)
+		else:
+			state_machine.travel("idle")
+			# Snap smoothly back to looking down the rope forward axis when standing still
+			rotate_towards_delta(rope_dir, delta)
 	
+	# Snap CharacterBody3D position accurately to the path coordinate
 	velocity = climb_object.global_position - self.global_position
 	move_and_slide()
+
 
 func check_climb_object():
 	var objects = %ClimbObjectArea.get_overlapping_areas()
@@ -211,7 +280,7 @@ func check_climb_object():
 		var object = objects[0]
 		climb_object = object.get_path_target()
 		if climb_object:
-			object.setup_path_target(climb_object,global_position.y + 0.3)
+			object.setup_path_target(climb_object,global_position)
 
 func rotate_towards_delta(exp_vector, delta):
 	var target_y = atan2(exp_vector.x, exp_vector.z)
@@ -252,7 +321,7 @@ func handle_interact_ray(player_id):
 	if %InteractRay.is_colliding():
 		%InfoLabel.text = collider.get_message()
 		if Input.is_action_just_pressed("interact1"):
-			collider.interact(self, null)
+			collider.interact(self, "")
 			
 	if rt_pressed:
 		if collider:
@@ -304,6 +373,9 @@ func die(exp_killer = null):
 	deactivate()
 	state_machine.travel("die")
 	%ArrestHandcuffs.hide()
+	if player_root.is_police:
+		await get_tree().create_timer(20).timeout
+		activate()
 
 func remove_item_from_inventory(item_name):
 	inventory.erase(item_name)
@@ -326,6 +398,7 @@ func get_message():
 
 func get_arrested():
 	active = false
+	GameManager.arrest(self)
 	state_machine.travel("holding-both")
 	inventory_index = 0
 	set_inventory_item(0)
@@ -348,40 +421,155 @@ func interact(player, incoming_hand_item):
 		player.remove_item_from_inventory("handcuffs")
 		
 	elif incoming_hand_item == "camera":
+		var caught_score = get_pending_crime_score()
 		# Caught red-handed! Upgrade suspicion window into a valid active conviction warrant
-		if suspicion > 0.0 and pending_crime_score > 0:
-			var caught_score = pending_crime_score
+		if suspicion > 0.0 and caught_score > 0:
 			suspicion = 0.0
-			pending_crime_score = 0
+			pending_crimes.clear()
 			CrimeManager.criminalize(self, caught_score)
 
 # --- INDIVIDUAL CRIME INFRACTION ENTRY POINTS ---
 func add_graffiti_suspicion():
+	print("GRAFFITI")
 	if is_police():
 		return
-	suspicion = 20.0
-	pending_crime_score += CrimeManager.graffiti_score
+	suspicion = SUSPICION_LENGTH
+	if not pending_crimes.has("graffiti"):
+		pending_crimes.append("graffiti")
 
 func add_murder_suspicion():
+	print("MURDER")
 	if is_police():
 		if inventory.has("pistol"):
 			inventory.erase("pistol")
-	suspicion = 20.0
-	pending_crime_score += CrimeManager.kill_score
+	suspicion = SUSPICION_LENGTH
+	if not pending_crimes.has("murder"):
+		pending_crimes.append("murder")
 
 func add_gunfire_suspicion():
+	print("GUNFIRE")
 	if is_police():
 		return
-	suspicion = 20.0
-	pending_crime_score += CrimeManager.graffiti_score
+	suspicion = SUSPICION_LENGTH
+	if not pending_crimes.has("gunfire"):
+		pending_crimes.append("gunfire")
 
 func add_robbery_suspicion():
+	print("ROBBERY")
 	if player_root.is_police:
 		return
-	suspicion = 20.0
-	pending_crime_score += CrimeManager.robbery_score
+	suspicion = SUSPICION_LENGTH
+	if not pending_crimes.has("robbery"):
+		pending_crimes.append("robbery")
 
 
+func get_pending_crime_score() -> int:
+	var value = 0
+	for item in pending_crimes:
+		if item == "murder":
+			value += CrimeManager.kill_score
+		elif item == "graffiti":
+			value += CrimeManager.graffiti_score
+		elif item == "robbery":
+			value += CrimeManager.robbery_score
+		elif item == "gunfire":
+			value += CrimeManager.gunfire_score
+	
+	return value
+
+func criminalize():
+	confirmed_criminal = true
+	print("juu")
+	player_root.hud.update_criminal_score(CrimeManager.get_total_crime_score(self))
 
 func is_police():
 	return player_root.is_police
+
+func set_visual_layers(height):
+	
+	var visuals = []
+	
+	visuals.append_array(%Skeleton3D.get_children())
+	visuals.append_array(%"character-male-a".get_children())
+	
+	var current_hand_item = null
+	
+	if not %HandItemSlot.get_children().is_empty():
+		current_hand_item = %HandItemSlot.get_child(0)
+	
+	if height > -0.1:
+		var new_layer = 2
+		if height_layer == new_layer:
+			return
+		height_layer = new_layer
+		
+		if current_hand_item:
+			current_hand_item.set_visual_layer(2,true)
+			current_hand_item.set_visual_layer(3,false)
+		for v in visuals:
+			if v is VisualInstance3D:
+				v.set_layer_mask_value(2,true)
+				v.set_layer_mask_value(3,false)
+	elif height < -1.5:
+		var new_layer = 0
+		if height_layer == new_layer:
+			return
+		height_layer = new_layer
+		if current_hand_item:
+			current_hand_item.set_visual_layer(2,true)
+			current_hand_item.set_visual_layer(3,true)
+		for v in visuals:
+			if v is VisualInstance3D:
+				v.set_layer_mask_value(2,true)
+				v.set_layer_mask_value(3,true)
+	else:
+		var new_layer = 1
+		if height_layer == new_layer:
+			return
+		height_layer = new_layer
+		if current_hand_item:
+			current_hand_item.set_visual_layer(2,true)
+			current_hand_item.set_visual_layer(3,true)
+		for v in visuals:
+			if v is VisualInstance3D:
+				v.set_layer_mask_value(2,true)
+				v.set_layer_mask_value(3,true)
+
+func get_camera_forward():
+	var camera = get_viewport().get_camera_3d()
+	if not camera:
+		return Vector3.FORWARD
+	# Return the forward direction projected onto the horizontal plane
+	return -camera.global_transform.basis.z * Vector3(1, 0, 1)
+
+func is_stick_up_moving_forward(curve: Curve3D) -> bool:
+	if curve.point_count < 2:
+		return true # Default fallback
+	
+	# 1. Get the camera's flattened forward direction
+	var cam_forward = get_camera_forward().normalized()
+	
+	# 2. Get the path's direction (from first to last point)
+	var start = curve.get_point_position(0)
+	var end = curve.get_point_position(curve.point_count - 1)
+	
+	# Flatten the path vector to match the horizontal plane
+	var path_direction = (end - start)
+	path_direction.y = 0.0
+	path_direction = path_direction.normalized()
+	
+	# 3. Compare directions using the Dot Product
+	var dot_result = cam_forward.dot(path_direction)
+	
+	# If dot_result > 0, camera and path align (Up = Forward)
+	# If dot_result < 0, camera faces the start of the path (Up = Backward)
+	return dot_result <= 0.0
+
+func hand_item_illegality():
+	if hand_item == "pistol":
+		return 10
+	elif hand_item == "graffiti_bottle":
+		return 5
+	else:
+		return 0
+	

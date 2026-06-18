@@ -4,12 +4,12 @@
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=553334259]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-layers = 4
+layers = 6
 use_collision = true
 size = Vector3(4, 0.02, 4)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1404669874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
-layers = 4
+layers = 6
 operation = 2
 size = Vector3(3, 1, 2)

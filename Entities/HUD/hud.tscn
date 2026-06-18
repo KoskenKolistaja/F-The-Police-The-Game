@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0p3uxvrjljor"]
 
 [ext_resource type="Script" uid="uid://ddhx3gw6na2mw" path="res://Entities/HUD/hud.gd" id="1_u0j7x"]
+[ext_resource type="Texture2D" uid="uid://bkldqg07uq48w" path="res://Assets/Textures/Stars.png" id="2_u0j7x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkm0g"]
 bg_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
@@ -74,3 +75,15 @@ offset_right = 150.0
 offset_bottom = 71.0
 grow_horizontal = 2
 max_value = 20.0
+
+[node name="CriminalScore" type="TextureProgressBar" parent="." unique_id=1197805441]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 104.77
+offset_right = 256.0
+offset_bottom = 232.76999
+max_value = 250.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_u0j7x")
+texture_progress = ExtResource("2_u0j7x")
+tint_under = Color(0.34509805, 0.34509805, 0.34509805, 0.25882354)

@@ -3,25 +3,27 @@ extends Node3D
 @export var target : Node3D
 @export var player_root : Node3D
 
-var showing_metro = false
+var height_layer = 0
 
 func show_metro():
-	if showing_metro:
+	var new_layer = 0
+	if new_layer == height_layer:
 		return
 	
 	%Camera.set_cull_mask_value(3,true)
 	%Camera.set_cull_mask_value(2,false)
 	
-	showing_metro = true
+	height_layer = new_layer
 
 func show_upper():
-	if not showing_metro:
+	var new_layer = 2
+	if new_layer == height_layer:
 		return
 	
 	%Camera.set_cull_mask_value(3,false)
 	%Camera.set_cull_mask_value(2,true)
 	
-	showing_metro = false
+	height_layer = new_layer
 
 
 

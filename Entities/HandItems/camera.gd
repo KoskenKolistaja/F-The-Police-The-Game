@@ -28,12 +28,12 @@ func use2():
 		if is_instance_valid(p) and "suspicion" in p:
 			
 			# ONLY process players who are currently inside their red-handed suspicion window
-			if p.suspicion > 0.0 and p.pending_crime_score > 0:
-				var caught_score = p.pending_crime_score
+			if p.suspicion > 0.0 and not p.pending_crimes.is_empty():
+				var caught_score = p.get_pending_crime_score()
 				
 				# Reset their local temporary suspicion window instantly
 				p.suspicion = 0.0
-				p.pending_crime_score = 0
+				p.pending_crimes.clear()
 				
 				# CONVICT: Send the red-handed score to the Global Singleton.
 				# This automatically triggers player.confirmed_criminal = true 
@@ -41,6 +41,13 @@ func use2():
 				CrimeManager.criminalize(p, caught_score)
 				print("Camera: Successfully snapped photo evidence of ", p.name)
 				
+		
+		var hand_item_illegality = p.hand_item_illegality()
+		
+		if hand_item_illegality > 0:
+			CrimeManager.criminalize(p,hand_item_illegality)
+		
+		
 	# Clear the array immediately after processing the snap
 	players_in_shot.clear()
 	%Timer.stop()
@@ -49,3 +56,6 @@ func use2():
 func _on_timer_timeout():
 	players_in_shot.clear()
 	%Cursor.hide()
+
+func set_visual_layer(layer : int,on : bool):
+	%Camera.set_layer_mask_value(layer,on)

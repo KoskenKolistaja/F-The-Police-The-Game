@@ -15,3 +15,6 @@ func use():
 
 func use2():
 	pass
+
+func set_visual_layer(layer : int,on : bool):
+	%Spyglass.set_layer_mask_value(layer,on)

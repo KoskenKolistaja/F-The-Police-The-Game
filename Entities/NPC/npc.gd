@@ -45,6 +45,8 @@ var investigation_need = 100.0
 var wander_timer: float = 0.0 
 var move_direction: Vector3 = Vector3.ZERO
 
+var height_layer = 0
+
 func _ready() -> void:
 	randomize()
 	decide_npc_look()
@@ -53,6 +55,10 @@ func _ready() -> void:
 	investigation_need *= randf_range(2.0, 5.0)
 
 func _physics_process(delta: float) -> void:
+	
+	set_visual_layers(self.global_position.y)
+	
+	
 	if robbery_countdown > 0 and not dead:
 		robbery_countdown -= delta
 		
@@ -131,6 +137,55 @@ func _physics_process(delta: float) -> void:
 		rotate_towards_delta(move_direction, delta)
 	
 	move_and_slide()
+
+
+func set_visual_layers(height):
+	
+	var visuals = []
+	
+	visuals.append_array(%Skeleton3D.get_children())
+	visuals.append_array(%"character-male-a".get_children())
+	visuals.append(%InvestigationParticles)
+	visuals.append(%TearParticles)
+	visuals.append(%TearParticles2)
+	visuals.append(%Speech)
+	visuals.append(%Label3D)
+	
+	if height > -0.1:
+		var new_layer = 2
+		if height_layer == new_layer:
+			return
+		height_layer = new_layer
+		for v in visuals:
+			if v.name == "RobbedIcon":
+				continue
+			if v is VisualInstance3D:
+				v.set_layer_mask_value(2,true)
+				v.set_layer_mask_value(3,true)
+	elif height < -1.5:
+		var new_layer = 1
+		if height_layer == new_layer:
+			return
+		height_layer = new_layer
+		for v in visuals:
+			if v.name == "RobbedIcon":
+				continue
+			if v is VisualInstance3D:
+				v.set_layer_mask_value(2,false)
+				v.set_layer_mask_value(3,true)
+	else:
+		var new_layer = 0
+		if height_layer == new_layer:
+			return
+		height_layer = new_layer
+		for v in visuals:
+			if v.name == "RobbedIcon":
+				continue
+			if v is VisualInstance3D:
+				v.set_layer_mask_value(2,true)
+				v.set_layer_mask_value(3,true)
+	
+
 
 func interact(player: Node3D, hand_item: String) -> void:
 	match hand_item:

@@ -80,3 +80,11 @@ func shoot():
 	loaded = false
 	await get_tree().create_timer(0.6).timeout
 	loaded = true
+
+
+
+func set_visual_layer(layer : int,on : bool):
+	%Pistol.set_layer_mask_value(layer,on)
+	%TrailMesh1.set_layer_mask_value(layer,on)
+	%TrailMesh2.set_layer_mask_value(layer,on)
+	%MuzzleParticles.set_layer_mask_value(layer,on)

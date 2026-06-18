@@ -18,3 +18,7 @@ func update_inventory_item(item_name : String):
 
 func update_suspicion(value):
 	%SuspicionBar.value = value
+
+func update_criminal_score(value):
+	print(value)
+	%CriminalScore.value = value

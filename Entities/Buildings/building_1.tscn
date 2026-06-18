@@ -34,15 +34,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6651362, 0.19111055, -1.18
 curve = SubResource("Curve3D_o3s6c")
 script = ExtResource("2_syw3r")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="ClimbObject" unique_id=1643421332]
+[node name="PathFollow3D" type="PathFollow3D" parent="ClimbObject" unique_id=1643421332 node_paths=PackedStringArray("path")]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.0009151697, 0.012856558, -2.9325485e-05)
 loop = false
 script = ExtResource("3_l3x6h")
+path = NodePath("..")
 
-[node name="PathFollow3D2" type="PathFollow3D" parent="ClimbObject" unique_id=565101120]
+[node name="PathFollow3D2" type="PathFollow3D" parent="ClimbObject" unique_id=565101120 node_paths=PackedStringArray("path")]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -0.0009151697, 0.012856558, -2.9325485e-05)
 loop = false
 script = ExtResource("3_l3x6h")
+path = NodePath("..")
 
 [node name="ClimbObjectArea" type="Area3D" parent="ClimbObject" unique_id=194291635 node_paths=PackedStringArray("parent", "path_target", "path_target2")]
 collision_layer = 16

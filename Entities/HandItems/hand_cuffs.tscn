@@ -44,5 +44,7 @@ shadow_mesh = SubResource("ArrayMesh_bbl10")
 script = ExtResource("1_5g1mr")
 
 [node name="HandCuffs" type="MeshInstance3D" parent="." unique_id=951393444]
+unique_name_in_owner = true
+layers = 6
 material_override = SubResource("StandardMaterial3D_5g1mr")
 mesh = SubResource("ArrayMesh_og2bn")

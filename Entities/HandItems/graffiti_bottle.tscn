@@ -97,7 +97,9 @@ one_shot = true
 transform = Transform3D(1.665, 0, 0, 0, 1.665, 0, 0, 0, 1.665, 0, -0.045322992, 0)
 
 [node name="GraffitiBottle" type="MeshInstance3D" parent="Items" unique_id=905389029]
+unique_name_in_owner = true
 transform = Transform3D(-1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1, 0, 0, 0)
+layers = 6
 material_override = SubResource("StandardMaterial3D_883gs")
 mesh = SubResource("ArrayMesh_7047t")
 

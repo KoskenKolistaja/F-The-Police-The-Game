@@ -3,12 +3,13 @@ extends Node
 const CRIME_ACTIVE_DURATION = 20.0
 
 var graffiti_score = 10
-var gunfire_score = 10
+var gunfire_score = 20
 var robbery_score = 30
 var kill_score = 100
 
 var active_warrants: Dictionary = {}
 var evidence_bank: Dictionary = {}
+var crime_score: Dictionary = {}
 
 func _process(delta: float) -> void:
 	for player in active_warrants.keys():
@@ -21,8 +22,7 @@ func _process(delta: float) -> void:
 				
 		if crimes_list.is_empty():
 			active_warrants.erase(player)
-			if is_instance_valid(player) and "confirmed_criminal" in player:
-				player.confirmed_criminal = false
+
 
 func bank_crime(player: Node3D, amount: int) -> void:
 	if not is_instance_valid(player):
@@ -36,6 +36,8 @@ func bank_crime(player: Node3D, amount: int) -> void:
 	if not evidence_bank.has(player):
 		evidence_bank[player] = 0
 		
+	
+	_update_total_score(player,amount)
 	evidence_bank[player] += amount
 	print("---- EVIDENCE BANKED FOR ", player.name, " | Unverified Total: ", evidence_bank[player], " ----")
 
@@ -46,6 +48,8 @@ func criminalize(player: Node3D, caught_red_handed_amount: int) -> void:
 	if not active_warrants.has(player):
 		active_warrants[player] = []
 		
+	
+	_update_total_score(player,caught_red_handed_amount)
 	_register_warrant_item(player, caught_red_handed_amount)
 	
 	if evidence_bank.has(player) and evidence_bank[player] > 0:
@@ -55,9 +59,10 @@ func criminalize(player: Node3D, caught_red_handed_amount: int) -> void:
 		print("---- EVIDENCE UNLOCKED! Historical score added: ", banked_total, " ----")
 		
 	if "confirmed_criminal" in player:
-		player.confirmed_criminal = true
+		player.criminalize()
 		
-	print("---- PLAYER OFFICIALLY CRIMINALIZED: ", player.name, " | Live Score: ", get_total_crime_score(player), " ----")
+	print("---- PLAYER OFFICIALLY CRIMINALIZED: ", player.name, " | Live Score: ", get_crime_score(player), " ----")
+	print("---- PLAYER TOTAL CRIME SCORE: ", player.name, " | Total Score: ", get_total_crime_score(player), " ----")
 
 func _register_warrant_item(player: Node3D, amount: int) -> void:
 	active_warrants[player].append({
@@ -65,7 +70,7 @@ func _register_warrant_item(player: Node3D, amount: int) -> void:
 		"time_left": CRIME_ACTIVE_DURATION
 	})
 
-func get_total_crime_score(player: Node3D) -> int:
+func get_crime_score(player: Node3D) -> int:
 	if not active_warrants.has(player):
 		return 0
 	var total = 0
@@ -75,3 +80,21 @@ func get_total_crime_score(player: Node3D) -> int:
 
 func is_confirmed_criminal(player: Node3D) -> bool:
 	return active_warrants.has(player) and not active_warrants[player].is_empty()
+
+
+func _update_total_score(player: Node3D, amount: int) -> void:
+	if not crime_score.has(player):
+		crime_score[player] = 0
+	crime_score[player] += amount
+
+func get_total_crime_score(player: Node3D) -> int:
+	return crime_score.get(player, 0)
+
+func reset_crime_score_for(player: Node3D) -> void:
+	if crime_score.has(player):
+		crime_score.erase(player)
+	if evidence_bank.has(player):
+		evidence_bank.erase(player)
+	if active_warrants.has(player):
+		active_warrants.erase(player)
+	print("---- CRIME RECORD RESET FOR: ", player.name, " ----")
