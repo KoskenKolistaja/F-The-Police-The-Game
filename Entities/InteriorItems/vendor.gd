@@ -6,19 +6,24 @@ extends StaticBody3D
 
 @export var functional : bool = false
 
+@export var only_police : bool = false
+
 func _ready():
 	if %IconScreen and icon:
 		var mat : StandardMaterial3D = %IconScreen.get_active_material(0)
 		mat.albedo_texture = icon
 	
-	%Interactable.message = "Buy: " + item_name
+	%Interactable.message = "Buy " + item_name + " " + str(price) + "$"
 
 
 func on_interacted(player,hand_item):
-	print("HERE")
+	if only_police:
+		if not player.is_police():
+			return
 	if functional:
 		function(player)
 		return
+	
 	
 	var money = player.get_money()
 	var player_root = player.get_player_root()
@@ -39,7 +44,6 @@ func on_interacted(player,hand_item):
 
 
 func function(player):
-	print("HERE?")
 	var money = player.get_money()
 	var player_root = player.get_player_root()
 	
@@ -49,10 +53,11 @@ func function(player):
 	if money < price:
 		return
 	
-	print("HERE TOO")
 	
 	if item_name == "clothes":
 		player_root.set_money(-price)
 		player.randomize_appearance()
-	
+	if item_name == "armor" and not player.armor:
+		player_root.set_money(-price)
+		player.set_armor(true)
 	

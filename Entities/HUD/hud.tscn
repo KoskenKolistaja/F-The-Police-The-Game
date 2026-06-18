@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0p3uxvrjljor"]
 
 [ext_resource type="Script" uid="uid://ddhx3gw6na2mw" path="res://Entities/HUD/hud.gd" id="1_u0j7x"]
+[ext_resource type="Texture2D" uid="uid://wtpj0pyt4vc4" path="res://Assets/Textures/kevlar-vest.png" id="2_4145l"]
 [ext_resource type="Texture2D" uid="uid://bkldqg07uq48w" path="res://Assets/Textures/Stars.png" id="2_u0j7x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkm0g"]
@@ -49,6 +50,25 @@ unique_name_in_owner = true
 layout_mode = 2
 expand_mode = 1
 
+[node name="ArmorIcon" type="TextureRect" parent="Panel/MarginContainer/InventoryItem" unique_id=1167702282]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 33.985
+offset_top = -32.0
+offset_right = 97.98509
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_4145l")
+expand_mode = 1
+
 [node name="MoneyLabel" type="Label" parent="." unique_id=1761358119]
 unique_name_in_owner = true
 layout_mode = 1
@@ -74,7 +94,7 @@ offset_top = 21.0
 offset_right = 150.0
 offset_bottom = 71.0
 grow_horizontal = 2
-max_value = 20.0
+max_value = 60.0
 
 [node name="CriminalScore" type="TextureProgressBar" parent="." unique_id=1197805441]
 unique_name_in_owner = true

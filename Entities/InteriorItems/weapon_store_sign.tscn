@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://2e7idamu2y34"]
+
+[ext_resource type="Texture2D" uid="uid://dgxyibc5t1frw" path="res://Assets/Textures/Icons/saber-and-pistol.png" id="1_hd36i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8w4r"]
+albedo_color = Color(0.18000486, 0.18000486, 0.18000486, 1)
+emission_enabled = true
+emission = Color(0.18359044, 0.18359044, 0.18359044, 1)
+emission_energy_multiplier = 3.86
+
+[sub_resource type="BoxMesh" id="BoxMesh_c8w4r"]
+material = SubResource("StandardMaterial3D_c8w4r")
+size = Vector3(2, 1, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w76e2"]
+shading_mode = 0
+albedo_texture = ExtResource("1_hd36i")
+
+[sub_resource type="QuadMesh" id="QuadMesh_c8w4r"]
+material = SubResource("StandardMaterial3D_w76e2")
+size = Vector2(0.5, 0.5)
+
+[node name="WeaponStoreSign" type="Node3D" unique_id=311972509]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=823294553]
+mesh = SubResource("BoxMesh_c8w4r")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2090015887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3661192, 0, 0.10705739)
+text = "WEAPONS"
+font_size = 48
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1930385771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5247127, 0, 0.12054324)
+mesh = SubResource("QuadMesh_c8w4r")

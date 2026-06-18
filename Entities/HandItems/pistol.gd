@@ -9,7 +9,7 @@ var trail_distance = 0.0
 
 var tween : Tween
 
-var spread = 0.5
+var spread = 0.2
 
 
 

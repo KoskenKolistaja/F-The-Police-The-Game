@@ -126,12 +126,12 @@ size = Vector3(2, 2.5, 10)
 
 [node name="Cube_002" type="MeshInstance3D" parent="Metro" unique_id=1987026282]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, -2, 0)
-layers = 4
+layers = 6
 mesh = SubResource("ArrayMesh_et0o3")
 
 [node name="Cube_003" type="MeshInstance3D" parent="Metro" unique_id=1024593701]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8, -2, 0)
-layers = 4
+layers = 6
 mesh = SubResource("ArrayMesh_d8gvv")
 
 [node name="Cube_001" type="MeshInstance3D" parent="Metro" unique_id=1066342158]

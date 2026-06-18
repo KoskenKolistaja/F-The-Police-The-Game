@@ -14,6 +14,7 @@ size = Vector3(1, 0.9814453, 0.5710449)
 script = ExtResource("1_vskq8")
 
 [node name="WallDoorRotate" type="MeshInstance3D" parent="." unique_id=1934871619]
+transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("1_708mn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=58492120]

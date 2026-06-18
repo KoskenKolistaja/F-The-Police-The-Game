@@ -56,3 +56,4 @@ blend_in={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+anti_aliasing/quality/msaa_3d=3

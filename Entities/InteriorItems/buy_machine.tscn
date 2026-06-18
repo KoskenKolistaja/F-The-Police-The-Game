@@ -17,10 +17,12 @@ material = SubResource("StandardMaterial3D_vwghg")
 size = Vector2(0.55, 0.55)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5ccn"]
+resource_local_to_scene = true
 shading_mode = 0
 albedo_texture = ExtResource("3_f5ccn")
 
 [sub_resource type="QuadMesh" id="QuadMesh_f5ccn"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_f5ccn")
 size = Vector2(0.4, 0.4)
 

@@ -161,7 +161,7 @@ func set_visual_layers(height):
 				continue
 			if v is VisualInstance3D:
 				v.set_layer_mask_value(2,true)
-				v.set_layer_mask_value(3,true)
+				v.set_layer_mask_value(3,false)
 	elif height < -1.5:
 		var new_layer = 1
 		if height_layer == new_layer:
@@ -171,7 +171,7 @@ func set_visual_layers(height):
 			if v.name == "RobbedIcon":
 				continue
 			if v is VisualInstance3D:
-				v.set_layer_mask_value(2,false)
+				v.set_layer_mask_value(2,true)
 				v.set_layer_mask_value(3,true)
 	else:
 		var new_layer = 0
@@ -240,6 +240,7 @@ func investigate(investigator: Node3D) -> void:
 		if robber and not robbery_reported:
 			CrimeManager.bank_crime(robber, CrimeManager.robbery_score)
 			robbery_reported = true
+			robber.add_robbery_suspicion()
 		if killer and not murder_reported:
 			CrimeManager.bank_crime(killer, CrimeManager.kill_score)
 			murder_reported = true

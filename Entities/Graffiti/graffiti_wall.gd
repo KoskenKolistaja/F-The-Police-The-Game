@@ -34,6 +34,7 @@ func paint(player):
 		paint_ready()
 		rewarded = true
 		painter = player
+		player.set_money(100)
 	elif not rewarded:
 		var mat : StandardMaterial3D= %Graffiti.get_active_material(0)
 		mat.albedo_color.a = painted

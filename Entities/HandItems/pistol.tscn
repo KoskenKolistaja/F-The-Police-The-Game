@@ -188,24 +188,24 @@ billboard_keep_scale = true
 [sub_resource type="Gradient" id="Gradient_vwxay"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wiue8"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vwxay"]
 gradient = SubResource("Gradient_vwxay")
 
 [sub_resource type="Curve" id="Curve_67xrt"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05952382, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_oo5y0"]
+[sub_resource type="CurveTexture" id="CurveTexture_wiue8"]
 curve = SubResource("Curve_67xrt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b82n3"]
 angle_min = -134.4
 angle_max = 38.400013
 gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_oo5y0")
-color_ramp = SubResource("GradientTexture1D_wiue8")
+scale_curve = SubResource("CurveTexture_wiue8")
+color_ramp = SubResource("GradientTexture1D_vwxay")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwxay"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67xrt"]
 transparency = 1
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("4_vwxay")
@@ -219,15 +219,13 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_wiue8"]
-material = SubResource("StandardMaterial3D_vwxay")
+material = SubResource("StandardMaterial3D_67xrt")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vwxay"]
 radius = 1.0612977
 
 [node name="Pistol" type="Node3D" unique_id=116385901]
 script = ExtResource("1_3ir7o")
-
-[node name="Items" type="Node3D" parent="." unique_id=382726770]
 
 [node name="Pistol" type="MeshInstance3D" parent="." unique_id=353552047]
 unique_name_in_owner = true

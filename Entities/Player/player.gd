@@ -39,19 +39,21 @@ func _physics_process(delta):
 
 
 func set_player_driver(vehicle : Node3D):
-	%FollowerCamera.target = %PlayerDriver
 	%PlayerCharacter.hide()
 	%PlayerCharacter.active = false
 	%PlayerDriver.vehicle = vehicle
 	await get_tree().physics_frame
 	%PlayerDriver.active = true
+	await get_tree().physics_frame
+	%FollowerCamera.target = %PlayerDriver
 
 func exit_vehicle(exp_position):
-	%FollowerCamera.target = %PlayerCharacter
 	%PlayerCharacter.show()
 	%PlayerCharacter.active = true
 	%PlayerDriver.active = false
 	%PlayerCharacter.global_position = exp_position
+	await get_tree().physics_frame
+	%FollowerCamera.target = %PlayerCharacter
 
 
 

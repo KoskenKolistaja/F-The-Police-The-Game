@@ -22,3 +22,9 @@ func update_suspicion(value):
 func update_criminal_score(value):
 	print(value)
 	%CriminalScore.value = value
+
+func update_armor(on : bool):
+	if on:
+		%ArmorIcon.show()
+	else:
+		%ArmorIcon.hide()

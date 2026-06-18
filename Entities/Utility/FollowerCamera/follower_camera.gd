@@ -29,16 +29,17 @@ func show_upper():
 
 
 func _physics_process(delta):
-	global_position = target.global_position
+	handle_rotation()
 	
-	
+	if is_instance_valid(target):
+		global_position = target.global_position
+
+
+func handle_rotation():
 	var player_id = player_root.player_id
-	
 	var axis = Input.get_joy_axis(player_id,JOY_AXIS_RIGHT_X)
-	
 	if abs(axis) < 0.2:
 		axis = 0.0
-	
 	rotation_degrees.y -= axis
 
 

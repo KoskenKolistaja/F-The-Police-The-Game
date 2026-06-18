@@ -21,6 +21,8 @@ var inventory = [
 	"none"
 ]
 
+var armor = false
+
 var hand_item = "none"
 
 var height_layer = -1
@@ -337,6 +339,7 @@ func set_inventory_item(index_change):
 	
 	if inventory_index == 0:
 		player_root.hud.update_inventory_item("none")
+		hand_item = "none"
 		return
 	
 	var item_instance = ItemData.items[inventory[inventory_index]].instantiate()
@@ -397,18 +400,26 @@ func set_police():
 	inventory.push_back("spyglass")
 	inventory.push_back("handcuffs")
 
+
 func set_civilian():
 	inventory.push_back("graffiti_bottle")
-	inventory.push_back("pistol")
-
+	inventory.push_back("uzi")
+	inventory.push_back("mp5")
 
 func die(exp_killer = null):
+	
+	if armor:
+		armor = false
+		player_root.hud.update_armor(armor)
+		return
+	
 	deactivate()
 	state_machine.travel("die")
 	%ArrestHandcuffs.hide()
 	if player_root.is_police:
-		await get_tree().create_timer(20).timeout
+		await get_tree().create_timer(10).timeout
 		activate()
+		respawn("police_station")
 
 func remove_item_from_inventory(item_name):
 	inventory.erase(item_name)
@@ -444,6 +455,8 @@ func get_criminality() -> bool:
 func is_suspicious() -> bool:
 	if suspicion > 0.1:
 		return true
+	elif hand_item_illegality() > 0:
+		return true
 	else:
 		return false
 
@@ -463,7 +476,6 @@ func interact(player, incoming_hand_item):
 
 # --- INDIVIDUAL CRIME INFRACTION ENTRY POINTS ---
 func add_graffiti_suspicion():
-	print("GRAFFITI")
 	if is_police():
 		return
 	suspicion = SUSPICION_LENGTH
@@ -471,16 +483,16 @@ func add_graffiti_suspicion():
 		pending_crimes.append("graffiti")
 
 func add_murder_suspicion():
-	print("MURDER")
 	if is_police():
 		if inventory.has("pistol"):
 			inventory.erase("pistol")
+			inventory_index = 0
+			set_inventory_item(0)
 	suspicion = SUSPICION_LENGTH
 	if not pending_crimes.has("murder"):
 		pending_crimes.append("murder")
 
 func add_gunfire_suspicion():
-	print("GUNFIRE")
 	if is_police():
 		return
 	suspicion = SUSPICION_LENGTH
@@ -488,8 +500,7 @@ func add_gunfire_suspicion():
 		pending_crimes.append("gunfire")
 
 func add_robbery_suspicion():
-	print("ROBBERY")
-	if player_root.is_police:
+	if is_police():
 		return
 	suspicion = SUSPICION_LENGTH
 	if not pending_crimes.has("robbery"):
@@ -612,6 +623,8 @@ func hand_item_illegality():
 func get_money():
 	return player_root.money
 
+func set_money(amount):
+	player_root.set_money(amount)
 
 func has_item(item_name):
 	if inventory.has(item_name):
@@ -626,3 +639,14 @@ func inventory_last_item():
 
 func randomize_appearance():
 	pass
+
+
+func set_armor(on : bool):
+	armor = on
+	player_root.hud.update_armor(on)
+
+
+func respawn(place_name : String):
+	global_position = get_tree().get_first_node_in_group(place_name).global_position
+	player_root.money = 0
+	player_root.hud.update_money(player_root.money)

@@ -10,7 +10,9 @@ var items = {
 	"graffiti_bottle" : preload("res://Entities/HandItems/graffiti_bottle.tscn"),
 	"camera" : preload("res://Entities/HandItems/camera.tscn"),
 	"handcuffs" : preload("res://Entities/HandItems/hand_cuffs.tscn"),
-	"spyglass" : preload("res://Entities/HandItems/spyglass.tscn")
+	"spyglass" : preload("res://Entities/HandItems/spyglass.tscn"),
+	"uzi" : preload("res://Entities/HandItems/uzi.tscn"),
+	"mp5" : preload("res://Entities/HandItems/mp_5.tscn")
 }
 
 
@@ -19,5 +21,7 @@ var icons = {
 	"graffiti_bottle" : preload("res://Assets/Textures/Icons/spray.png"),
 	"camera" : preload("res://Assets/Textures/Icons/photo-camera.png"),
 	"handcuffs" : preload("res://Assets/Textures/Icons/handcuffs.png"),
-	"spyglass" : preload("res://Assets/Textures/Icons/magnifying-glass.png")
+	"spyglass" : preload("res://Assets/Textures/Icons/magnifying-glass.png"),
+	"uzi" : preload("res://Assets/Textures/Icons/uzi.png"),
+	"mp5" : preload("res://Assets/Textures/Icons/mp5.png")
 }
