@@ -5,6 +5,8 @@ extends Node3D
 
 var height_layer = 0
 
+var driving = false
+
 func show_metro():
 	var new_layer = 0
 	if new_layer == height_layer:
@@ -40,6 +42,9 @@ func handle_rotation():
 	var axis = Input.get_joy_axis(player_id,JOY_AXIS_RIGHT_X)
 	if abs(axis) < 0.2:
 		axis = 0.0
+	
+	if driving:
+		axis * 3
 	rotation_degrees.y -= axis
 
 

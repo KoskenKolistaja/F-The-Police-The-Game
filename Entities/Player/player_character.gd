@@ -357,7 +357,7 @@ func handle_interact_ray(player_id):
 	if %InteractRay.is_colliding():
 		%InfoLabel.text = collider.get_message()
 		if Input.is_action_just_pressed("interact1"):
-			collider.interact(self, "")
+			collider.interact(self, null)
 			
 	if rt_pressed:
 		if collider:

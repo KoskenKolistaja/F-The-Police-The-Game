@@ -5,6 +5,9 @@ extends StaticBody3D
 
 
 func on_interacted(player,hand_item):
+	if hand_item:
+		return
+	
 	var new_position = building.get_door_position()
 	player.global_position = new_position
 

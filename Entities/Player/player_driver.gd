@@ -28,14 +28,14 @@ func _physics_process(delta):
 					print(vehicle.cannot_enter)
 	
 	
-	if vehicle.has_method("throttle"):
+	if vehicle.has_method("accelerate"):
 		var input = Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_RIGHT)
-		vehicle.throttle(input)
+		vehicle.accelerate(input)
 	
 	if vehicle.has_method("brake"):
 		var input = Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_LEFT)
 		if input > 0.5:
-			vehicle.brake()
+			vehicle.brake(input)
 	
 	if vehicle.has_method("steer"):
 		var x = Input.get_joy_axis(player_id,JOY_AXIS_LEFT_X)

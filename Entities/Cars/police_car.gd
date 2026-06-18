@@ -66,13 +66,13 @@ func _drive(delta):
 func on_interacted(player, hand_item):
 	if cannot_enter:
 		return
-
+	
 	if not player_inside:
 		player_inside = player
-
+	
 		var player_root = player.get_player_root()
 		player_root.set_player_driver(self)
-
+	
 	else:
 		if is_instance_valid(player_inside):
 			player_inside.get_player_root().exit_vehicle(

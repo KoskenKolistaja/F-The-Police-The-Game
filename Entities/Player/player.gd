@@ -38,14 +38,18 @@ func _physics_process(delta):
 		%FollowerCamera.show_upper()
 
 
-func set_player_driver(vehicle : Node3D):
+func set_player_driver(vehicle : Node3D,separate_camera_target = null):
 	%PlayerCharacter.hide()
 	%PlayerCharacter.active = false
 	%PlayerDriver.vehicle = vehicle
 	await get_tree().physics_frame
 	%PlayerDriver.active = true
 	await get_tree().physics_frame
-	%FollowerCamera.target = %PlayerDriver
+	if separate_camera_target:
+		%FollowerCamera.target = separate_camera_target
+	else:
+		%FollowerCamera.target = %PlayerDriver
+	%FollowerCamera.driving = true
 
 func exit_vehicle(exp_position):
 	%PlayerCharacter.show()
@@ -54,7 +58,7 @@ func exit_vehicle(exp_position):
 	%PlayerCharacter.global_position = exp_position
 	await get_tree().physics_frame
 	%FollowerCamera.target = %PlayerCharacter
-
+	%FollowerCamera.driving = false
 
 
 func set_money(amount):
