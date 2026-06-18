@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 			return
 		
 		_freeze_and_apply_gravity(delta)
-		state_machine.travel("idle")
+		state_machine.travel("interact-right")
 		
 		rob_tick_timer += delta
 		if rob_tick_timer >= 0.66:
@@ -276,8 +276,6 @@ func start_fleeing_from_robbery(robber_node) -> void:
 	
 	%RobbedIcon.show()
 	%RobberyTimer.start()
-	%TearParticles.emitting = false
-	%TearParticles2.emitting = false
 	if is_instance_valid(robber_node):
 		flee_away_from(robber_node)
 
@@ -291,6 +289,8 @@ func flee_away_from(robber_node: Node3D) -> void:
 	sprinting = true
 	
 	await get_tree().create_timer(4.0).timeout
+	%TearParticles.emitting = false
+	%TearParticles2.emitting = false
 	sprinting = false
 
 func _on_robbery_timer_timeout() -> void:

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bg8qvmurafiff"]
+
+[ext_resource type="Script" uid="uid://ok8lh4jy321m" path="res://Entities/InteriorItems/shelf.gd" id="1_a648y"]
+[ext_resource type="ArrayMesh" uid="uid://graky4mw5vv0" path="res://Assets/kenney_mini-market/Models/OBJ format/shelf-end.obj" id="1_pbeko"]
+[ext_resource type="ArrayMesh" uid="uid://xnmyrp3ghy2b" path="res://Assets/kenney_mini-market/Models/OBJ format/shelf-bags.obj" id="2_a648y"]
+[ext_resource type="ArrayMesh" uid="uid://ckq65k2evfpgy" path="res://Assets/kenney_mini-market/Models/OBJ format/shelf-boxes.obj" id="3_xatfc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xatfc"]
+size = Vector3(0.8, 1, 0.75)
+
+[node name="Shelf" type="StaticBody3D" unique_id=349936644]
+script = ExtResource("1_a648y")
+
+[node name="ShelfEnd" type="MeshInstance3D" parent="." unique_id=660002436]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.41375166)
+mesh = ExtResource("1_pbeko")
+
+[node name="ShelfEnd2" type="MeshInstance3D" parent="ShelfEnd" unique_id=362794874]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.7978211)
+mesh = ExtResource("1_pbeko")
+
+[node name="ShelfBags" type="MeshInstance3D" parent="." unique_id=1312045790]
+visible = false
+mesh = ExtResource("2_a648y")
+
+[node name="ShelfBoxes" type="MeshInstance3D" parent="." unique_id=385872737]
+visible = false
+mesh = ExtResource("3_xatfc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=592374971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+shape = SubResource("BoxShape3D_xatfc")

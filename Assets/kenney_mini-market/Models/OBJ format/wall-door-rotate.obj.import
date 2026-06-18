@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cm8ljncf8wn3d"
+path="res://.godot/imported/wall-door-rotate.obj-6ac41a725795785bb0aa0cfac5b0aa37.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall-door-rotate.obj-6ac41a725795785bb0aa0cfac5b0aa37.mesh"]
+
+source_file="res://Assets/kenney_mini-market/Models/OBJ format/wall-door-rotate.obj"
+dest_files=["res://.godot/imported/wall-door-rotate.obj-6ac41a725795785bb0aa0cfac5b0aa37.mesh", "res://.godot/imported/wall-door-rotate.obj-6ac41a725795785bb0aa0cfac5b0aa37.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

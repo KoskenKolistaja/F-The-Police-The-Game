@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dqsroqlsangv5" path="res://Entities/Metro/metro_station_low.tscn" id="2_pbau0"]
 [ext_resource type="PackedScene" uid="uid://b3l4hc8uuhgh0" path="res://Entities/Metro/metro_straight.tscn" id="3_3gof0"]
 [ext_resource type="PackedScene" uid="uid://bp3kl6se1b1ne" path="res://Entities/Roads/t_section.tscn" id="3_kohus"]
+[ext_resource type="PackedScene" uid="uid://byorhe5e3rl75" path="res://Entities/InteriorItems/external_door.tscn" id="3_x2i16"]
 [ext_resource type="PackedScene" uid="uid://doajri1s0x771" path="res://Entities/Metro/metro_curve.tscn" id="4_7ikpu"]
 [ext_resource type="PackedScene" uid="uid://ctui5pvh6re8f" path="res://Entities/Metro/metro_straight_short.tscn" id="5_kohus"]
 [ext_resource type="PackedScene" uid="uid://fsharnt1cl7" path="res://Entities/Road/tile.tscn" id="9_sde3x"]
@@ -38,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://d0p3uxvrjljor" path="res://Entities/HUD/hud.tscn" id="36_75a3m"]
 [ext_resource type="Script" uid="uid://d2lsuncseryhy" path="res://Entities/Buildings/path_target.gd" id="37_i13jj"]
 [ext_resource type="Script" uid="uid://cabitlksqmguq" path="res://Entities/Buildings/climb_object_area.gd" id="38_3efjq"]
+[ext_resource type="PackedScene" uid="uid://bltln3sirxdnq" path="res://Entities/InteriorBuildings/clothing_store.tscn" id="39_tj85k"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n5q0i"]
 panorama = ExtResource("1_aasbp")
@@ -109,6 +111,12 @@ shadow_enabled = true
 
 [node name="UpperCity" type="Node3D" parent="." unique_id=1051076250]
 unique_name_in_owner = true
+
+[node name="ExternalDoors" type="Node3D" parent="UpperCity" unique_id=1050089649]
+
+[node name="ExternalDoor" parent="UpperCity/ExternalDoors" unique_id=1756867137 node_paths=PackedStringArray("building") instance=ExtResource("3_x2i16")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 0, -9.380282)
+building = NodePath("../../../InteriorPlaces/ClothingStore")
 
 [node name="MetroStationHigh" parent="UpperCity" unique_id=1292930097 instance=ExtResource("1_2du1p")]
 
@@ -1363,6 +1371,8 @@ hud = NodePath("../HUD")
 [node name="HUD" parent="PlayerViews/HBoxContainer/SubViewportContainer/SubViewport" unique_id=2024257735 instance=ExtResource("36_75a3m")]
 
 [node name="WorldBoundaries" type="StaticBody3D" parent="." unique_id=405556212]
+collision_layer = 8192
+collision_mask = 8192
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldBoundaries" unique_id=1345900598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.261955, 13.417343, 0)
@@ -1490,3 +1500,8 @@ path_target2 = NodePath("../PathFollow3D2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TightRope/Path3D/ClimbObjectArea" unique_id=1446071570]
 transform = Transform3D(0.4108929, 0.89889663, -0.15215836, -0.9115943, 0.4074242, -0.054781415, 0.0127501935, 0.16121607, 0.9868369, 3.81884, 2.7302542, 1.2100096)
 shape = SubResource("BoxShape3D_3efjq")
+
+[node name="InteriorPlaces" type="Node3D" parent="." unique_id=1912720011]
+
+[node name="ClothingStore" parent="InteriorPlaces" unique_id=253064372 instance=ExtResource("39_tj85k")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 166.32791, 0)

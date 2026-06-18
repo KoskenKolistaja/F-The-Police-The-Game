@@ -54,6 +54,8 @@ var npc_move_direction: Vector3 = Vector3.ZERO
 
 var climb_object = null
 
+var snapped_on_rope = false
+
 func _ready():
 	randomize()
 	city = get_tree().get_first_node_in_group("city")
@@ -208,14 +210,11 @@ func handle_climbing(delta: float):
 		else:
 			state_machine.travel("pick-up")
 		
-		# Progress vertical climb smoothly using delta and standard SPEED
 		climb_object.progress -= input_dir_y * SPEED * delta
-		
-		var direction = climb_object.global_position - self.global_position
-		rotate_towards(direction)
+		velocity = climb_object.global_position - self.global_position
 
 	# =========================================================================
-	# CASE 2: TIGHTROPE WALKING (Horizontal Paths)
+	# CASE 2: TIGHTROPE WALKING (Horizontal Paths with State-Based Y Alignment)
 	# =========================================================================
 	else:
 		# 1. Match your normal walking camera-relative setup exactly
@@ -235,9 +234,7 @@ func handle_climbing(delta: float):
 				var cam_right = camera.global_transform.basis.x
 				cam_back.y = 0
 				cam_right.y = 0
-				cam_back = cam_back.normalized()
-				cam_right = cam_right.normalized()
-				walk_direction = (cam_right * input_dir.x + cam_back * input_dir.y).normalized()
+				walk_direction = (cam_right.normalized() * input_dir.x + cam_back.normalized() * input_dir.y).normalized()
 
 		# 2. Sample the rope's local path vector at this exact point
 		var current_pos = climb_object.global_position
@@ -249,25 +246,60 @@ func handle_climbing(delta: float):
 		var rope_dir = (forward_pos - current_pos).normalized()
 		rope_dir.y = 0 # Keep calculations flat on the walking plane
 
-		# 3. Project your walking intent onto the tightrope line (Dot Product)
+		# 3. Project your walking intent onto the tightrope line
 		var move_factor = walk_direction.dot(rope_dir) if walk_direction != Vector3.ZERO else 0.0
 		
-		# 4. Advance progress matching normal walking SPEED precisely
-		climb_object.progress += move_factor * SPEED * delta
+		# 4. Only advance progress along the path if the player has actually snapped onto it
+		if snapped_on_rope:
+			climb_object.progress += move_factor * SPEED * delta
 
 		# 5. Mirror normal ground locomotion transitions and turning feel
-		if abs(move_factor) > 0.05:
+		if snapped_on_rope and abs(move_factor) > 0.05:
 			state_machine.travel("walk")
-			# Face whichever direction along the rope the player is forcing movement
 			var look_direction = rope_dir if move_factor > 0.0 else -rope_dir
 			rotate_towards_delta(look_direction, delta)
-		else:
+		elif snapped_on_rope:
 			state_machine.travel("idle")
-			# Snap smoothly back to looking down the rope forward axis when standing still
 			rotate_towards_delta(rope_dir, delta)
-	
-	# Snap CharacterBody3D position accurately to the path coordinate
-	velocity = climb_object.global_position - self.global_position
+			
+		# =====================================================================
+		# VELOCITY & SNAPPING ENGINE
+		# =====================================================================
+		# Forward Drive along the rope track line
+		var forward_velocity = rope_dir * (move_factor * SPEED)
+		
+		# Find displacement distance to the tracking coordinate
+		var offset_from_rope = climb_object.global_position - global_position
+		
+		# Horizontal Alignment (Kept relatively loose so movement feels natural)
+		var HORIZONTAL_STRENGTH = 1.0
+		var target_vel_x = forward_velocity.x + (offset_from_rope.x * HORIZONTAL_STRENGTH)
+		var target_vel_z = forward_velocity.z + (offset_from_rope.z * HORIZONTAL_STRENGTH)
+		
+		# Vertical Alignment State Machine Switch
+		var target_vel_y = velocity.y
+		
+		if not snapped_on_rope:
+			# STATE A: Falling normally toward the wire
+			var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+			target_vel_y -= gravity * delta * 0.5
+			
+			# Catchment Trigger: Check if player intersects or drops below the wire height
+			if global_position.y <= climb_object.global_position.y or abs(offset_from_rope.y) < 0.15:
+				snapped_on_rope = true
+				# Hard position correction on impact frame to prevent clipping through the line
+				global_position.y = climb_object.global_position.y
+				target_vel_y = 0.0
+		else:
+			# STATE B: Safely landed. Apply strict vertical tracking.
+			# A high multiplier keeps the player locked directly onto the line's Y path.
+			var STRICT_Y_STRENGTH = 10.0
+			target_vel_y = offset_from_rope.y * STRICT_Y_STRENGTH
+		
+		# Compile the tailored vector overrides cleanly
+		velocity = Vector3(target_vel_x, target_vel_y, target_vel_z)
+
+	# Execute final movement processing safely for whichever block ran
 	move_and_slide()
 
 
@@ -279,6 +311,7 @@ func check_climb_object():
 	if not objects.is_empty():
 		var object = objects[0]
 		climb_object = object.get_path_target()
+		snapped_on_rope = false
 		if climb_object:
 			object.setup_path_target(climb_object,global_position)
 
@@ -391,7 +424,7 @@ func activate():
 	set_collision_layer_value(1, true)
 
 func collect_money(amount):
-	player_root.collect_money(amount)
+	player_root.set_money(amount)
 
 func get_message():
 	return "Arrest"
@@ -573,3 +606,23 @@ func hand_item_illegality():
 	else:
 		return 0
 	
+
+
+
+func get_money():
+	return player_root.money
+
+
+func has_item(item_name):
+	if inventory.has(item_name):
+		return true
+	else:
+		return false
+
+
+func inventory_last_item():
+	inventory_index = inventory.size() - 1
+	set_inventory_item(0)
+
+func randomize_appearance():
+	pass

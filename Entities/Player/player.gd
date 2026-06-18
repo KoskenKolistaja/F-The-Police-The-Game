@@ -10,7 +10,7 @@ var player_driving = false
 @export var hud : Control
 
 
-var money : int = 0
+var money : int = 10000
 
 
 
@@ -55,6 +55,6 @@ func exit_vehicle(exp_position):
 
 
 
-func collect_money(amount):
+func set_money(amount):
 	money += amount
 	hud.update_money(money)

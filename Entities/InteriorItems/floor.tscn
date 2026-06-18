@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://xottcel1lajr"]
+
+[ext_resource type="ArrayMesh" uid="uid://dcukt5sptvg0a" path="res://Assets/kenney_mini-market/Models/OBJ format/floor.obj" id="1_io80q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_io80q"]
+size = Vector3(1, 0.03, 1)
+
+[node name="Floor" type="StaticBody3D" unique_id=1894400298]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=619667536]
+mesh = ExtResource("1_io80q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1916114317]
+shape = SubResource("BoxShape3D_io80q")
