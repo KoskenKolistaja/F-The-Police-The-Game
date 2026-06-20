@@ -219,7 +219,7 @@ func set_visual_layers(height):
 	
 
 
-func interact(player: Node3D, hand_item: String) -> void:
+func interact(player: Node3D, hand_item) -> void:
 	match hand_item:
 		"handcuffs":
 			if "confirmed_criminal" in player and player.confirmed_criminal:
@@ -241,6 +241,7 @@ func being_robbed(robber_node: Node3D) -> void:
 	robber = robber_node 
 	if money <= 0 or robbed_recently:
 		start_fleeing_from_robbery(robber_node)
+		
 		return
 	state_machine.travel("interact-right")
 	var vector = robber_node.global_position - self.global_position
@@ -309,6 +310,7 @@ func start_fleeing_from_robbery(robber_node) -> void:
 	rob_tick_timer = 0.0
 	robbed_recently = true
 	money = 0 
+	PoliceIntel.add_appearance_intel(robber_node.get_appearance_intel())
 	
 	%RobbedIcon.show()
 	%RobberyTimer.start()

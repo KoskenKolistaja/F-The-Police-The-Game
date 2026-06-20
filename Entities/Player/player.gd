@@ -10,7 +10,7 @@ var player_driving = false
 @export var hud : Control
 
 
-var money : int = 10000
+var money : int = 100
 
 
 
@@ -22,8 +22,9 @@ func _ready():
 	hud.update_money(money)
 	
 	%PlayerCharacter.global_position = Vector3(randf_range(-1,1),0,randf_range(-1,1))
-
-
+	
+	PlayerData.players[player_id] = self
+	%PlayerCharacter.global_position = global_position
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -36,7 +37,9 @@ func _physics_process(delta):
 		%FollowerCamera.show_metro()
 	else:
 		%FollowerCamera.show_upper()
-
+	
+	if Input.is_action_just_pressed("open_info"):
+		hud.open_police_info()
 
 func set_player_driver(vehicle : Node3D,separate_camera_target = null):
 	%PlayerCharacter.hide()

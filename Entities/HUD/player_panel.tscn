@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dkp0dpdvmeufa"]
+
+[ext_resource type="Script" uid="uid://fii504tnq31x" path="res://Entities/HUD/player_panel.gd" id="1_5jylv"]
+[ext_resource type="Texture2D" uid="uid://cffn4sl6yd1xl" path="res://Assets/Textures/Icons/clothes.png" id="2_66803"]
+[ext_resource type="Texture2D" uid="uid://bkldqg07uq48w" path="res://Assets/Textures/Stars.png" id="3_jnflr"]
+
+[node name="PlayerPanel" type="Panel" unique_id=1479572947]
+custom_minimum_size = Vector2(0, 200)
+script = ExtResource("1_5jylv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1829730368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CriminalPicture" type="TextureRect" parent="HBoxContainer" unique_id=1531230114]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_66803")
+expand_mode = 1
+
+[node name="CriminalScore" type="TextureProgressBar" parent="HBoxContainer" unique_id=490278116]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 200)
+layout_mode = 2
+max_value = 250.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_jnflr")
+texture_progress = ExtResource("3_jnflr")
+tint_under = Color(0.34509805, 0.34509805, 0.34509805, 0.25882354)

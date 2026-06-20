@@ -17,7 +17,7 @@ func _physics_process(delta):
 	
 	var player_id = player_root.player_id
 	
-	if Input.is_action_just_pressed("exit_vehicle"):
+	if Input.is_action_just_pressed("p%s_exit_vehicle" % player_id):
 		if vehicle:
 			var exit_position = vehicle.get_exit_position()
 			if exit_position:

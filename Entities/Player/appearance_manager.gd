@@ -116,4 +116,5 @@ func get_appearance() -> Dictionary:
 	var dic = {}
 	dic["head"] = head_name
 	dic["body"] = body_name
+	dic["time"] = Time.get_ticks_msec()
 	return dic

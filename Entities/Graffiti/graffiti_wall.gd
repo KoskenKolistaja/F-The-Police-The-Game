@@ -28,7 +28,7 @@ func investigate(player):
 		return
 	
 	if investigated > 100.0:
-		CrimeManager.bank_evidence(painter,CrimeManager.graffiti_score)
+		CrimeManager.bank_crime(painter,CrimeManager.graffiti_score)
 		player.set_money(100)
 		reset()
 

@@ -1,7 +1,7 @@
 extends Control
 
 
-
+var info_open = false
 
 
 func update_money(amount):
@@ -28,3 +28,13 @@ func update_armor(on : bool):
 		%ArmorIcon.show()
 	else:
 		%ArmorIcon.hide()
+
+
+func open_police_info():
+	if not info_open:
+		%Criminals.update()
+		%Criminals.show()
+		info_open = true
+	else:
+		%Criminals.hide()
+		info_open = false

@@ -11,7 +11,8 @@ func use():
 	
 	var items = %Area3D2.get_overlapping_bodies()
 	for item in items:
-		item.investigate(player_character)
+		if item.has_method("investigate"):
+			item.investigate(player_character)
 
 func use2():
 	pass

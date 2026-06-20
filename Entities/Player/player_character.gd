@@ -27,6 +27,8 @@ var hand_item = "none"
 
 var height_layer = -1
 
+var player_id = null
+
 # --- REFACTORED STATE ARCHITECTURE ---
 var confirmed_criminal: bool = false
 var suspicion: float = 0.0
@@ -60,6 +62,10 @@ func _ready():
 	else:
 		set_civilian()
 		GameManager.players_to_arrest.append(self)
+	
+	player_id = player_root.player_id
+	
+	PlayerData.players[player_id] = self
 
 func _physics_process(delta):
 	if not active:
@@ -348,7 +354,7 @@ func handle_interact_ray(player_id):
 
 	if %InteractRay.is_colliding():
 		%InfoLabel.text = collider.get_message()
-		if Input.is_action_just_pressed("interact1"):
+		if Input.is_action_just_pressed("p%s_interact1" % player_id):
 			collider.interact(self, null)
 			
 	if rt_pressed:
@@ -426,9 +432,6 @@ func set_police():
 func set_civilian():
 	appearance_manager.randomize_appearance()
 	inventory.push_back("graffiti_bottle")
-	inventory.push_back("uzi")
-	inventory.push_back("mp5")
-	inventory.push_back("smoke_bomb")
 
 func die(exp_killer = null):
 	
@@ -677,3 +680,7 @@ func respawn(place_name : String):
 
 func get_appearance():
 	return appearance_manager.get_appearance()
+
+
+func get_appearance_intel():
+	return {player_id : appearance_manager.get_appearance()}
