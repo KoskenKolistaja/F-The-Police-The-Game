@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhmeqdedao6gh"
-path.s3tc="res://.godot/imported/uzi.png-1a07ed647fcc5b968cf5b64549eed440.s3tc.ctex"
+uid="uid://s5l6x0wesmn7"
+path.s3tc="res://.godot/imported/stun-grenade.png-8e10d410abe4c34562f220bdfbe0b73f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Icons/uzi.png"
-dest_files=["res://.godot/imported/uzi.png-1a07ed647fcc5b968cf5b64549eed440.s3tc.ctex"]
+source_file="res://Assets/Textures/Icons/stun-grenade.png"
+dest_files=["res://.godot/imported/stun-grenade.png-8e10d410abe4c34562f220bdfbe0b73f.s3tc.ctex"]
 
 [params]
 

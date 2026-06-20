@@ -39,15 +39,7 @@ var prev_prev_pressed : bool = false
 var prev_next_pressed : bool = false
 var prev_check_climb_pressed : bool = false
 
-@onready var civilian_bodies = [
-	%body1, %body2, %body3, %body4, %body5,
-	%body6, %body7, %body9, %businessbody, %workerbody
-]
-
-@onready var civilian_heads = [
-	%head1, %head2, %head3, %head4, %head5,
-	%head6, %head7, %head8, %head9, %head10, %workerhead,
-]
+@export var appearance_manager : Skeleton3D
 
 # Social Stealth Variables
 var is_blending_in: bool = false
@@ -377,13 +369,44 @@ func set_hand_item(value):
 
 func pick_new_npc_target() -> void:
 	var choice = randf()
-	if choice < 0.25:
+
+	if choice < 0.4:
 		npc_move_direction = Vector3.ZERO
 		npc_wander_timer = randf_range(1.0, 3.0)
+		return
+
+	var player_id = player_root.player_id
+	var input_dir = Vector2(
+		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X),
+		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
+	)
+
+	if input_dir.length() > 0.5:
+		var camera = get_viewport().get_camera_3d()
+
+		if camera:
+			var cam_back = camera.global_transform.basis.z
+			var cam_right = camera.global_transform.basis.x
+
+			cam_back.y = 0
+			cam_right.y = 0
+
+			cam_back = cam_back.normalized()
+			cam_right = cam_right.normalized()
+
+			npc_move_direction = (
+				cam_right * input_dir.x +
+				cam_back * input_dir.y
+			).normalized()
 	else:
-		var random_angle = randf_range(0, 2 * PI)
-		npc_move_direction = Vector3(sin(random_angle), 0, cos(random_angle)).normalized()
-		npc_wander_timer = randf_range(WANDER_TIME_MIN, WANDER_TIME_MAX)
+		var random_angle = randf_range(0.0, TAU)
+		npc_move_direction = Vector3(
+			sin(random_angle),
+			0,
+			cos(random_angle)
+		).normalized()
+
+	npc_wander_timer = randf_range(WANDER_TIME_MIN, WANDER_TIME_MAX)
 
 func get_player_root():
 	return player_root
@@ -393,8 +416,7 @@ func set_police():
 		if c is BoneAttachment3D:
 			continue
 		c.hide()
-	%policebody.show()
-	%policehead.show()
+	appearance_manager.set_police()
 	inventory.push_back("camera")
 	inventory.push_back("pistol")
 	inventory.push_back("spyglass")
@@ -402,9 +424,11 @@ func set_police():
 
 
 func set_civilian():
+	appearance_manager.randomize_appearance()
 	inventory.push_back("graffiti_bottle")
 	inventory.push_back("uzi")
 	inventory.push_back("mp5")
+	inventory.push_back("smoke_bomb")
 
 func die(exp_killer = null):
 	
@@ -638,7 +662,7 @@ func inventory_last_item():
 	set_inventory_item(0)
 
 func randomize_appearance():
-	pass
+	appearance_manager.randomize_appearance()
 
 
 func set_armor(on : bool):

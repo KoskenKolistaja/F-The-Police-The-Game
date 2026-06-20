@@ -7,15 +7,7 @@ const WANDER_TIME_MAX = 3.0
 @onready var state_machine: AnimationNodeStateMachinePlayback = %AnimationTree.get("parameters/playback")
 @onready var visual: Node3D = %Visual
 
-@onready var civilian_bodies: Array = [
-	%body1, %body2, %body3, %body4, %body5, %body6, %body7, %body9,
-	%businessbody, %workerbody
-]
-
-@onready var civilian_heads: Array = [
-	%head1, %head2, %head3, %head4, %head5, %head6, %head7, %head8, %head9, %head10,
-	%workerhead
-]
+@export var appearance_manager : Skeleton3D
 
 var active: bool = true
 var dead: bool = false
@@ -47,14 +39,25 @@ var move_direction: Vector3 = Vector3.ZERO
 
 var height_layer = 0
 
+var is_ragdoll = false
+
 func _ready() -> void:
 	randomize()
-	decide_npc_look()
+	randomize_appearance()
 	pick_new_wander_target()
 	money *= randi_range(1, 5)
 	investigation_need *= randf_range(2.0, 5.0)
+	
+
+
 
 func _physics_process(delta: float) -> void:
+	
+	if is_ragdoll:
+		return
+	
+	if not active:
+		return
 	
 	set_visual_layers(self.global_position.y)
 	
@@ -138,6 +141,35 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+func randomize_appearance():
+	appearance_manager.randomize_appearance()
+
+func ragdoll(impact_velocity : Vector3 = Vector3.ZERO):
+	is_ragdoll = true
+	collision_off()
+	%PhysicalBoneSimulator3D.physical_bones_start_simulation()
+	%PhysicalBoneSimulator3D.influence = 1.0
+	for bone : PhysicalBone3D in %PhysicalBoneSimulator3D.get_children():
+		bone.apply_central_impulse(impact_velocity)
+	await get_tree().create_timer(5).timeout
+	deragdoll()
+
+func deragdoll():
+	global_position = %PhysicalBoneRoot.global_position
+	state_machine.travel("idle")
+	var tween = create_tween()
+
+	tween.tween_property(
+		%PhysicalBoneSimulator3D,
+		"influence",
+		0.0,
+		0.5
+	)
+
+	await get_tree().create_timer(0.5).timeout
+	is_ragdoll = false
+	collision_on()
+	%PhysicalBoneSimulator3D.physical_bones_stop_simulation()
 
 func set_visual_layers(height):
 	
@@ -252,6 +284,7 @@ func investigate(investigator: Node3D) -> void:
 		%RobbedIcon.hide()
 		%Speech.hide()
 		%SpeechPlayer.stop()
+		%InvestigationParticles.emitting = false
 		investigation_need *= randf_range(2.0, 5.0)
 
 func dispense_money_tick() -> void:
@@ -308,7 +341,7 @@ func _freeze_and_apply_gravity(delta: float) -> void:
 
 func pick_new_wander_target() -> void:
 	var choice = randf()
-	if choice < 0.25:
+	if choice < 0.4:
 		move_direction = Vector3.ZERO
 		wander_timer = randf_range(1.0, 3.0)
 	else:
@@ -324,39 +357,7 @@ func rotate_towards(direction: Vector3) -> void:
 	var target_y = atan2(direction.x, direction.z)
 	visual.rotation.y = lerp_angle(visual.rotation.y, target_y, 0.1)
 
-func decide_npc_look() -> void:
-	var roll = randf()
-	var chosen_body: Node3D = null
-	var chosen_head: Node3D = null
 
-	var regular_body_count = civilian_bodies.size() - 2 
-	var regular_head_count = civilian_heads.size() - 1
-
-	if roll < 0.65:
-		chosen_body = civilian_bodies[randi() % regular_body_count]
-		chosen_head = civilian_heads[randi() % regular_head_count]
-	elif roll < 0.80:
-		chosen_body = %workerbody
-		chosen_head = %workerhead
-	elif roll < 0.92:
-		chosen_body = %businessbody
-		chosen_head = civilian_heads[randi() % regular_head_count]
-	else:
-		chosen_body = %policebody if has_node("%policebody") else null
-		chosen_head = %policehead if has_node("%policehead") else (civilian_heads[randi() % regular_head_count] if civilian_heads.size() > 0 else null)
-
-	if is_instance_valid(chosen_body): chosen_body.show()
-	if is_instance_valid(chosen_head): chosen_head.show()
-
-	var all_meshes: Array = []
-	all_meshes.append_array(civilian_bodies)
-	all_meshes.append_array(civilian_heads)
-	if has_node("%policebody"): all_meshes.append(%policebody)
-	if has_node("%policehead"): all_meshes.append(%policehead)
-	
-	for mesh in all_meshes:
-		if is_instance_valid(mesh) and mesh != chosen_body and mesh != chosen_head:
-			mesh.queue_free()
 
 func get_message() -> String:
 	return "Arrest"
@@ -379,10 +380,20 @@ func die(exp_killer = null) -> void:
 	%ArrestHandcuffs.hide()
 	%RobbedIcon.hide()
 
+
 func deactivate() -> void:
 	active = false
-	set_collision_layer_value(1, false)
+	collision_off()
 
 func activate() -> void:
 	active = true
+	collision_on()
+
+
+
+func collision_off():
+	set_collision_layer_value(1, false)
+	print("COLLISION OFF CALLED")
+
+func collision_on():
 	set_collision_layer_value(1, true)

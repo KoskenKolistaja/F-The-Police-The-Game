@@ -213,7 +213,7 @@ func get_exit_position():
 
 
 
-func take_damage(amount: float):
+func take_damage(amount: float = 0):
 	#amount *= 5
 	#amount = round(amount)
 	#
@@ -229,3 +229,8 @@ func take_damage(amount: float):
 	#var label_instance = damage_label.instantiate()
 	#label_instance.text = "-" + str(amount)
 	#$taxi_mesh.add_child(label_instance)
+
+
+func _on_bump_area_body_entered(body):
+	if body.has_method("ragdoll"):
+		body.ragdoll(ball.linear_velocity)

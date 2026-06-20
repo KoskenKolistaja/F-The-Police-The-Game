@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhmeqdedao6gh"
-path.s3tc="res://.godot/imported/uzi.png-1a07ed647fcc5b968cf5b64549eed440.s3tc.ctex"
+uid="uid://bguxbkyhj68q5"
+path.s3tc="res://.godot/imported/Tiles.png-2233e04153d0e3de5969295579a0005e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Icons/uzi.png"
-dest_files=["res://.godot/imported/uzi.png-1a07ed647fcc5b968cf5b64549eed440.s3tc.ctex"]
+source_file="res://Assets/Textures/Tiles.png"
+dest_files=["res://.godot/imported/Tiles.png-2233e04153d0e3de5969295579a0005e.s3tc.ctex"]
 
 [params]
 

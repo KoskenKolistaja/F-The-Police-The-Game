@@ -269,6 +269,9 @@ material = SubResource("StandardMaterial3D_bvgdm")
 radius = 0.1
 height = 0.2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2fkpd"]
+size = Vector3(0.8, 0.4609375, 1.8)
+
 [node name="Taxi" type="Node3D" unique_id=1219691236 node_paths=PackedStringArray("smoke1", "smoke2") groups=["player_root"]]
 script = ExtResource("1_nldu2")
 damage_label = SubResource("Resource_tc4yu")
@@ -385,6 +388,13 @@ mesh = SubResource("SphereMesh_ybugy")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6699557, 0, 0)
 
+[node name="BumpArea" type="Area3D" parent="taxi_mesh" unique_id=780802398]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="taxi_mesh/BumpArea" unique_id=900889590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26953125, 0)
+shape = SubResource("BoxShape3D_2fkpd")
+
 [node name="BrakeSound" type="AudioStreamPlayer" parent="." unique_id=1264942759]
 volume_db = -10.0
 
@@ -393,3 +403,4 @@ volume_db = -0.63
 
 [connection signal="body_shape_entered" from="Ball" to="Ball" method="_on_body_shape_entered"]
 [connection signal="interacted" from="Ball/StaticBody3D" to="Ball" method="_on_static_body_3d_interacted"]
+[connection signal="body_entered" from="taxi_mesh/BumpArea" to="." method="_on_bump_area_body_entered"]

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://d3wixm533e6yf" path="res://Entities/InteriorBuildings/interior_building.gd" id="1_mg7nm"]
 [ext_resource type="PackedScene" uid="uid://xottcel1lajr" path="res://Entities/InteriorItems/floor.tscn" id="2_56ka0"]
 [ext_resource type="PackedScene" uid="uid://casy8vrm88e35" path="res://Entities/InteriorItems/buy_machine.tscn" id="3_adl1x"]
+[ext_resource type="Texture2D" uid="uid://dhmeqdedao6gh" path="res://Assets/Textures/Icons/uzi.png" id="4_mg7nm"]
+[ext_resource type="Texture2D" uid="uid://s5l6x0wesmn7" path="res://Assets/Textures/Icons/stun-grenade.png" id="5_56ka0"]
 [ext_resource type="PackedScene" uid="uid://cjh04yc03b6fh" path="res://Entities/InteriorItems/cash_register.tscn" id="5_uhbpv"]
 [ext_resource type="PackedScene" uid="uid://cdog85cyebira" path="res://Entities/InteriorItems/floor_2.tscn" id="6_8j7qf"]
 [ext_resource type="PackedScene" uid="uid://l70avunfxrtg" path="res://Entities/InteriorItems/wall_door.tscn" id="8_f0onk"]
@@ -54,9 +56,15 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 
 
 [node name="BuyMachine3" parent="." unique_id=1984384394 instance=ExtResource("3_adl1x")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 0, 0)
+icon = ExtResource("4_mg7nm")
+price = 1000
+item_name = "uzi"
 
 [node name="BuyMachine2" parent="." unique_id=2094465701 instance=ExtResource("3_adl1x")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 0, -1)
+icon = ExtResource("5_56ka0")
+price = 50
+item_name = "smoke_bomb"
 
 [node name="CashRegister" parent="." unique_id=994580265 instance=ExtResource("5_uhbpv")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, -1)

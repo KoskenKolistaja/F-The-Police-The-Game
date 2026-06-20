@@ -44,7 +44,7 @@ func handle_rotation():
 		axis = 0.0
 	
 	if driving:
-		axis * 3
+		axis * 5
 	rotation_degrees.y -= axis
 
 

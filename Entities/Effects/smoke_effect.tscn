@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bp6w7mj7yga8l"]
+
+[ext_resource type="Script" uid="uid://b0oihg1i8o2ug" path="res://Entities/Effects/smoke_effect.gd" id="1_htu8r"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d4avi"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_htu8r"]
+noise = SubResource("FastNoiseLite_d4avi")
+
+[sub_resource type="FogMaterial" id="FogMaterial_g7fff"]
+density = 7.0
+emission = Color(0.5053443, 0.50534403, 0.50534385, 1)
+density_texture = SubResource("NoiseTexture3D_htu8r")
+
+[sub_resource type="Environment" id="Environment_s0wn7"]
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="Animation" id="Animation_htu8r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FogVolume:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(10, 5, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_g7fff"]
+resource_name = "activate"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FogVolume:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 5, 0), Vector3(10, 5, 10), Vector3(15, 5, 15), Vector3(0, 5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0wn7"]
+_data = {
+&"RESET": SubResource("Animation_htu8r"),
+&"activate": SubResource("Animation_g7fff")
+}
+
+[node name="SmokeEffect" type="Node3D" unique_id=489189172]
+script = ExtResource("1_htu8r")
+
+[node name="FogVolume" type="FogVolume" parent="." unique_id=895090704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(10, 5, 10)
+shape = 0
+material = SubResource("FogMaterial_g7fff")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=663349071]
+environment = SubResource("Environment_s0wn7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1444659795]
+libraries/ = SubResource("AnimationLibrary_s0wn7")
+autoplay = &"activate"

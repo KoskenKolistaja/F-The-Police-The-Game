@@ -12,7 +12,8 @@ var items = {
 	"handcuffs" : preload("res://Entities/HandItems/hand_cuffs.tscn"),
 	"spyglass" : preload("res://Entities/HandItems/spyglass.tscn"),
 	"uzi" : preload("res://Entities/HandItems/uzi.tscn"),
-	"mp5" : preload("res://Entities/HandItems/mp_5.tscn")
+	"mp5" : preload("res://Entities/HandItems/mp_5.tscn"),
+	"smoke_bomb" : preload("res://Entities/HandItems/smoke_bomb.tscn"),
 }
 
 
@@ -23,5 +24,6 @@ var icons = {
 	"handcuffs" : preload("res://Assets/Textures/Icons/handcuffs.png"),
 	"spyglass" : preload("res://Assets/Textures/Icons/magnifying-glass.png"),
 	"uzi" : preload("res://Assets/Textures/Icons/uzi.png"),
-	"mp5" : preload("res://Assets/Textures/Icons/mp5.png")
+	"mp5" : preload("res://Assets/Textures/Icons/mp5.png"),
+	"smoke_bomb" : preload("res://Assets/Textures/Icons/stun-grenade.png"),
 }

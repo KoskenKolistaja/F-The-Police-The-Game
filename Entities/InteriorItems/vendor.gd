@@ -17,6 +17,9 @@ func _ready():
 
 
 func on_interacted(player,hand_item):
+	if hand_item:
+		return
+	
 	if only_police:
 		if not player.is_police():
 			return

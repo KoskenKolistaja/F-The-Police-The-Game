@@ -44,7 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://bq5jdu5r4w8ak" path="res://Entities/InteriorBuildings/police_station.tscn" id="42_gugm1"]
 [ext_resource type="PackedScene" uid="uid://2e7idamu2y34" path="res://Entities/InteriorItems/weapon_store_sign.tscn" id="42_ipkqj"]
 [ext_resource type="PackedScene" uid="uid://b3r862ans3gdd" path="res://Entities/InteriorItems/trash_bin.tscn" id="44_18vtu"]
-[ext_resource type="ArrayMesh" uid="uid://kxxjy2is8iyr" path="res://Assets/kenney_city-kit-industrial_1.0 (2)/Models/OBJ format/chimney-basic.obj" id="46_xqdcd"]
+[ext_resource type="PackedScene" uid="uid://4q7lgl2rse6l" path="res://Assets/Taxi/Player/taxi.tscn" id="45_fn0uk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n5q0i"]
 panorama = ExtResource("1_aasbp")
@@ -54,14 +54,10 @@ sky_material = SubResource("PanoramaSkyMaterial_n5q0i")
 
 [sub_resource type="Environment" id="Environment_kohus"]
 background_mode = 1
-background_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
+background_color = Color(0.58909595, 0.5890955, 0.5890956, 1)
 sky = SubResource("Sky_m0m0x")
-ambient_light_source = 2
-ambient_light_color = Color(0.5409904, 0.54099053, 0.5409904, 1)
 tonemap_mode = 2
 glow_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
 
 [sub_resource type="Animation" id="Animation_fn0uk"]
 resource_name = "DayNight"
@@ -70,26 +66,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DirectionalLight3D:light_energy")
+tracks/0/path = NodePath("WorldEnvironment:environment:background_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 120, 240, 360, 480),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [1.0, 0.05, 0.05, 1.0, 1.0]
+"values": [Color(0.58909595, 0.5890955, 0.5890956, 1), Color(0.14128816, 0.17880529, 0.23509988, 1), Color(0.14128816, 0.17880529, 0.23509988, 1), Color(0.58909595, 0.5890955, 0.5890956, 1), Color(0.58909595, 0.5890955, 0.5890956, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WorldEnvironment:environment:ambient_light_color")
+tracks/1/path = NodePath("DirectionalLight3D:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 120, 240, 360, 480),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.58909595, 0.5890955, 0.5890956, 1), Color(0.14128816, 0.17880529, 0.23509988, 1), Color(0.14128816, 0.17880529, 0.23509988, 1), Color(0.58909595, 0.5890955, 0.5890956, 1), Color(0.58909595, 0.5890955, 0.5890956, 1)]
+"values": [1.0, 0.1, 0.1, 1.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_xqdcd"]
@@ -97,26 +93,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DirectionalLight3D:light_energy")
+tracks/0/path = NodePath("WorldEnvironment:environment:background_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [Color(0.58909595, 0.5890955, 0.5890956, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WorldEnvironment:environment:ambient_light_color")
+tracks/1/path = NodePath("DirectionalLight3D:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.5409904, 0.54099053, 0.5409904, 1)]
+"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vc7y2"]
@@ -124,9 +120,6 @@ _data = {
 &"DayNight": SubResource("Animation_fn0uk"),
 &"RESET": SubResource("Animation_xqdcd")
 }
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xqdcd"]
-data = PackedVector3Array(0.0707, 0, -0.0707, 0.0707, 0, 0.0707, 0.099999994, 0, 0, 0.0707, 0, 0.0707, 0.0707, 0, -0.0707, 0, 0, 0.099999994, 0, 0, 0.099999994, 0.0707, 0, -0.0707, 0, 0, -0.099999994, 0, 0, 0.099999994, 0, 0, -0.099999994, -0.0707, 0, 0.0707, -0.0707, 0, 0.0707, 0, 0, -0.099999994, -0.0707, 0, -0.0707, -0.0707, 0, 0.0707, -0.0707, 0, -0.0707, -0.099999994, 0, 0, 0.037699997, 1, 0.037699997, 0, 1, 0.074999996, 0, 1, 0.0534, 0, 1, 0.0534, 0, 1, 0.074999996, -0.037699997, 1, 0.037699997, 0.037699997, 1, 0.037699997, 0.053, 1, 0.053, 0, 1, 0.074999996, -0.037699997, 1, 0.037699997, 0, 1, 0.074999996, -0.053, 1, 0.053, 0.0534, 1, 0, 0.053, 1, 0.053, 0.037699997, 1, 0.037699997, -0.037699997, 1, 0.037699997, -0.053, 1, 0.053, -0.0534, 1, 0, 0.053, 1, 0.053, 0.0534, 1, 0, 0.074999996, 1, 0, -0.0534, 1, 0, -0.053, 1, 0.053, -0.074999996, 1, 0, 0.0534, 1, 0, 0.053, 1, -0.053, 0.074999996, 1, 0, -0.053, 1, -0.053, -0.0534, 1, 0, -0.074999996, 1, 0, 0.053, 1, -0.053, 0.0534, 1, 0, 0.037699997, 1, -0.037699997, -0.053, 1, -0.053, -0.037699997, 1, -0.037699997, -0.0534, 1, 0, 0.053, 1, -0.053, 0.037699997, 1, -0.037699997, 0, 1, -0.074999996, -0.053, 1, -0.053, 0, 1, -0.0534, -0.037699997, 1, -0.037699997, 0, 1, -0.074999996, 0.037699997, 1, -0.037699997, 0, 1, -0.0534, 0, 1, -0.074999996, 0, 1, -0.0534, -0.053, 1, -0.053, -0.053, 1, -0.053, -0.077, 0.91999996, 0, -0.054399997, 0.91999996, -0.054399997, 0, 0.91999996, -0.077, -0.053, 1, -0.053, -0.054399997, 0.91999996, -0.054399997, -0.077, 0.91999996, 0, -0.053, 1, -0.053, -0.074999996, 1, 0, -0.053, 1, -0.053, 0, 0.91999996, -0.077, 0, 1, -0.074999996, -0.074999996, 1, 0, -0.054399997, 0.91999996, 0.054399997, -0.077, 0.91999996, 0, 0.054399997, 0.91999996, -0.054399997, 0, 1, -0.074999996, 0, 0.91999996, -0.077, -0.054399997, 0.91999996, 0.054399997, -0.074999996, 1, 0, -0.053, 1, 0.053, 0, 1, -0.074999996, 0.054399997, 0.91999996, -0.054399997, 0.053, 1, -0.053, 0, 1, 0.074999996, -0.054399997, 0.91999996, 0.054399997, -0.053, 1, 0.053, 0.077, 0.91999996, 0, 0.053, 1, -0.053, 0.054399997, 0.91999996, -0.054399997, -0.054399997, 0.91999996, 0.054399997, 0, 1, 0.074999996, 0, 0.91999996, 0.077, 0.053, 1, -0.053, 0.077, 0.91999996, 0, 0.074999996, 1, 0, 0.053, 1, 0.053, 0, 0.91999996, 0.077, 0, 1, 0.074999996, 0.077, 0.91999996, 0, 0.053, 1, 0.053, 0.074999996, 1, 0, 0, 0.91999996, 0.077, 0.053, 1, 0.053, 0.054399997, 0.91999996, 0.054399997, 0.053, 1, 0.053, 0.077, 0.91999996, 0, 0.054399997, 0.91999996, 0.054399997, 0, 0.76159996, 0.081, -0.0707, 0, 0.0707, -0.0572, 0.76159996, 0.0572, -0.0707, 0, 0.0707, -0.081, 0.76159996, 0, -0.0572, 0.76159996, 0.0572, -0.0707, 0, 0.0707, 0, 0.76159996, 0.081, 0, 0, 0.099999994, -0.081, 0.76159996, 0, -0.0707, 0, 0.0707, -0.099999994, 0, 0, 0.0572, 0.76159996, 0.0572, 0, 0, 0.099999994, 0, 0.76159996, 0.081, -0.099999994, 0, 0, -0.0572, 0.76159996, -0.0572, -0.081, 0.76159996, 0, 0, 0, 0.099999994, 0.0572, 0.76159996, 0.0572, 0.0707, 0, 0.0707, -0.0572, 0.76159996, -0.0572, -0.099999994, 0, 0, -0.0707, 0, -0.0707, 0.081, 0.76159996, 0, 0.0707, 0, 0.0707, 0.0572, 0.76159996, 0.0572, 0, 0, -0.099999994, -0.0572, 0.76159996, -0.0572, -0.0707, 0, -0.0707, 0.0707, 0, 0.0707, 0.081, 0.76159996, 0, 0.099999994, 0, 0, -0.0572, 0.76159996, -0.0572, 0, 0, -0.099999994, 0, 0.76159996, -0.081, 0.0572, 0.76159996, -0.0572, 0.099999994, 0, 0, 0.081, 0.76159996, 0, 0.0707, 0, -0.0707, 0, 0.76159996, -0.081, 0, 0, -0.099999994, 0.099999994, 0, 0, 0.0572, 0.76159996, -0.0572, 0.0707, 0, -0.0707, 0, 0.76159996, -0.081, 0.0707, 0, -0.0707, 0.0572, 0.76159996, -0.0572, 0.037699997, 0.92499995, 0.037699997, 0, 1, 0.0534, 0, 0.92499995, 0.0534, 0, 1, 0.0534, 0.037699997, 0.92499995, 0.037699997, 0.037699997, 1, 0.037699997, -0.037699997, 1, 0.037699997, 0, 0.92499995, 0.0534, 0, 1, 0.0534, 0.037699997, 0.92499995, 0.037699997, 0.0534, 1, 0, 0.037699997, 1, 0.037699997, 0.0534, 1, 0, 0.037699997, 0.92499995, 0.037699997, 0.0534, 0.92499995, 0, 0.0534, 0.92499995, 0, 0.037699997, 1, -0.037699997, 0.0534, 1, 0, 0.037699997, 0.92499995, 0.037699997, 0.037699997, 0.92499995, -0.037699997, 0.0534, 0.92499995, 0, 0.037699997, 1, -0.037699997, 0.0534, 0.92499995, 0, 0.037699997, 0.92499995, -0.037699997, 0.037699997, 0.92499995, -0.037699997, 0.037699997, 0.92499995, 0.037699997, 0, 0.92499995, -0.0534, 0, 0.92499995, -0.0534, 0.037699997, 1, -0.037699997, 0.037699997, 0.92499995, -0.037699997, 0, 0.92499995, -0.0534, 0.037699997, 0.92499995, 0.037699997, 0, 0.92499995, 0.0534, 0.037699997, 1, -0.037699997, 0, 0.92499995, -0.0534, 0, 1, -0.0534, -0.037699997, 0.92499995, -0.037699997, 0, 1, -0.0534, 0, 0.92499995, -0.0534, 0, 0.92499995, -0.0534, 0, 0.92499995, 0.0534, -0.037699997, 0.92499995, -0.037699997, 0, 1, -0.0534, -0.037699997, 0.92499995, -0.037699997, -0.037699997, 1, -0.037699997, -0.037699997, 0.92499995, -0.037699997, -0.0534, 1, 0, -0.037699997, 1, -0.037699997, -0.037699997, 0.92499995, -0.037699997, 0, 0.92499995, 0.0534, -0.037699997, 0.92499995, 0.037699997, 0, 0.92499995, 0.0534, -0.037699997, 1, 0.037699997, -0.037699997, 0.92499995, 0.037699997, -0.0534, 1, 0, -0.037699997, 0.92499995, -0.037699997, -0.0534, 0.92499995, 0, -0.0534, 0.92499995, 0, -0.037699997, 1, 0.037699997, -0.0534, 1, 0, -0.037699997, 0.92499995, -0.037699997, -0.037699997, 0.92499995, 0.037699997, -0.0534, 0.92499995, 0, -0.037699997, 1, 0.037699997, -0.0534, 0.92499995, 0, -0.037699997, 0.92499995, 0.037699997, -0.077, 0.91999996, 0, -0.0572, 0.76159996, 0.0572, -0.081, 0.76159996, 0, -0.0572, 0.76159996, 0.0572, -0.077, 0.91999996, 0, -0.054399997, 0.91999996, 0.054399997, -0.081, 0.76159996, 0, -0.054399997, 0.91999996, -0.054399997, -0.077, 0.91999996, 0, 0, 0.91999996, 0.077, -0.0572, 0.76159996, 0.0572, -0.054399997, 0.91999996, 0.054399997, -0.054399997, 0.91999996, -0.054399997, -0.081, 0.76159996, 0, -0.0572, 0.76159996, -0.0572, -0.0572, 0.76159996, 0.0572, 0, 0.91999996, 0.077, 0, 0.76159996, 0.081, 0, 0.76159996, -0.081, -0.054399997, 0.91999996, -0.054399997, -0.0572, 0.76159996, -0.0572, 0.054399997, 0.91999996, 0.054399997, 0, 0.76159996, 0.081, 0, 0.91999996, 0.077, -0.054399997, 0.91999996, -0.054399997, 0, 0.76159996, -0.081, 0, 0.91999996, -0.077, 0, 0.76159996, 0.081, 0.054399997, 0.91999996, 0.054399997, 0.0572, 0.76159996, 0.0572, 0.0572, 0.76159996, -0.0572, 0, 0.91999996, -0.077, 0, 0.76159996, -0.081, 0.054399997, 0.91999996, 0.054399997, 0.081, 0.76159996, 0, 0.0572, 0.76159996, 0.0572, 0, 0.91999996, -0.077, 0.0572, 0.76159996, -0.0572, 0.054399997, 0.91999996, -0.054399997, 0.081, 0.76159996, 0, 0.054399997, 0.91999996, -0.054399997, 0.0572, 0.76159996, -0.0572, 0.081, 0.76159996, 0, 0.054399997, 0.91999996, 0.054399997, 0.077, 0.91999996, 0, 0.054399997, 0.91999996, -0.054399997, 0.081, 0.76159996, 0, 0.077, 0.91999996, 0, 0.0707, 0, -0.0707, 0.0707, 0, 0.0707, 0.099999994, 0, 0, 0.0707, 0, 0.0707, 0.0707, 0, -0.0707, 0, 0, 0.099999994, 0, 0, 0.099999994, 0.0707, 0, -0.0707, 0, 0, -0.099999994, 0, 0, 0.099999994, 0, 0, -0.099999994, -0.0707, 0, 0.0707, -0.0707, 0, 0.0707, 0, 0, -0.099999994, -0.0707, 0, -0.0707, -0.0707, 0, 0.0707, -0.0707, 0, -0.0707, -0.099999994, 0, 0, 0.037699997, 1, 0.037699997, 0, 1, 0.074999996, 0, 1, 0.0534, 0, 1, 0.0534, 0, 1, 0.074999996, -0.037699997, 1, 0.037699997, 0.037699997, 1, 0.037699997, 0.053, 1, 0.053, 0, 1, 0.074999996, -0.037699997, 1, 0.037699997, 0, 1, 0.074999996, -0.053, 1, 0.053, 0.0534, 1, 0, 0.053, 1, 0.053, 0.037699997, 1, 0.037699997, -0.037699997, 1, 0.037699997, -0.053, 1, 0.053, -0.0534, 1, 0, 0.053, 1, 0.053, 0.0534, 1, 0, 0.074999996, 1, 0, -0.0534, 1, 0, -0.053, 1, 0.053, -0.074999996, 1, 0, 0.0534, 1, 0, 0.053, 1, -0.053, 0.074999996, 1, 0, -0.053, 1, -0.053, -0.0534, 1, 0, -0.074999996, 1, 0, 0.053, 1, -0.053, 0.0534, 1, 0, 0.037699997, 1, -0.037699997, -0.053, 1, -0.053, -0.037699997, 1, -0.037699997, -0.0534, 1, 0, 0.053, 1, -0.053, 0.037699997, 1, -0.037699997, 0, 1, -0.074999996, -0.053, 1, -0.053, 0, 1, -0.0534, -0.037699997, 1, -0.037699997, 0, 1, -0.074999996, 0.037699997, 1, -0.037699997, 0, 1, -0.0534, 0, 1, -0.074999996, 0, 1, -0.0534, -0.053, 1, -0.053, -0.053, 1, -0.053, -0.077, 0.91999996, 0, -0.054399997, 0.91999996, -0.054399997, 0, 0.91999996, -0.077, -0.053, 1, -0.053, -0.054399997, 0.91999996, -0.054399997, -0.077, 0.91999996, 0, -0.053, 1, -0.053, -0.074999996, 1, 0, -0.053, 1, -0.053, 0, 0.91999996, -0.077, 0, 1, -0.074999996, -0.074999996, 1, 0, -0.054399997, 0.91999996, 0.054399997, -0.077, 0.91999996, 0, 0.054399997, 0.91999996, -0.054399997, 0, 1, -0.074999996, 0, 0.91999996, -0.077, -0.054399997, 0.91999996, 0.054399997, -0.074999996, 1, 0, -0.053, 1, 0.053, 0, 1, -0.074999996, 0.054399997, 0.91999996, -0.054399997, 0.053, 1, -0.053, 0, 1, 0.074999996, -0.054399997, 0.91999996, 0.054399997, -0.053, 1, 0.053, 0.077, 0.91999996, 0, 0.053, 1, -0.053, 0.054399997, 0.91999996, -0.054399997, -0.054399997, 0.91999996, 0.054399997, 0, 1, 0.074999996, 0, 0.91999996, 0.077, 0.053, 1, -0.053, 0.077, 0.91999996, 0, 0.074999996, 1, 0, 0.053, 1, 0.053, 0, 0.91999996, 0.077, 0, 1, 0.074999996, 0.077, 0.91999996, 0, 0.053, 1, 0.053, 0.074999996, 1, 0, 0, 0.91999996, 0.077, 0.053, 1, 0.053, 0.054399997, 0.91999996, 0.054399997, 0.053, 1, 0.053, 0.077, 0.91999996, 0, 0.054399997, 0.91999996, 0.054399997, 0, 0.76159996, 0.081, -0.0707, 0, 0.0707, -0.0572, 0.76159996, 0.0572, -0.0707, 0, 0.0707, -0.081, 0.76159996, 0, -0.0572, 0.76159996, 0.0572, -0.0707, 0, 0.0707, 0, 0.76159996, 0.081, 0, 0, 0.099999994, -0.081, 0.76159996, 0, -0.0707, 0, 0.0707, -0.099999994, 0, 0, 0.0572, 0.76159996, 0.0572, 0, 0, 0.099999994, 0, 0.76159996, 0.081, -0.099999994, 0, 0, -0.0572, 0.76159996, -0.0572, -0.081, 0.76159996, 0, 0, 0, 0.099999994, 0.0572, 0.76159996, 0.0572, 0.0707, 0, 0.0707, -0.0572, 0.76159996, -0.0572, -0.099999994, 0, 0, -0.0707, 0, -0.0707, 0.081, 0.76159996, 0, 0.0707, 0, 0.0707, 0.0572, 0.76159996, 0.0572, 0, 0, -0.099999994, -0.0572, 0.76159996, -0.0572, -0.0707, 0, -0.0707, 0.0707, 0, 0.0707, 0.081, 0.76159996, 0, 0.099999994, 0, 0, -0.0572, 0.76159996, -0.0572, 0, 0, -0.099999994, 0, 0.76159996, -0.081, 0.0572, 0.76159996, -0.0572, 0.099999994, 0, 0, 0.081, 0.76159996, 0, 0.0707, 0, -0.0707, 0, 0.76159996, -0.081, 0, 0, -0.099999994, 0.099999994, 0, 0, 0.0572, 0.76159996, -0.0572, 0.0707, 0, -0.0707, 0, 0.76159996, -0.081, 0.0707, 0, -0.0707, 0.0572, 0.76159996, -0.0572, 0.037699997, 0.92499995, 0.037699997, 0, 1, 0.0534, 0, 0.92499995, 0.0534, 0, 1, 0.0534, 0.037699997, 0.92499995, 0.037699997, 0.037699997, 1, 0.037699997, -0.037699997, 1, 0.037699997, 0, 0.92499995, 0.0534, 0, 1, 0.0534, 0.037699997, 0.92499995, 0.037699997, 0.0534, 1, 0, 0.037699997, 1, 0.037699997, 0.0534, 1, 0, 0.037699997, 0.92499995, 0.037699997, 0.0534, 0.92499995, 0, 0.0534, 0.92499995, 0, 0.037699997, 1, -0.037699997, 0.0534, 1, 0, 0.037699997, 0.92499995, 0.037699997, 0.037699997, 0.92499995, -0.037699997, 0.0534, 0.92499995, 0, 0.037699997, 1, -0.037699997, 0.0534, 0.92499995, 0, 0.037699997, 0.92499995, -0.037699997, 0.037699997, 0.92499995, -0.037699997, 0.037699997, 0.92499995, 0.037699997, 0, 0.92499995, -0.0534, 0, 0.92499995, -0.0534, 0.037699997, 1, -0.037699997, 0.037699997, 0.92499995, -0.037699997, 0, 0.92499995, -0.0534, 0.037699997, 0.92499995, 0.037699997, 0, 0.92499995, 0.0534, 0.037699997, 1, -0.037699997, 0, 0.92499995, -0.0534, 0, 1, -0.0534, -0.037699997, 0.92499995, -0.037699997, 0, 1, -0.0534, 0, 0.92499995, -0.0534, 0, 0.92499995, -0.0534, 0, 0.92499995, 0.0534, -0.037699997, 0.92499995, -0.037699997, 0, 1, -0.0534, -0.037699997, 0.92499995, -0.037699997, -0.037699997, 1, -0.037699997, -0.037699997, 0.92499995, -0.037699997, -0.0534, 1, 0, -0.037699997, 1, -0.037699997, -0.037699997, 0.92499995, -0.037699997, 0, 0.92499995, 0.0534, -0.037699997, 0.92499995, 0.037699997, 0, 0.92499995, 0.0534, -0.037699997, 1, 0.037699997, -0.037699997, 0.92499995, 0.037699997, -0.0534, 1, 0, -0.037699997, 0.92499995, -0.037699997, -0.0534, 0.92499995, 0, -0.0534, 0.92499995, 0, -0.037699997, 1, 0.037699997, -0.0534, 1, 0, -0.037699997, 0.92499995, -0.037699997, -0.037699997, 0.92499995, 0.037699997, -0.0534, 0.92499995, 0, -0.037699997, 1, 0.037699997, -0.0534, 0.92499995, 0, -0.037699997, 0.92499995, 0.037699997, -0.077, 0.91999996, 0, -0.0572, 0.76159996, 0.0572, -0.081, 0.76159996, 0, -0.0572, 0.76159996, 0.0572, -0.077, 0.91999996, 0, -0.054399997, 0.91999996, 0.054399997, -0.081, 0.76159996, 0, -0.054399997, 0.91999996, -0.054399997, -0.077, 0.91999996, 0, 0, 0.91999996, 0.077, -0.0572, 0.76159996, 0.0572, -0.054399997, 0.91999996, 0.054399997, -0.054399997, 0.91999996, -0.054399997, -0.081, 0.76159996, 0, -0.0572, 0.76159996, -0.0572, -0.0572, 0.76159996, 0.0572, 0, 0.91999996, 0.077, 0, 0.76159996, 0.081, 0, 0.76159996, -0.081, -0.054399997, 0.91999996, -0.054399997, -0.0572, 0.76159996, -0.0572, 0.054399997, 0.91999996, 0.054399997, 0, 0.76159996, 0.081, 0, 0.91999996, 0.077, -0.054399997, 0.91999996, -0.054399997, 0, 0.76159996, -0.081, 0, 0.91999996, -0.077, 0, 0.76159996, 0.081, 0.054399997, 0.91999996, 0.054399997, 0.0572, 0.76159996, 0.0572, 0.0572, 0.76159996, -0.0572, 0, 0.91999996, -0.077, 0, 0.76159996, -0.081, 0.054399997, 0.91999996, 0.054399997, 0.081, 0.76159996, 0, 0.0572, 0.76159996, 0.0572, 0, 0.91999996, -0.077, 0.0572, 0.76159996, -0.0572, 0.054399997, 0.91999996, -0.054399997, 0.081, 0.76159996, 0, 0.054399997, 0.91999996, -0.054399997, 0.0572, 0.76159996, -0.0572, 0.081, 0.76159996, 0, 0.054399997, 0.91999996, 0.054399997, 0.077, 0.91999996, 0, 0.054399997, 0.91999996, -0.054399997, 0.081, 0.76159996, 0, 0.077, 0.91999996, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aasbp"]
 albedo_color = Color(0.711095, 0.7007, 0.77, 1)
@@ -773,34 +766,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -17)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -21)
 
 [node name="Building1" parent="UpperCity/Tiles" unique_id=2108886601 instance=ExtResource("10_lkw2e")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 28, 0.001, 32)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 28, 0, 32)
 
 [node name="Building10" parent="UpperCity/Tiles" unique_id=1308819074 instance=ExtResource("11_24ha5")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 46, 0.001, 30)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 46, 0, 30)
 
 [node name="Building9" parent="UpperCity/Tiles" unique_id=1264520001 instance=ExtResource("12_io0ox")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 52, 0.001, 29)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 52, 0, 29)
 
 [node name="Building8" parent="UpperCity/Tiles" unique_id=508768482 instance=ExtResource("13_kxvvn")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 56, 0.001, 9)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 56, 0, 9)
 
 [node name="Building3" parent="UpperCity/Tiles" unique_id=978547678 instance=ExtResource("14_0unmo")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 56, 0.001, 21)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 56, 0, 21)
 
 [node name="Building5" parent="UpperCity/Tiles" unique_id=237360253 instance=ExtResource("15_tcsqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0.001, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 10)
 
 [node name="Building6" parent="UpperCity/Tiles" unique_id=1148019197 instance=ExtResource("16_n21dk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0.001, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -6)
 
 [node name="Building4" parent="UpperCity/Tiles" unique_id=2062680784 instance=ExtResource("17_mrwcl")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 55, 0.001, -3)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 55, 0, -3)
 
 [node name="Building7" parent="UpperCity/Tiles" unique_id=817925991 instance=ExtResource("14_0unmo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0.001, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -8)
 
 [node name="Building2" parent="UpperCity/Tiles" unique_id=452854427 instance=ExtResource("18_kb58h")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 45, 0.001, 23)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 45, 0, 23)
 
 [node name="Tile99" parent="UpperCity/Tiles" unique_id=901998318 instance=ExtResource("9_sde3x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
@@ -890,73 +883,73 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 24)
 
 [node name="Building12" parent="UpperCity/Tiles" unique_id=1070571603 instance=ExtResource("15_0m3ti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.001, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 9)
 
 [node name="Building11" parent="UpperCity/Tiles" unique_id=2061526281 instance=ExtResource("20_db12d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.001, 29)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 29)
 
 [node name="Building13" parent="UpperCity/Tiles" unique_id=107709744 instance=ExtResource("21_cqiwu")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0.001, 18)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, 18)
 
 [node name="Building14" parent="UpperCity/Tiles" unique_id=319221604 instance=ExtResource("22_mgwi8")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10, 0.001, 24)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10, 0, 24)
 
 [node name="Building15" parent="UpperCity/Tiles" unique_id=1471952663 instance=ExtResource("10_lkw2e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.001, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 4)
 
 [node name="Building16" parent="UpperCity/Tiles" unique_id=111475486 instance=ExtResource("18_kb58h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.001, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 4)
 
 [node name="Building17" parent="UpperCity/Tiles" unique_id=1554566417 instance=ExtResource("14_0unmo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.001, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 4)
 
 [node name="Building18" parent="UpperCity/Tiles" unique_id=876546267 instance=ExtResource("18_kb58h")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23, 0.001, 8)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23, 0, 8)
 
 [node name="Building19" parent="UpperCity/Tiles" unique_id=1806878349 instance=ExtResource("10_lkw2e")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 16, 0.001, 12)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 16, 0, 12)
 
 [node name="Building20" parent="UpperCity/Tiles" unique_id=1509489256 instance=ExtResource("18_kb58h")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 12, 0.001, 11)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 12, 0, 11)
 
 [node name="Building21" parent="UpperCity/Tiles" unique_id=1248834690 instance=ExtResource("23_xhmfh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0.001, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, -1)
 
 [node name="Building22" parent="UpperCity/Tiles" unique_id=954550202 instance=ExtResource("16_n21dk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.001, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 22)
 
 [node name="Building23" parent="UpperCity/Tiles" unique_id=78671419 instance=ExtResource("18_kb58h")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0.001, 28)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0, 28)
 
 [node name="Building24" parent="UpperCity/Tiles" unique_id=1393079330 instance=ExtResource("24_hysmm")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 22, 0.001, -6)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 22, 0, -6)
 
 [node name="Building25" parent="UpperCity/Tiles" unique_id=455365948 instance=ExtResource("10_lkw2e")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0.001, -9)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0, -9)
 
 [node name="Building26" parent="UpperCity/Tiles" unique_id=1818010446 instance=ExtResource("20_db12d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.001, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7)
 
 [node name="Building27" parent="UpperCity/Tiles" unique_id=1275732481 instance=ExtResource("17_mrwcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.001, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -7)
 
 [node name="Building28" parent="UpperCity/Tiles" unique_id=1009559047 instance=ExtResource("10_lkw2e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.001, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
 
 [node name="Building29" parent="UpperCity/Tiles" unique_id=261365533 instance=ExtResource("12_io0ox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.001, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -16)
 
 [node name="Building30" parent="UpperCity/Tiles" unique_id=726776734 instance=ExtResource("11_24ha5")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14, 0.001, -19)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14, 0, -19)
 
 [node name="Building31" parent="UpperCity/Tiles" unique_id=1927299207 instance=ExtResource("10_lkw2e")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28, 0.001, 20)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28, 0, 20)
 
 [node name="Building32" parent="UpperCity/Tiles" unique_id=543355676 instance=ExtResource("10_lkw2e")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 32, 0.001, 20)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 32, 0, 20)
 
 [node name="Building33" parent="UpperCity/Tiles" unique_id=1439589648 instance=ExtResource("10_lkw2e")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 36, 0.001, 20)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 36, 0, 20)
 
 [node name="GraffitiWall" parent="UpperCity/Tiles" unique_id=1181943328 instance=ExtResource("32_xnqiv")]
 transform = Transform3D(-4.3650616e-08, 0, -1, 0, 1, 0, 1, 0, -4.3650616e-08, 14.402721, 0.2919352, 4)
@@ -995,7 +988,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -16)
 
 [node name="Tile130" parent="UpperCity/Tiles" unique_id=1847122119 instance=ExtResource("9_sde3x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -16)
 
 [node name="Tile131" parent="UpperCity/Tiles" unique_id=2013440678 instance=ExtResource("9_sde3x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
@@ -1040,74 +1033,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 36)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 36)
 
 [node name="Building34" parent="UpperCity/Tiles" unique_id=1427869649 instance=ExtResource("10_lkw2e")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 33, 0.001, -1)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 33, 0, -1)
 
 [node name="Building35" parent="UpperCity/Tiles" unique_id=1488918050 instance=ExtResource("18_kb58h")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 38, 0.001, -1)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 38, 0, -1)
 
 [node name="Building36" parent="UpperCity/Tiles" unique_id=1795192108 instance=ExtResource("17_mrwcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0.001, 31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 31)
 
 [node name="Building37" parent="UpperCity/Tiles" unique_id=1094584412 instance=ExtResource("12_io0ox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.001, 36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 36)
 
 [node name="Building38" parent="UpperCity/Tiles" unique_id=2083312765 instance=ExtResource("12_io0ox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.001, 36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 36)
 
 [node name="Building39" parent="UpperCity/Tiles" unique_id=1006756191 instance=ExtResource("14_0unmo")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 43.35959, 0.001, 10)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 43.35959, 0, 10)
 
 [node name="Building40" parent="UpperCity/Tiles" unique_id=954522947 instance=ExtResource("17_mrwcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0.001, 21)
-
-[node name="WeaponStoreSign" parent="UpperCity/Tiles" unique_id=311972509 instance=ExtResource("42_ipkqj")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 54.051743, 1.763484, 9.79027)
-
-[node name="TrashBin" parent="UpperCity/Tiles" unique_id=804859941 instance=ExtResource("44_18vtu")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 11, 0, 8)
-
-[node name="TrashBin5" parent="UpperCity/Tiles" unique_id=293451901 instance=ExtResource("44_18vtu")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 18, 0, 19)
-
-[node name="TrashBin2" parent="UpperCity/Tiles" unique_id=1636995081 instance=ExtResource("44_18vtu")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31, 0, -6)
-
-[node name="TrashBin3" parent="UpperCity/Tiles" unique_id=1144641610 instance=ExtResource("44_18vtu")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 33, 0, 7)
-
-[node name="TrashBin4" parent="UpperCity/Tiles" unique_id=1379255777 instance=ExtResource("44_18vtu")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 42, 0, 7)
-
-[node name="Building41" parent="UpperCity/Tiles" unique_id=1758715619 instance=ExtResource("17_mrwcl")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 33, 0.001, -17)
-
-[node name="Building42" parent="UpperCity/Tiles" unique_id=2058897410 instance=ExtResource("18_kb58h")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 57, 0.001, -17)
-
-[node name="Building43" parent="UpperCity/Tiles" unique_id=2025828006 instance=ExtResource("14_0unmo")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 38, 0.001, -17)
-
-[node name="Building44" parent="UpperCity/Tiles" unique_id=2026290944 instance=ExtResource("10_lkw2e")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 52, 0.001, -17)
-
-[node name="Building45" parent="UpperCity/Tiles" unique_id=165241930 instance=ExtResource("16_n21dk")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 44, 0.001, -17)
-
-[node name="Chimney" type="StaticBody3D" parent="UpperCity/Tiles" unique_id=1786946843]
-
-[node name="ChimneyBasic" type="MeshInstance3D" parent="UpperCity/Tiles/Chimney" unique_id=1092308361]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 5, -16)
-mesh = ExtResource("46_xqdcd")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UpperCity/Tiles/Chimney" unique_id=240379065]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 5, -16)
-shape = SubResource("ConcavePolygonShape3D_xqdcd")
-
-[node name="Building46" parent="UpperCity/Tiles" unique_id=670281569 instance=ExtResource("13_kxvvn")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6, 0.001, -2)
-
-[node name="Building47" parent="UpperCity/Tiles" unique_id=1354728699 instance=ExtResource("16_n21dk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.001, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, 21)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="UpperCity" unique_id=1631436414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
@@ -1119,25 +1063,22 @@ material = SubResource("StandardMaterial3D_aasbp")
 [node name="CSGBox3D" type="CSGBox3D" parent="UpperCity/CSGBox3D" unique_id=586422737]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, -13)
 operation = 2
-size = Vector3(4, 1, 4)
+size = Vector3(3.3, 1, 2.1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="UpperCity/CSGBox3D" unique_id=616153770]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.15000004, 0, -7.4309355e-08)
 operation = 2
-size = Vector3(4, 1, 4)
+size = Vector3(4, 1, 2.1)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="UpperCity/CSGBox3D" unique_id=1889476840]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 29)
 operation = 2
-size = Vector3(4, 1, 4)
+size = Vector3(3.3, 1, 2.1)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="UpperCity/CSGBox3D" unique_id=248268738]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 16)
 operation = 2
-size = Vector3(4, 1, 4)
-
-[node name="Building10" parent="UpperCity" unique_id=2122775036 instance=ExtResource("11_24ha5")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 25, 0.001, -17)
+size = Vector3(3.3, 1, 2.1)
 
 [node name="Metro" type="Node3D" parent="." unique_id=790084936]
 unique_name_in_owner = true
@@ -1376,8 +1317,8 @@ transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0
 shape = SubResource("BoxShape3D_6h067")
 
 [node name="21" type="PathFollow3D" parent="Metro/Path3D" unique_id=879456940]
-transform = Transform3D(0.999957, 0, 0.0023557318, 0, 1, 0, -0.0023557318, 0, 0.999957, 46.949554, 0, 9.311798)
-progress = 114.0
+transform = Transform3D(0.99996114, 0, 0.0010358569, 0, 1, 0, -0.0010358569, 0, 0.99996114, 46.980255, 0, 23.307144)
+progress = 100.0
 script = ExtResource("27_tdek4")
 is_engine = true
 
@@ -1456,167 +1397,8 @@ message = "Enter Train [B]"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_6h067")
 
-[node name="31" type="PathFollow3D" parent="Metro/Path3D" unique_id=999536446]
-transform = Transform3D(-0.00020567166, 0, 0.9999607, 0, 1, 0, -0.9999607, 0, -0.00020567166, 9.446548, 0, -21.998344)
-progress = 198.7
-script = ExtResource("27_tdek4")
-is_engine = true
-
-[node name="TrainElectricSubwayA" type="MeshInstance3D" parent="Metro/Path3D/31" unique_id=1800971103]
-transform = Transform3D(-1.0000015, 0, 0.00020233028, 0, 1, 0, -0.00020233028, 0, -1.0000015, 0, 0, 0)
-mesh = ExtResource("27_i5sn0")
-
-[node name="InteractBody" type="StaticBody3D" parent="Metro/Path3D/31" unique_id=265555968]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Metro/Path3D/31/InteractBody" unique_id=1174525220]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67087364, 0)
-shape = SubResource("BoxShape3D_6h067")
-
-[node name="Area3D" type="Area3D" parent="Metro/Path3D/31" unique_id=575963838]
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Metro/Path3D/31/Area3D" unique_id=1811400833]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.060098648, 0.39208984, -0.956789)
-shape = SubResource("BoxShape3D_fn0uk")
-
-[node name="32" type="PathFollow3D" parent="Metro/Path3D" unique_id=1754833920 node_paths=PackedStringArray("next_car")]
-transform = Transform3D(-0.99998486, 0, -0.0023468737, 0, 1, 0, 0.0023468737, 0, -0.99998486, -9.025917, 0, -8.689616)
-progress = 228.8
-script = ExtResource("27_tdek4")
-next_car = NodePath("../31")
-
-[node name="TrainElectricSubwayB" type="MeshInstance3D" parent="Metro/Path3D/32" unique_id=2024266705]
-transform = Transform3D(-1.0000095, 0, 0.00020233191, 0, 1, 0, -0.00020233191, 0, -1.0000095, 0, 0, 0)
-mesh = ExtResource("29_3smow")
-
-[node name="InteractBody" type="StaticBody3D" parent="Metro/Path3D/32" unique_id=2098835567]
-collision_layer = 3
-script = ExtResource("29_wirxj")
-message = "Enter Train [B]"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Metro/Path3D/32/InteractBody" unique_id=544476665]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67087364, 0)
-shape = SubResource("BoxShape3D_6h067")
-
-[node name="33" type="PathFollow3D" parent="Metro/Path3D" unique_id=1923054278 node_paths=PackedStringArray("next_car")]
-transform = Transform3D(-0.9999832, 0, -0.0023468698, 0, 1, 0, 0.0023468698, 0, -0.9999832, -9.02005, 0, -6.189549)
-progress = 231.3
-script = ExtResource("27_tdek4")
-next_car = NodePath("../32")
-
-[node name="TrainElectricSubwayC" type="MeshInstance3D" parent="Metro/Path3D/33" unique_id=1072618620]
-transform = Transform3D(-1.0000095, 0, 0.0002023319, 0, 1, 0, -0.0002023319, 0, -1.0000095, 0, 0, 0)
-mesh = ExtResource("30_6h067")
-
-[node name="InteractBody" type="StaticBody3D" parent="Metro/Path3D/33" unique_id=2006351348]
-collision_layer = 3
-script = ExtResource("29_wirxj")
-message = "Enter Train [B]"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Metro/Path3D/33/InteractBody" unique_id=666631823]
-transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0.67087364, 0)
-shape = SubResource("BoxShape3D_6h067")
-
-[node name="34" type="PathFollow3D" parent="Metro/Path3D" unique_id=967911180 node_paths=PackedStringArray("next_car")]
-transform = Transform3D(-0.9999832, 0, -0.0023468698, 0, 1, 0, 0.0023468698, 0, -0.9999832, -9.02005, 0, -6.189549)
-progress = 231.3
-script = ExtResource("27_tdek4")
-next_car = NodePath("../33")
-
-[node name="TrainElectricSubwayB" type="MeshInstance3D" parent="Metro/Path3D/34" unique_id=1060944370]
-transform = Transform3D(-1.0000095, 0, 0.00020233191, 0, 1, 0, -0.00020233191, 0, -1.0000095, 0, 0, 0)
-mesh = ExtResource("29_3smow")
-
-[node name="InteractBody" type="StaticBody3D" parent="Metro/Path3D/34" unique_id=885458848]
-collision_layer = 3
-script = ExtResource("29_wirxj")
-message = "Enter Train [B]"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Metro/Path3D/34/InteractBody" unique_id=588170106]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_6h067")
-
-[node name="41" type="PathFollow3D" parent="Metro/Path3D" unique_id=874309340]
-transform = Transform3D(-0.0034186933, 0, -0.9999512, 0, 1, 0, 0.9999512, 0, -0.0034186933, 24.253872, 0, 37.992603)
-progress = 64.18259
-script = ExtResource("27_tdek4")
-is_engine = true
-
-[node name="TrainElectricSubwayA" type="MeshInstance3D" parent="Metro/Path3D/41" unique_id=965523373]
-transform = Transform3D(-1.0000015, 0, 0.00020233028, 0, 1, 0, -0.00020233028, 0, -1.0000015, 0, 0, 0)
-mesh = ExtResource("27_i5sn0")
-
-[node name="InteractBody" type="StaticBody3D" parent="Metro/Path3D/41" unique_id=1360536539]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Metro/Path3D/41/InteractBody" unique_id=276396537]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67087364, 0)
-shape = SubResource("BoxShape3D_6h067")
-
-[node name="Area3D" type="Area3D" parent="Metro/Path3D/41" unique_id=617352094]
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Metro/Path3D/41/Area3D" unique_id=944740553]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.060098648, 0.39208984, -0.956789)
-shape = SubResource("BoxShape3D_fn0uk")
-
-[node name="42" type="PathFollow3D" parent="Metro/Path3D" unique_id=1252785833 node_paths=PackedStringArray("next_car")]
-transform = Transform3D(-0.99998486, 0, -0.0023468737, 0, 1, 0, 0.0023468737, 0, -0.99998486, -9.025917, 0, -8.689616)
-progress = 228.8
-script = ExtResource("27_tdek4")
-next_car = NodePath("../41")
-
-[node name="TrainElectricSubwayB" type="MeshInstance3D" parent="Metro/Path3D/42" unique_id=320335482]
-transform = Transform3D(-1.0000095, 0, 0.00020233191, 0, 1, 0, -0.00020233191, 0, -1.0000095, 0, 0, 0)
-mesh = ExtResource("29_3smow")
-
-[node name="InteractBody" type="StaticBody3D" parent="Metro/Path3D/42" unique_id=2035964803]
-collision_layer = 3
-script = ExtResource("29_wirxj")
-message = "Enter Train [B]"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Metro/Path3D/42/InteractBody" unique_id=679303139]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67087364, 0)
-shape = SubResource("BoxShape3D_6h067")
-
-[node name="43" type="PathFollow3D" parent="Metro/Path3D" unique_id=1295038228 node_paths=PackedStringArray("next_car")]
-transform = Transform3D(-0.9999832, 0, -0.0023468698, 0, 1, 0, 0.0023468698, 0, -0.9999832, -9.02005, 0, -6.189549)
-progress = 231.3
-script = ExtResource("27_tdek4")
-next_car = NodePath("../42")
-
-[node name="TrainElectricSubwayC" type="MeshInstance3D" parent="Metro/Path3D/43" unique_id=953473844]
-transform = Transform3D(-1.0000095, 0, 0.0002023319, 0, 1, 0, -0.0002023319, 0, -1.0000095, 0, 0, 0)
-mesh = ExtResource("30_6h067")
-
-[node name="InteractBody" type="StaticBody3D" parent="Metro/Path3D/43" unique_id=2019402204]
-collision_layer = 3
-script = ExtResource("29_wirxj")
-message = "Enter Train [B]"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Metro/Path3D/43/InteractBody" unique_id=721349276]
-transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0.67087364, 0)
-shape = SubResource("BoxShape3D_6h067")
-
-[node name="44" type="PathFollow3D" parent="Metro/Path3D" unique_id=51015655 node_paths=PackedStringArray("next_car")]
-transform = Transform3D(-0.9999832, 0, -0.0023468698, 0, 1, 0, 0.0023468698, 0, -0.9999832, -9.02005, 0, -6.189549)
-progress = 231.3
-script = ExtResource("27_tdek4")
-next_car = NodePath("../43")
-
-[node name="TrainElectricSubwayB" type="MeshInstance3D" parent="Metro/Path3D/44" unique_id=1501442322]
-transform = Transform3D(-1.0000095, 0, 0.00020233191, 0, 1, 0, -0.00020233191, 0, -1.0000095, 0, 0, 0)
-mesh = ExtResource("29_3smow")
-
-[node name="InteractBody" type="StaticBody3D" parent="Metro/Path3D/44" unique_id=413147734]
-collision_layer = 3
-script = ExtResource("29_wirxj")
-message = "Enter Train [B]"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Metro/Path3D/44/InteractBody" unique_id=1839740235]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_6h067")
+[node name="Metro" type="Node3D" parent="Metro/Path3D" unique_id=1031994831]
+transform = Transform3D(-0.99999046, 0, -0.00020232801, 0, 1, 0, 0.00020232801, 0, -0.99999046, -9.016563, 0, 3.3705785)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Metro/Path3D" unique_id=1483863360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49895096, 2.853488, 0)
@@ -1835,7 +1617,26 @@ external_door = NodePath("../../UpperCity/ExternalDoors/ExternalDoorWeaponStore"
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 236.8889, 0)
 external_door = NodePath("../../UpperCity/ExternalDoors/ExternalDoorPoliceStation")
 
+[node name="WeaponStoreSign" parent="." unique_id=311972509 instance=ExtResource("42_ipkqj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 54.051743, 1.763484, 9.79027)
+
+[node name="TrashBin" parent="." unique_id=804859941 instance=ExtResource("44_18vtu")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 11, 0, 8)
+
+[node name="TrashBin5" parent="." unique_id=293451901 instance=ExtResource("44_18vtu")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 18, 0, 19)
+
+[node name="TrashBin2" parent="." unique_id=1636995081 instance=ExtResource("44_18vtu")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31, 0, -6)
+
+[node name="TrashBin3" parent="." unique_id=1144641610 instance=ExtResource("44_18vtu")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 33, 0, 7)
+
+[node name="TrashBin4" parent="." unique_id=1379255777 instance=ExtResource("44_18vtu")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 42, 0, 7)
+
+[node name="Taxi" parent="." unique_id=1219691236 instance=ExtResource("45_fn0uk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.136151, 0.14653778, 0)
+
 [connection signal="body_entered" from="Metro/Path3D/11/Area3D" to="Metro/Path3D/11" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Metro/Path3D/21/Area3D" to="Metro/Path3D/21" method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="Metro/Path3D/31/Area3D" to="Metro/Path3D/31" method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="Metro/Path3D/41/Area3D" to="Metro/Path3D/41" method="_on_area_3d_body_entered"]

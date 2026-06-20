@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://376wfx8c03ht"]
+
+[ext_resource type="Script" uid="uid://bv6sgxxl0ul8r" path="res://Entities/HandItems/smoke_bomb.gd" id="1_xx85q"]
+[ext_resource type="PackedScene" uid="uid://bp6w7mj7yga8l" path="res://Entities/Effects/smoke_effect.tscn" id="2_d6vlu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pw5qn"]
+radius = 0.1
+height = 0.2
+
+[node name="SmokeBomb" type="Node3D" unique_id=1818906450]
+script = ExtResource("1_xx85q")
+smoke_effect = ExtResource("2_d6vlu")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=2041249186]
+unique_name_in_owner = true
+mesh = SubResource("SphereMesh_pw5qn")
