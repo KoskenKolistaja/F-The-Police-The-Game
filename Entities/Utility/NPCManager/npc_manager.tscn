@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bul6jl1jeh0m8"]
+
+[ext_resource type="Script" uid="uid://c082wdlechau7" path="res://Entities/Utility/NPCManager/NpcManager.gd" id="1_lpcd8"]
+
+[node name="NPCManager" type="Node3D" unique_id=762099164 groups=["npc_manager"]]
+script = ExtResource("1_lpcd8")

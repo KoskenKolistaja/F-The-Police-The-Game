@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ct8kuiyalulv8" path="res://Assets/kenney_mini-characters (1)/Models/OBJ format/Textures/colormap.png" id="2_8fvnx"]
 
 [sub_resource type="Curve" id="Curve_f477v"]
-_data = [Vector2(0, 0.15004706), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.15004706), 0.0, 0.0, 0, 0, Vector2(1, 0.15530896), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_lobkq"]
@@ -13,9 +13,9 @@ curve = SubResource("Curve_f477v")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f477v"]
 velocity_pivot = Vector3(0, 0, 2)
 direction = Vector3(0, 0, 0)
-spread = 13.186
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
+spread = 5.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_lobkq")
 
@@ -29,7 +29,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lobkq"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = SubResource("GradientTexture2D_lobkq")
 billboard_mode = 3
 billboard_keep_scale = true
@@ -82,9 +84,10 @@ script = ExtResource("1_k4ctc")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1888131957]
 unique_name_in_owner = true
-transform = Transform3D(-1.0000002, 0, 8.74228e-08, 0, 1.0000004, 0, -8.74228e-08, 0, -1.0000002, 0, 0.12850344, -0.0460658)
+transform = Transform3D(-1.0000002, 0, 8.74228e-08, 0, 1.0000004, 0, -8.74228e-08, 0, -1.0000002, 0, 0.2323966, -0.09014847)
 emitting = false
-lifetime = 0.5
+amount = 50
+lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_f477v")
 draw_pass_1 = SubResource("QuadMesh_b2vmj")
 

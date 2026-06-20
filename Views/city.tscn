@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://bq5jdu5r4w8ak" path="res://Entities/InteriorBuildings/police_station.tscn" id="42_gugm1"]
 [ext_resource type="PackedScene" uid="uid://2e7idamu2y34" path="res://Entities/InteriorItems/weapon_store_sign.tscn" id="42_ipkqj"]
 [ext_resource type="PackedScene" uid="uid://b3r862ans3gdd" path="res://Entities/InteriorItems/trash_bin.tscn" id="44_18vtu"]
+[ext_resource type="PackedScene" uid="uid://bul6jl1jeh0m8" path="res://Entities/Utility/NPCManager/npc_manager.tscn" id="46_vc7y2"]
 [ext_resource type="ArrayMesh" uid="uid://kxxjy2is8iyr" path="res://Assets/kenney_city-kit-industrial_1.0 (2)/Models/OBJ format/chimney-basic.obj" id="46_xqdcd"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n5q0i"]
@@ -1376,7 +1377,7 @@ transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0
 shape = SubResource("BoxShape3D_6h067")
 
 [node name="21" type="PathFollow3D" parent="Metro/Path3D" unique_id=879456940]
-transform = Transform3D(0.999957, 0, 0.0023557318, 0, 1, 0, -0.0023557318, 0, 0.999957, 46.949554, 0, 9.311798)
+transform = Transform3D(0.9999552, 0, 0.0023557274, 0, 1, 0, -0.0023557274, 0, 0.9999552, 46.949554, 0, 9.311798)
 progress = 114.0
 script = ExtResource("27_tdek4")
 is_engine = true
@@ -1834,6 +1835,12 @@ external_door = NodePath("../../UpperCity/ExternalDoors/ExternalDoorWeaponStore"
 [node name="PoliceStation" parent="InteriorPlaces" unique_id=1927411142 node_paths=PackedStringArray("external_door") instance=ExtResource("42_gugm1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 236.8889, 0)
 external_door = NodePath("../../UpperCity/ExternalDoors/ExternalDoorPoliceStation")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1797617043]
+
+[node name="NPCManager" parent="." unique_id=762099164 node_paths=PackedStringArray("npc_container") instance=ExtResource("46_vc7y2")]
+npc_container = NodePath("../NPCContainer")
+npc_scene = ExtResource("33_28raj")
 
 [connection signal="body_entered" from="Metro/Path3D/11/Area3D" to="Metro/Path3D/11" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Metro/Path3D/21/Area3D" to="Metro/Path3D/21" method="_on_area_3d_body_entered"]

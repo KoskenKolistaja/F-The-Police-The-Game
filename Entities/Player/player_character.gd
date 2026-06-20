@@ -674,3 +674,6 @@ func respawn(place_name : String):
 	global_position = get_tree().get_first_node_in_group(place_name).global_position
 	player_root.money = 0
 	player_root.hud.update_money(player_root.money)
+
+func get_appearance():
+	return appearance_manager.get_appearance()

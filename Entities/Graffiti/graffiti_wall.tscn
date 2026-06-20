@@ -2,31 +2,75 @@
 
 [ext_resource type="Script" uid="uid://chm5wsg1pjtqc" path="res://Interactable.gd" id="1_ar5cd"]
 [ext_resource type="Script" uid="uid://br1iokmf1eudi" path="res://Entities/Graffiti/graffiti_wall.gd" id="1_kj8x5"]
-[ext_resource type="Texture2D" uid="uid://7v02krt5dpkj" path="res://Assets/Textures/Graffiti.png" id="3_t5uu5"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_y80iw"]
-size = Vector3(1, 1, 0.1)
+[ext_resource type="Texture2D" uid="uid://bm8s8xnid1aq6" path="res://Assets/Textures/Graffitis/SampoGraffiti.png" id="3_en5bi"]
+[ext_resource type="Texture2D" uid="uid://b5iko4fmf3dvm" path="res://Assets/Textures/dot_lines.png" id="3_t5uu5"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y80iw"]
 data = PackedVector3Array(-0.5, 0.5, 0.049999997, 0.5, 0.5, 0.049999997, -0.5, -0.5, 0.049999997, 0.5, 0.5, 0.049999997, 0.5, -0.5, 0.049999997, -0.5, -0.5, 0.049999997, 0.5, 0.5, -0.049999997, -0.5, 0.5, -0.049999997, 0.5, -0.5, -0.049999997, -0.5, 0.5, -0.049999997, -0.5, -0.5, -0.049999997, 0.5, -0.5, -0.049999997, 0.5, 0.5, 0.049999997, 0.5, 0.5, -0.049999997, 0.5, -0.5, 0.049999997, 0.5, 0.5, -0.049999997, 0.5, -0.5, -0.049999997, 0.5, -0.5, 0.049999997, -0.5, 0.5, -0.049999997, -0.5, 0.5, 0.049999997, -0.5, -0.5, -0.049999997, -0.5, 0.5, 0.049999997, -0.5, -0.5, 0.049999997, -0.5, -0.5, -0.049999997, 0.5, 0.5, 0.049999997, -0.5, 0.5, 0.049999997, 0.5, 0.5, -0.049999997, -0.5, 0.5, 0.049999997, -0.5, 0.5, -0.049999997, 0.5, 0.5, -0.049999997, -0.5, -0.5, 0.049999997, 0.5, -0.5, 0.049999997, -0.5, -0.5, -0.049999997, 0.5, -0.5, 0.049999997, 0.5, -0.5, -0.049999997, -0.5, -0.5, -0.049999997)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en5bi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8ekt"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
+albedo_texture = ExtResource("3_en5bi")
+
+[sub_resource type="QuadMesh" id="QuadMesh_o0h85"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_r8ekt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en5bi"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.42745098)
 albedo_texture = ExtResource("3_t5uu5")
+texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_kj8x5"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_en5bi")
 
+[sub_resource type="Curve" id="Curve_en5bi"]
+_data = [Vector2(0, 0.2583201), 0.0, 0.0, 0, 0, Vector2(0.18939394, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_r8ekt"]
+curve = SubResource("Curve_en5bi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_en5bi"]
+angle_min = -58.59999
+angle_max = 187.30002
+direction = Vector3(0, 3, 2)
+spread = 42.797
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, -2, 0)
+scale_curve = SubResource("CurveTexture_r8ekt")
+
+[sub_resource type="Gradient" id="Gradient_r8ekt"]
+offsets = PackedFloat32Array(0, 0.1446281)
+colors = PackedColorArray(1, 0.9333334, 0, 1, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o0h85"]
+gradient = SubResource("Gradient_r8ekt")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7xeb"]
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_o0h85")
+emission_enabled = true
+emission = Color(1, 0.9426667, 0.13999999, 1)
+emission_energy_multiplier = 1.11
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_jlg1c"]
+material = SubResource("StandardMaterial3D_e7xeb")
+
 [node name="GraffitiWall" type="Node3D" unique_id=1181943328]
 script = ExtResource("1_kj8x5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1620023508]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-layers = 2
-mesh = SubResource("BoxMesh_y80iw")
 
 [node name="InteractBody" type="StaticBody3D" parent="." unique_id=1370945205]
 unique_name_in_owner = true
@@ -40,8 +84,28 @@ shape = SubResource("ConcavePolygonShape3D_y80iw")
 
 [node name="Graffiti" type="MeshInstance3D" parent="." unique_id=327232670]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.066)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 2
+mesh = SubResource("QuadMesh_o0h85")
+
+[node name="Background" type="MeshInstance3D" parent="." unique_id=2009217323]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 layers = 2
 mesh = SubResource("QuadMesh_kj8x5")
 
-[connection signal="interacted" from="InteractBody" to="." method="on_interacted"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1774327168]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49673653, 0)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_en5bi")
+draw_pass_1 = SubResource("QuadMesh_jlg1c")
+
+[node name="Timer" type="Timer" parent="." unique_id=1221867832]
+unique_name_in_owner = true
+wait_time = 240.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

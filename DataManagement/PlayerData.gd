@@ -1,1 +1,6 @@
 extends Node
+
+
+
+
+var players = {}

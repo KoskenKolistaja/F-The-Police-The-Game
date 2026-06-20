@@ -15,6 +15,10 @@ run/main_scene="uid://b5gx68hnucgwy"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://b2ujnrs3gwfud"
+
 [autoload]
 
 TrafficManager="*uid://delpf64ko0y3r"
@@ -23,6 +27,16 @@ CrimeManager="*uid://b66jimdjq23op"
 GameManager="*uid://54xuembnnsox"
 ClothingData="*uid://b1x5uxsiova4i"
 PlayerData="*uid://blrrjwhy42gx3"
+PoliceIntel="*uid://dj1dwvjkqe47n"
+
+[global_group]
+
+npc_spawn=""
+player=""
+
+[gui]
+
+theme/custom_font="uid://bm8fku5nhmf5v"
 
 [input]
 

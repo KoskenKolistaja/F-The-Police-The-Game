@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://umcosn77gd8c"]
+
+[ext_resource type="Script" uid="uid://bdpxfasd5eaul" path="res://Entities/Utility/PhotoBooth/photo_booth.gd" id="1_ka8nv"]
+[ext_resource type="Script" uid="uid://owbuco6c2ae3" path="res://Entities/Player/appearance_manager.gd" id="1_uppdt"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ka8nv"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_4yviu"]
+sky_material = SubResource("ProceduralSkyMaterial_ka8nv")
+
+[sub_resource type="Environment" id="Environment_fmgv0"]
+background_mode = 2
+sky = SubResource("Sky_4yviu")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_ka8nv"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.56218904, 0.5870647)
+colors = PackedColorArray(0.2629324, 0.26293248, 0.26293245, 1, 0.24115604, 0.24115604, 0.24115604, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4yviu"]
+gradient = SubResource("Gradient_ka8nv")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ka8nv"]
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_4yviu")
+uv1_scale = Vector3(10, 10, 10)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ka8nv"]
+material = SubResource("StandardMaterial3D_ka8nv")
+size = Vector3(5, 5, 5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ka8nv"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmgv0"]
+resource_local_to_scene = true
+transparency = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_4yviu"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4yviu"]
+resource_local_to_scene = true
+transparency = 1
+
+[node name="PhotoBooth" type="Node3D" unique_id=831554778]
+script = ExtResource("1_ka8nv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=828662928]
+environment = SubResource("Environment_fmgv0")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=1379519574]
+unique_name_in_owner = true
+motion_scale = 0.001
+bones/0/name = "root"
+bones/0/parent = -1
+bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bones/0/enabled = true
+bones/0/position = Vector3(0, 0, 0)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/name = "leg-left"
+bones/1/parent = 0
+bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.083570965, 0.17625, -0.02875)
+bones/1/enabled = true
+bones/1/position = Vector3(0.083570965, 0.17625, -0.02875)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/name = "leg-right"
+bones/2/parent = 0
+bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083570965, 0.17625, -0.02875)
+bones/2/enabled = true
+bones/2/position = Vector3(-0.083570965, 0.17625, -0.02875)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/name = "torso"
+bones/3/parent = 0
+bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4438228e-15, 0.17625, -0.02875)
+bones/3/enabled = true
+bones/3/position = Vector3(-1.4438228e-15, 0.17625, -0.02875)
+bones/3/rotation = Quaternion(-0.033204693, 0, 0, 0.99944866)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/name = "arm-left"
+bones/4/parent = 3
+bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09989677, 0.1115, 0.0115)
+bones/4/enabled = true
+bones/4/position = Vector3(0.09989677, 0.1115, 0.0115)
+bones/4/rotation = Quaternion(0, 0, -0.30021155, 0.9538727)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/name = "arm-right"
+bones/5/parent = 3
+bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09989677, 0.1115, 0.0115)
+bones/5/enabled = true
+bones/5/position = Vector3(-0.09989677, 0.1115, 0.0115)
+bones/5/rotation = Quaternion(0, 0, 0.30021155, 0.9538727)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/name = "head"
+bones/6/parent = 3
+bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8196893e-09, 0.167, 0.026388777)
+bones/6/enabled = true
+bones/6/position = Vector3(1.8196893e-09, 0.167, 0.026388777)
+bones/6/rotation = Quaternion(0, 0.033204693, 0, 0.99944866)
+bones/6/scale = Vector3(1, 1, 1)
+script = ExtResource("1_uppdt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skeleton3D" unique_id=60154388]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=63194732]
+transform = Transform3D(0.7897805, 0, -0.6133897, 0, 1, 0, 0.6133897, 0, 0.7897805, -1.1918769, 0.14956671, 1.7630463)
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1861266330]
+unique_name_in_owner = true
+transparent_bg = true
+size = Vector2i(128, 128)
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1284107506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42152452, 0.7030816)
+projection = 1
+size = 0.9
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1737874784]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=814210459]
+visible = false
+mesh = SubResource("BoxMesh_ka8nv")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=102147488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.1772366, 0.33184946)
+
+[node name="Example" type="MeshInstance3D" parent="Camera3D" unique_id=186462292]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5792637, 0, -1.47126)
+mesh = SubResource("QuadMesh_ka8nv")
+surface_material_override/0 = SubResource("StandardMaterial3D_fmgv0")
+
+[node name="Example2" type="MeshInstance3D" parent="Camera3D" unique_id=730295826]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5412067, 0, -1.47126)
+mesh = SubResource("QuadMesh_4yviu")
+surface_material_override/0 = SubResource("StandardMaterial3D_4yviu")

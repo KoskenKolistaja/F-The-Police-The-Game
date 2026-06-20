@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dbdhvactopmtc"]
+
+[ext_resource type="Script" uid="uid://cur2wowcejs2i" path="res://Entities/Utility/ScreenDestroyer/screen_destroyer.gd" id="1_arbud"]
+
+[node name="ScreenDestroyer" type="VisibleOnScreenNotifier3D" unique_id=2088227736]
+script = ExtResource("1_arbud")
+
+[node name="Timer" type="Timer" parent="." unique_id=909901226]
+unique_name_in_owner = true
+wait_time = 30.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

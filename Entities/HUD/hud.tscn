@@ -80,6 +80,7 @@ offset_top = 50.0
 offset_right = -54.0
 offset_bottom = 73.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
 text = "10000$"
 
 [node name="SuspicionBar" type="ProgressBar" parent="." unique_id=552803364]
@@ -107,3 +108,53 @@ nine_patch_stretch = true
 texture_under = ExtResource("2_u0j7x")
 texture_progress = ExtResource("2_u0j7x")
 tint_under = Color(0.34509805, 0.34509805, 0.34509805, 0.25882354)
+
+[node name="Panel2" type="Panel" parent="." unique_id=953101678]
+custom_minimum_size = Vector2(600, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -174.0
+offset_right = 300.0
+offset_bottom = 326.00012
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2" unique_id=1014670485]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel2/MarginContainer" unique_id=914096531]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer/ScrollContainer" unique_id=1246675099]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel3" type="Panel" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer" unique_id=110815003]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer/Panel3" unique_id=2038797073]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer/Panel3/HBoxContainer" unique_id=174358938]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2

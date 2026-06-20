@@ -27,3 +27,12 @@ var icons = {
 	"mp5" : preload("res://Assets/Textures/Icons/mp5.png"),
 	"smoke_bomb" : preload("res://Assets/Textures/Icons/stun-grenade.png"),
 }
+
+
+var graffitis = [
+	preload("res://Assets/Textures/Graffitis/Graffiti.png"),
+	preload("res://Assets/Textures/Graffitis/SampoGraffiti.png"),
+	preload("res://Assets/Textures/Graffitis/DonSimeon.png"),
+	preload("res://Assets/Textures/Graffitis/DonSimeon2.png"),
+	preload("res://Assets/Textures/Graffitis/Veljet.png")
+]

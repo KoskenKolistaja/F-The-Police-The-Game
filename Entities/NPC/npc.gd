@@ -273,9 +273,11 @@ func investigate(investigator: Node3D) -> void:
 			CrimeManager.bank_crime(robber, CrimeManager.robbery_score)
 			robbery_reported = true
 			robber.add_robbery_suspicion()
+			investigator.set_money(200)
 		if killer and not murder_reported:
 			CrimeManager.bank_crime(killer, CrimeManager.kill_score)
 			murder_reported = true
+			investigator.set_money(500)
 		
 		investigation_countdown = 0.0
 		killer = null
@@ -379,6 +381,10 @@ func die(exp_killer = null) -> void:
 	%TearParticles2.emitting = false
 	%ArrestHandcuffs.hide()
 	%RobbedIcon.hide()
+	
+	var manager = get_tree().get_first_node_in_group("npc_manager")
+	manager.npc_died()
+	%ScreenDestroyer.activate()
 
 
 func deactivate() -> void:
