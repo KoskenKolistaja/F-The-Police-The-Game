@@ -42,7 +42,7 @@ var graffitis = [
 
 var character_icons = {
 	"police_chief" : preload("res://Assets/Textures/Characters/PoliceChief.png"),
-	"mafia_boss" : preload("res://Assets/Textures/Characters/MafiaBoss.png")
+	"mafia_boss" : preload("res://Assets/Textures/Characters/MafiaBoss.png"),
 }
 
 var first_names = [
