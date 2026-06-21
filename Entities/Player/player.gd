@@ -92,3 +92,8 @@ func exit_vehicle(exp_position):
 func set_money(amount):
 	money += amount
 	hud.update_money(money)
+
+
+
+func get_player_driver():
+	return %PlayerDriver

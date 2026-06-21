@@ -433,6 +433,8 @@ func set_police():
 		if c is BoneAttachment3D:
 			continue
 		c.hide()
+	add_to_group("police")
+	
 	appearance_manager.set_police()
 	inventory.push_back("camera")
 	inventory.push_back("pistol")
@@ -691,7 +693,14 @@ func inventory_last_item():
 
 func randomize_appearance():
 	appearance_manager.randomize_appearance()
-
+	var dic = {}
+	dic["head"] = null
+	dic["body"] = null
+	dic["time"] = Time.get_ticks_msec()
+	
+	var whole_dic = {player_id : dic}
+	
+	PoliceIntel.add_appearance_intel(whole_dic)
 
 func set_armor(on : bool):
 	armor = on
@@ -719,3 +728,37 @@ func get_appearance_intel():
 
 func _on_city_part_checker_area_entered(area):
 	player_root.hud.show_city_text(area.get_text())
+
+func get_closest_city_part_name() -> String:
+	var indicators = get_tree().get_nodes_in_group("city_part_indicator")
+
+	var player_reference = self
+
+	if not active:
+		player_reference = player_root.get_player_driver()
+
+	var closest = get_closest_from(indicators, player_reference)
+
+	if closest == null:
+		return ""
+
+	return closest.get_text()
+
+
+func get_closest_from(list, player_reference):
+	if list.is_empty():
+		return null
+
+	var closest = null
+	var closest_distance_sq = INF
+
+	for item in list:
+		var distance_sq = player_reference.global_position.distance_squared_to(
+			item.global_position
+		)
+
+		if distance_sq < closest_distance_sq:
+			closest_distance_sq = distance_sq
+			closest = item
+
+	return closest

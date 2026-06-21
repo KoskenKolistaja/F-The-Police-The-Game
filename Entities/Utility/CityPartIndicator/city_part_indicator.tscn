@@ -5,7 +5,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_f54pa"]
 radius = 10.0
 
-[node name="CityPartIndicator" type="Area3D" unique_id=2133300565]
+[node name="CityPartIndicator" type="Area3D" unique_id=2133300565 groups=["city_part_indicator"]]
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("1_7y0au")

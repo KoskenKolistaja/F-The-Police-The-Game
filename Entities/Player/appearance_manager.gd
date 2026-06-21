@@ -118,3 +118,7 @@ func get_appearance() -> Dictionary:
 	dic["body"] = body_name
 	dic["time"] = Time.get_ticks_msec()
 	return dic
+
+
+func get_head_name() -> String:
+	return head_name

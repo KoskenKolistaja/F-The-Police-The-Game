@@ -2800,28 +2800,28 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4438228e-15, 0.17625, -0.02875)
 bones/3/enabled = true
 bones/3/position = Vector3(-1.4438228e-15, 0.17625, -0.02875)
-bones/3/rotation = Quaternion(0.0095389355, 0, 0, 0.9999546)
+bones/3/rotation = Quaternion(0.030439097, 0, 0, 0.99953663)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "arm-left"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09989677, 0.1115, 0.0115)
 bones/4/enabled = true
 bones/4/position = Vector3(0.09989677, 0.1115, 0.0115)
-bones/4/rotation = Quaternion(0, 0, -0.35609147, 0.93445116)
+bones/4/rotation = Quaternion(0, 0, -0.31020662, 0.9506692)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "arm-right"
 bones/5/parent = 3
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09989677, 0.1115, 0.0115)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.09989677, 0.1115, 0.0115)
-bones/5/rotation = Quaternion(0, 0, 0.35609147, 0.93445116)
+bones/5/rotation = Quaternion(0, 0, 0.31020662, 0.9506692)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "head"
 bones/6/parent = 3
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8196893e-09, 0.167, 0.026388777)
 bones/6/enabled = true
 bones/6/position = Vector3(1.8196893e-09, 0.167, 0.026388777)
-bones/6/rotation = Quaternion(0, -0.0095389355, 0, 0.9999546)
+bones/6/rotation = Quaternion(0, -0.030439097, 0, 0.99953663)
 bones/6/scale = Vector3(1, 1, 1)
 script = ExtResource("2_lobkq")
 
@@ -2832,7 +2832,7 @@ tip_bone = &"arm-right"
 target_node = NodePath("../../../HandTarget")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/character-male-a/Skeleton3D" unique_id=2100685627]
-transform = Transform3D(0.74639773, -0.6655001, 0, 0.665379, 0.7462619, -0.019077003, 0.012695747, 0.014239032, 0.999818, -0.09989677, 0.28751034, -0.015125007)
+transform = Transform3D(0.80754375, -0.58980775, 0, 0.5887148, 0.8060473, -0.060849987, 0.035889793, 0.049139027, 0.99814695, -0.09989677, 0.2868436, -0.010486538)
 bone_name = "arm-right"
 bone_idx = 5
 

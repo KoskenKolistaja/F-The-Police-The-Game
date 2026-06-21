@@ -15,8 +15,23 @@ var sprinting: bool = false
 var robbed_recently: bool = false
 var money_sw: bool = false
 
-var character_name = null
+var character_name = "someone"
 
+var appearance_intel_texts = [
+	"I didn't see where they went, but I got a good look at them.",
+	"I lost sight of them, but I can tell you what they looked like.",
+	"They disappeared before I could follow them, but I remember their appearance.",
+	"I couldn't see which way they went, though I noticed what they looked like.",
+	"They got away from me, but I can describe them."
+]
+
+var position_intel_texts = [
+	"I didn't quite catch what they looked like, but I saw them running toward %s. They're probably somewhere around there.",
+	"I only caught a glimpse of them, but they headed toward %s.",
+	"I couldn't make out their face, but I saw them flee in the direction of %s.",
+	"I didn't get a good look at them, though they were definitely heading toward %s.",
+	"I lost track of their appearance, but the last time I saw them they were running toward %s."
+]
 
 
 
@@ -293,8 +308,45 @@ func investigate(investigator: Node3D) -> void:
 			murder_reported = true
 			investigator.set_money(500)
 		
-		if cached_intel:
-			PoliceIntel.add_appearance_intel(cached_intel)
+		var choice = randf()
+		
+		if cached_intel and not dead:
+			if choice < 0.5:
+				PoliceIntel.add_appearance_intel(cached_intel)
+				send_hud_message(
+					investigator,
+					appearance_intel_texts.pick_random()
+				)
+				cached_intel = null
+			else:
+				var criminal
+				if killer:
+					criminal = killer
+				else:
+					criminal = robber
+				if is_instance_valid(criminal):
+					send_hud_message(
+						investigator,
+						position_intel_texts.pick_random() % criminal.get_closest_city_part_name()
+					)
+					cached_intel = null
+			
+		
+		if not QuestManager.active_tasks.is_empty():
+			var key = QuestManager.active_tasks.keys().pick_random()
+			
+			if not QuestManager.active_tasks[key]["police_informed"]:
+				var dic = QuestManager.active_tasks[key]
+				dic["police_informed"] = true
+				var target_npc = dic["target_node"]
+				target_npc.mark_for_police()
+				var char_dic = {
+				"text" : "Listen up. It has come to our attention that the mafia is planning to eliminate %s. We can't let that happen. We have marked them for you." % target_npc.character_name,
+				"icon_name" : "police_chief",
+				"name" : "Chief Amanda",
+				}
+				investigator.get_hud().add_character_message(char_dic)
+		
 		
 		investigation_countdown = 0.0
 		killer = null
@@ -305,6 +357,15 @@ func investigate(investigator: Node3D) -> void:
 		%SpeechPlayer.stop()
 		%InvestigationParticles.emitting = false
 		investigation_need *= randf_range(2.0, 5.0)
+
+func send_hud_message(player, message_text: String) -> void:
+	var dic = {
+		"text" : message_text,
+		"icon_name" : appearance_manager.get_head_name(),
+		"name" : character_name,
+	}
+	player.get_hud().add_character_message(dic)
+
 
 func dispense_money_tick() -> void:
 	if money <= 0 or not active:
@@ -405,6 +466,18 @@ func die(exp_killer = null) -> void:
 		
 		hitman.get_hud().add_character_message(dic)
 	
+	var the_police = get_tree().get_nodes_in_group("police")
+	
+	for p in the_police:
+		var dic = {
+			"text" : "All units be advised. We have a 10-32 at %s. Someone has been shot." % get_closest_city_part_name(),
+			"icon_name" : "police_chief",
+			"name" : "Chief Amanda",
+		}
+		
+		p.get_hud().add_character_message(dic)
+	
+	
 	dead = true
 	died.emit()
 	deactivate()
@@ -415,6 +488,7 @@ func die(exp_killer = null) -> void:
 	%RobbedIcon.hide()
 	
 	%MafiaMark.hide()
+	%PoliceMark.hide()
 	
 	var manager = get_tree().get_first_node_in_group("npc_manager")
 	manager.npc_died()
@@ -442,3 +516,36 @@ func collision_on():
 func mark_for_mafia(player):
 	%MafiaMark.set_layer_mask_value(player.get_private_visual_layer(),true)
 	hitman = player
+
+func mark_for_police():
+	%PoliceMark.show()
+
+func get_closest_city_part_name() -> String:
+	var indicators = get_tree().get_nodes_in_group("city_part_indicator")
+	
+	
+	var closest = get_closest_from(indicators, self)
+	
+	if closest == null:
+		return ""
+	
+	return closest.get_text()
+
+
+func get_closest_from(list, player_reference):
+	if list.is_empty():
+		return null
+
+	var closest = null
+	var closest_distance_sq = INF
+
+	for item in list:
+		var distance_sq = player_reference.global_position.distance_squared_to(
+			item.global_position
+		)
+
+		if distance_sq < closest_distance_sq:
+			closest_distance_sq = distance_sq
+			closest = item
+
+	return closest

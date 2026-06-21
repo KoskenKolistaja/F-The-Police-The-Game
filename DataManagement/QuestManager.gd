@@ -1,6 +1,6 @@
 extends Node
 
-# Dictionary structure: { player_id: { "target_node": Node, "status": String } }
+# Dictionary structure: { player_id: { "target_node": Node, "status": String, "police_informed: false } }
 var active_tasks: Dictionary = {}
 
 func get_quest_status(player_id) -> String:
@@ -25,7 +25,8 @@ func get_quest_status(player_id) -> String:
 func assign_procedural_murder(player_id, target_npc: Node) -> void:
 	active_tasks[player_id] = {
 		"target_node": target_npc,
-		"status": "active"
+		"status": "active",
+		"police_informed" : false,
 	}
 	
 	# CONNECT_ONE_SHOT ensures the signal disconnects automatically when it fires

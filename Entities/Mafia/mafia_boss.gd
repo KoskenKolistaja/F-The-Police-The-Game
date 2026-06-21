@@ -42,6 +42,21 @@ func start_procedural_quest(player) -> void:
 	var text = intro_templates.pick_random() % target_name
 	
 	send_hud_message(player, text)
+	
+	await get_tree().create_timer(5.0).timeout
+	target_npc.mark_for_police()
+	
+	var the_police = get_tree().get_nodes_in_group("police")
+	
+	var dic = {
+		"text" : "Listen up. It has come to our attention that the mafia is planning to eliminate %s. We can't let that happen. We have marked them for you." % target_npc.character_name,
+		"icon_name" : "police_chief",
+		"name" : "Chief Amanda",
+	}
+	
+	for p in the_police:
+		p.get_hud().add_character_message(dic)
+
 
 func notify_sequence(player) -> void:
 	send_hud_message(player, "What are you waiting for? You have a job to do!")

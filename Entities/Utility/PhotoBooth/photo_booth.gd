@@ -2,6 +2,10 @@ extends Node3D
 
 
 func get_photo(appearance_dic : Dictionary) -> ImageTexture:
+	
+	if appearance_dic["head"] == null:
+		return null
+	
 	%Skeleton3D.setup_appearance(appearance_dic)
 
 	# Wait a frame if the viewport needs time to render

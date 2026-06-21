@@ -41,6 +41,13 @@ func use2():
 				
 				PoliceIntel.add_appearance_intel(p.get_appearance_intel())
 				
+				var dic = {
+					"text" : "Thats it. We have incriminating evidence. Go arrest them!",
+					"icon_name" : "police_chief",
+					"name" : "Chief Amanda",
+				}
+				player_character.get_hud().add_character_message(dic)
+				
 				CrimeManager.criminalize(p, caught_score)
 				print("Camera: Successfully snapped photo evidence of ", p.name)
 				

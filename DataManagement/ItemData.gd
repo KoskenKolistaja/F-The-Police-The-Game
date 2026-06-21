@@ -43,6 +43,17 @@ var graffitis = [
 var character_icons = {
 	"police_chief" : preload("res://Assets/Textures/Characters/PoliceChief.png"),
 	"mafia_boss" : preload("res://Assets/Textures/Characters/MafiaBoss.png"),
+	"head1" : preload("res://Assets/Textures/Characters/head1.png"),
+	"head2" : preload("res://Assets/Textures/Characters/head2.png"),
+	"head3" : preload("res://Assets/Textures/Characters/head3.png"),
+	"head4" : preload("res://Assets/Textures/Characters/head4.png"),
+	"head5" : preload("res://Assets/Textures/Characters/head5.png"),
+	"head6" : preload("res://Assets/Textures/Characters/head6.png"),
+	"head7" : preload("res://Assets/Textures/Characters/head7.png"),
+	"head8" : preload("res://Assets/Textures/Characters/head8.png"),
+	"head9" : preload("res://Assets/Textures/Characters/head9.png"),
+	"head10" : preload("res://Assets/Textures/Characters/head10.png"),
+	"head11" : preload("res://Assets/Textures/Characters/head11.png"),
 }
 
 var first_names = [

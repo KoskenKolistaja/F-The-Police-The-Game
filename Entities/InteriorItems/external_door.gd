@@ -10,8 +10,21 @@ func on_interacted(player,hand_item):
 	
 	if is_mafia:
 		if CrimeManager.get_total_crime_score(player) < -150:
+			var dic = {
+				"text" : "Go back to your momma!",
+				"icon_name" : "mafia_boss",
+				"name" : "???",
+			}
+			player.get_hud().add_character_message(dic)
 			return
-	
+		if player.is_police():
+			var dic = {
+				"text" : "Get out of here!",
+				"icon_name" : "mafia_boss",
+				"name" : "???",
+			}
+			player.get_hud().add_character_message(dic)
+			return
 	
 	var new_position
 	if is_backdoor:

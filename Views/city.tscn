@@ -1421,7 +1421,7 @@ transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0
 shape = SubResource("BoxShape3D_6h067")
 
 [node name="21" type="PathFollow3D" parent="Metro/Path3D" unique_id=879456940]
-transform = Transform3D(0.99995136, 0, 0.0023557183, 0, 1, 0, -0.0023557183, 0, 0.99995136, 46.949554, 0, 9.311798)
+transform = Transform3D(0.99995106, 0, 0.0023557176, 0, 1, 0, -0.0023557176, 0, 0.99995106, 46.949554, 0, 9.311798)
 progress = 114.0
 script = ExtResource("27_tdek4")
 is_engine = true
@@ -1945,8 +1945,8 @@ script = ExtResource("47_ftn0q")
 [node name="CityAreaIndicators" type="Node3D" parent="." unique_id=1742400476]
 
 [node name="CityPartIndicator" parent="CityAreaIndicators" unique_id=2133300565 instance=ExtResource("47_vc7y2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 24)
-text = "Princeton"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6430516, 0, 24)
+text = "Princeton Circle"
 
 [node name="CityPartIndicator2" parent="CityAreaIndicators" unique_id=807621923 instance=ExtResource("47_vc7y2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 29)
@@ -1963,6 +1963,22 @@ text = "Downtown"
 [node name="CityPartIndicator5" parent="CityAreaIndicators" unique_id=997580810 instance=ExtResource("47_vc7y2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, 16)
 text = "Industrial Subway Station"
+
+[node name="CityPartIndicator6" parent="CityAreaIndicators" unique_id=1799086738 instance=ExtResource("47_vc7y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.86425, 0.07999897, 31.166523)
+text = "Darkland Docks"
+
+[node name="CityPartIndicator7" parent="CityAreaIndicators" unique_id=1562271040 instance=ExtResource("47_vc7y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.985285, 0.07999992, -12.518768)
+text = "Blumlein Subway station"
+
+[node name="CityPartIndicator8" parent="CityAreaIndicators" unique_id=191676379 instance=ExtResource("47_vc7y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.530018, 0.07999802, -15.787993)
+text = "Crossland"
+
+[node name="CityPartIndicator" parent="." unique_id=796431069 instance=ExtResource("47_vc7y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.794815, 0.03999901, -12.411686)
+text = "Suburbia"
 
 [connection signal="body_entered" from="Metro/Path3D/11/Area3D" to="Metro/Path3D/11" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Metro/Path3D/21/Area3D" to="Metro/Path3D/21" method="_on_area_3d_body_entered"]

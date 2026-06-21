@@ -101,6 +101,7 @@ p1_open_info={
 3d_render/layer_11="Player2"
 3d_render/layer_12="Player3"
 3d_render/layer_13="Player4"
+3d_render/layer_15="Police Layer"
 3d_physics/layer_1="Base"
 3d_physics/layer_2="Interact"
 3d_physics/layer_4="NPC Miscellaneous"
