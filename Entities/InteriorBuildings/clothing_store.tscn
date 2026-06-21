@@ -57,6 +57,7 @@ icon = ExtResource("3_lhypg")
 price = 100
 item_name = "clothes"
 functional = true
+only_civilian = true
 
 [node name="BuyMachine2" parent="." unique_id=1822535263 instance=ExtResource("2_dt7v0")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -1)
@@ -64,6 +65,7 @@ icon = ExtResource("3_lhypg")
 price = 100
 item_name = "clothes"
 functional = true
+only_civilian = true
 
 [node name="CashRegister" parent="." unique_id=994580265 instance=ExtResource("4_vucrm")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, -1)

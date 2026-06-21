@@ -14,7 +14,16 @@ var money : int = 100
 
 
 
+
 func _ready():
+	
+	if ItemData.police_id == player_id:
+		is_police = true
+		await get_tree().physics_frame
+		ItemData.police_id = wrapi(ItemData.police_id + 1, 0, 2)
+	
+	
+	
 	if is_police:
 		%PlayerCharacter.set_police()
 		%FollowerCamera.set_police()
@@ -25,6 +34,8 @@ func _ready():
 	
 	PlayerData.players[player_id] = self
 	%PlayerCharacter.global_position = global_position
+	
+	print("Root print: " + str(is_police) + " Player id: " + str(player_id))
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):

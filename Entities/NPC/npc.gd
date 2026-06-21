@@ -220,11 +220,12 @@ func set_visual_layers(height):
 
 
 func interact(player: Node3D, hand_item) -> void:
-	match hand_item:
-		"handcuffs":
-			if "confirmed_criminal" in player and player.confirmed_criminal:
-				get_arrested()
-				player.remove_item_from_inventory("handcuffs")
+	#match hand_item:
+		#"handcuffs":
+			#if "confirmed_criminal" in player and player.confirmed_criminal:
+				#get_arrested()
+				#player.remove_item_from_inventory("handcuffs")
+	pass
 
 func being_robbed(robber_node: Node3D) -> void:
 	if not active:

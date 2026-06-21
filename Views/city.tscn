@@ -1377,7 +1377,7 @@ transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0
 shape = SubResource("BoxShape3D_6h067")
 
 [node name="21" type="PathFollow3D" parent="Metro/Path3D" unique_id=879456940]
-transform = Transform3D(0.9999545, 0, 0.0023557257, 0, 1, 0, -0.0023557257, 0, 0.9999545, 46.949554, 0, 9.311798)
+transform = Transform3D(0.99995416, 0, 0.002355725, 0, 1, 0, -0.002355725, 0, 0.99995416, 46.949554, 0, 9.311798)
 progress = 114.0
 script = ExtResource("27_tdek4")
 is_engine = true
@@ -1663,18 +1663,18 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="PlayerViews/HBoxContainer/SubViewportContainer2" unique_id=1810652265]
 handle_input_locally = false
 msaa_3d = 3
-size = Vector2i(574, 648)
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Player" parent="PlayerViews/HBoxContainer/SubViewportContainer2/SubViewport" unique_id=579485344 node_paths=PackedStringArray("hud") instance=ExtResource("22_n5q0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.719997, 0.040000916, -10.558754)
 player_id = 1
-is_police = true
 hud = NodePath("../HUD")
 
 [node name="HUD" parent="PlayerViews/HBoxContainer/SubViewportContainer2/SubViewport" unique_id=1946661568 instance=ExtResource("36_75a3m")]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerViews/HBoxContainer" unique_id=49007055]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
@@ -1682,14 +1682,21 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="PlayerViews/HBoxContainer/SubViewportContainer" unique_id=1880372955]
 handle_input_locally = false
 msaa_3d = 3
-size = Vector2i(574, 648)
-render_target_update_mode = 4
+size = Vector2i(2, 2)
+render_target_update_mode = 0
 
-[node name="HUD" parent="PlayerViews/HBoxContainer/SubViewportContainer/SubViewport" unique_id=2024257735 instance=ExtResource("36_75a3m")]
+[node name="Window" type="Window" parent="PlayerViews/HBoxContainer" unique_id=133270244]
+screen_space_aa = 2
+oversampling_override = 1.0
+mode = 3
+position = Vector2i(0, 36)
+content_scale_mode = 1
 
-[node name="Player" parent="PlayerViews/HBoxContainer/SubViewportContainer/SubViewport" unique_id=492139098 node_paths=PackedStringArray("hud") instance=ExtResource("22_n5q0i")]
+[node name="Player" parent="PlayerViews/HBoxContainer/Window" unique_id=492139098 node_paths=PackedStringArray("hud") instance=ExtResource("22_n5q0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -8)
 hud = NodePath("../HUD")
+
+[node name="HUD" parent="PlayerViews/HBoxContainer/Window" unique_id=2024257735 instance=ExtResource("36_75a3m")]
 
 [node name="WorldBoundaries" type="StaticBody3D" parent="." unique_id=405556212]
 collision_layer = 8192

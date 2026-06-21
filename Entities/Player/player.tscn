@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://yxlsmc2nsmwk" path="res://Entities/Utility/FollowerCamera/follower_camera.gd" id="3_tekja"]
 [ext_resource type="Script" uid="uid://cx55lsprfdfes" path="res://Entities/Player/player_driver.gd" id="5_5c2io"]
 
-[node name="Player" type="Node3D" unique_id=492139098]
+[node name="Player" type="Node3D" unique_id=492139098 groups=["player_root"]]
 script = ExtResource("1_3uyv8")
 
 [node name="FollowerCamera" parent="." unique_id=1289591327 node_paths=PackedStringArray("target", "player_root") instance=ExtResource("2_lu8i8")]

@@ -1,7 +1,9 @@
 extends Node
 
 
-
+var police_id := 0
+var first_is_police = true
+var second_is_police = false
 
 
 

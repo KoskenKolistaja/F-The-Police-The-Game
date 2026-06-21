@@ -57,6 +57,11 @@ func _ready():
 	city = get_tree().get_first_node_in_group("city")
 	%HandIK.start()
 	set_inventory_item(0)
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	print("Character print: " + str(is_police()))
+	
 	if player_root.is_police:
 		set_police()
 	else:
@@ -66,6 +71,9 @@ func _ready():
 	player_id = player_root.player_id
 	
 	PlayerData.players[player_id] = self
+	
+	if player_root.is_police:
+		global_position = get_tree().get_first_node_in_group("police_station").global_position
 
 func _physics_process(delta):
 	if not active:
@@ -432,8 +440,12 @@ func set_police():
 func set_civilian():
 	appearance_manager.randomize_appearance()
 	inventory.push_back("graffiti_bottle")
+	inventory.push_back("smoke_bomb")
 
 func die(exp_killer = null):
+	
+	if not active:
+		return
 	
 	if armor:
 		armor = false
@@ -447,6 +459,10 @@ func die(exp_killer = null):
 		await get_tree().create_timer(10).timeout
 		activate()
 		respawn("police_station")
+	else:
+		GameManager.arrest(self)
+
+
 
 func remove_item_from_inventory(item_name):
 	inventory.erase(item_name)
@@ -489,7 +505,8 @@ func is_suspicious() -> bool:
 
 ## Received Call: Triggered if another player takes a photo of this character
 func interact(player, incoming_hand_item):
-	if incoming_hand_item == "handcuffs" and confirmed_criminal:
+	if incoming_hand_item == "handcuffs" and confirmed_criminal and active:
+		print("INTERACT FUNCTION CALLED")
 		get_arrested()
 		player.remove_item_from_inventory("handcuffs")
 		

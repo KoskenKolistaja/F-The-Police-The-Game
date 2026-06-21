@@ -7,6 +7,7 @@ extends StaticBody3D
 @export var functional : bool = false
 
 @export var only_police : bool = false
+@export var only_civilian : bool = false
 
 func _ready():
 	if %IconScreen and icon:
@@ -23,6 +24,11 @@ func on_interacted(player,hand_item):
 	if only_police:
 		if not player.is_police():
 			return
+	
+	if only_civilian:
+		if player.is_police():
+			return
+	
 	if functional:
 		function(player)
 		return
