@@ -11,7 +11,7 @@ var player_driving = false
 
 var private_visual_layer = null
 
-var money : int = 10000
+var money : int = 100
 
 
 

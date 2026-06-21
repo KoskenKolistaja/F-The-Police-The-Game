@@ -339,13 +339,14 @@ func investigate(investigator: Node3D) -> void:
 				var dic = QuestManager.active_tasks[key]
 				dic["police_informed"] = true
 				var target_npc = dic["target_node"]
-				target_npc.mark_for_police()
-				var char_dic = {
-				"text" : "Listen up. It has come to our attention that the mafia is planning to eliminate %s. We can't let that happen. We have marked them for you." % target_npc.character_name,
-				"icon_name" : "police_chief",
-				"name" : "Chief Amanda",
-				}
-				investigator.get_hud().add_character_message(char_dic)
+				if is_instance_valid(target_npc):
+					target_npc.mark_for_police()
+					var char_dic = {
+					"text" : "Listen up. It has come to our attention that the mafia is planning to eliminate %s. We can't let that happen. We have marked them for you." % target_npc.character_name,
+					"icon_name" : "police_chief",
+					"name" : "Chief Amanda",
+					}
+					investigator.get_hud().add_character_message(char_dic)
 		
 		
 		investigation_countdown = 0.0
