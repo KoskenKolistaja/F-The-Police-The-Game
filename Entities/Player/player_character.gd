@@ -74,6 +74,9 @@ func _ready():
 	
 	if player_root.is_police:
 		global_position = get_tree().get_first_node_in_group("police_station").global_position
+	
+	%InfoLabel.set_layer_mask_value(player_root.private_visual_layer,true)
+
 
 func _physics_process(delta):
 	if not active:
@@ -567,8 +570,9 @@ func get_pending_crime_score() -> int:
 
 func criminalize():
 	confirmed_criminal = true
-	print("juu")
 	player_root.hud.update_criminal_score(CrimeManager.get_total_crime_score(self))
+	
+
 
 func is_police():
 	return player_root.is_police
@@ -654,6 +658,10 @@ func is_stick_up_moving_forward(curve: Curve3D) -> bool:
 	return dot_result <= 0.0
 
 func hand_item_illegality():
+	
+	if CrimeManager.get_total_crime_score(self) > 10:
+		return 0
+	
 	if hand_item == "pistol":
 		return 10
 	elif hand_item == "graffiti_bottle":
@@ -695,9 +703,19 @@ func respawn(place_name : String):
 	player_root.money = 0
 	player_root.hud.update_money(player_root.money)
 
+func get_hud():
+	return player_root.hud
+
+func get_private_visual_layer():
+	return player_root.private_visual_layer
+
 func get_appearance():
 	return appearance_manager.get_appearance()
 
 
 func get_appearance_intel():
 	return {player_id : appearance_manager.get_appearance()}
+
+
+func _on_city_part_checker_area_entered(area):
+	player_root.hud.show_city_text(area.get_text())

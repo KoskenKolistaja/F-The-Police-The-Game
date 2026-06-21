@@ -153,15 +153,18 @@ shape = SubResource("BoxShape3D_dsxxm")
 [node name="Metro" type="Node3D" parent="." unique_id=786846428]
 
 [node name="Cube_001" type="MeshInstance3D" parent="Metro" unique_id=1331510408]
+layers = 524289
 material_override = SubResource("StandardMaterial3D_5dt3n")
 mesh = SubResource("ArrayMesh_st28b")
 
 [node name="Cube_003" type="MeshInstance3D" parent="Metro" unique_id=1719151884]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8, -2, 0)
+layers = 524289
 material_override = SubResource("StandardMaterial3D_gyhqf")
 mesh = SubResource("ArrayMesh_qux5v")
 
 [node name="Metrowalkway" type="MeshInstance3D" parent="Metro" unique_id=334080913]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, -2, 0)
+layers = 524289
 material_override = SubResource("StandardMaterial3D_an5sm")
 mesh = SubResource("ArrayMesh_ijjcv")

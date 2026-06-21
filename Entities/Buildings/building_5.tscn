@@ -10,7 +10,7 @@ data = PackedVector3Array(-0.51, 1.4318999, -0.11, -0.45999998, 1.7680999, -0.11
 
 [node name="BuildingN" type="MeshInstance3D" parent="." unique_id=1764435182]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-layers = 2
+layers = 524290
 mesh = ExtResource("1_p3kci")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1186218068]

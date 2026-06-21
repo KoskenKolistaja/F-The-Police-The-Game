@@ -4,5 +4,5 @@
 
 [node name="Camera" type="Camera3D" parent="." unique_id=1526511073]
 unique_name_in_owner = true
-transform = Transform3D(0.6838839, 0.59135634, -0.42731786, 0, 0.58569515, 0.8105315, 0.72959095, -0.5543095, 0.40054753, -3.1301236, 5.9371815, 2.9340293)
-cull_mask = 1032187
+transform = Transform3D(1, 0, 0, 0, 0.58637244, 0.8100416, 0, -0.81004167, 0.5863724, 0, 5.937, 3.934)
+cull_mask = 500219

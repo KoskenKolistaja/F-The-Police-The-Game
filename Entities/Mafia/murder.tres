@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://dwyk333emy14l"]
+
+[ext_resource type="Script" uid="uid://oao78wmeaek0" path="res://Entities/Mafia/quest_data.gd" id="1_oohx0"]
+
+[resource]
+script = ExtResource("1_oohx0")
+metadata/_custom_type_script = "uid://oao78wmeaek0"

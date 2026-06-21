@@ -2754,6 +2754,8 @@ transitions = ["walk", "idle", SubResource("AnimationNodeStateMachineTransition_
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lobkq"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_b2vmj"]
+
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=718966718 node_paths=PackedStringArray("appearance_manager") groups=["player"]]
 collision_layer = 35
 floor_snap_length = 0.2
@@ -2798,28 +2800,28 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4438228e-15, 0.17625, -0.02875)
 bones/3/enabled = true
 bones/3/position = Vector3(-1.4438228e-15, 0.17625, -0.02875)
-bones/3/rotation = Quaternion(-0.02599955, 0, 0, 0.99966204)
+bones/3/rotation = Quaternion(0.0095389355, 0, 0, 0.9999546)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "arm-left"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09989677, 0.1115, 0.0115)
 bones/4/enabled = true
 bones/4/position = Vector3(0.09989677, 0.1115, 0.0115)
-bones/4/rotation = Quaternion(0, 0, -0.30952334, 0.95089185)
+bones/4/rotation = Quaternion(0, 0, -0.35609147, 0.93445116)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "arm-right"
 bones/5/parent = 3
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09989677, 0.1115, 0.0115)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.09989677, 0.1115, 0.0115)
-bones/5/rotation = Quaternion(0, 0, 0.30952334, 0.95089185)
+bones/5/rotation = Quaternion(0, 0, 0.35609147, 0.93445116)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "head"
 bones/6/parent = 3
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8196893e-09, 0.167, 0.026388777)
 bones/6/enabled = true
 bones/6/position = Vector3(1.8196893e-09, 0.167, 0.026388777)
-bones/6/rotation = Quaternion(0, 0.02599955, 0, 0.99966204)
+bones/6/rotation = Quaternion(0, -0.0095389355, 0, 0.9999546)
 bones/6/scale = Vector3(1, 1, 1)
 script = ExtResource("2_lobkq")
 
@@ -2830,7 +2832,7 @@ tip_bone = &"arm-right"
 target_node = NodePath("../../../HandTarget")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/character-male-a/Skeleton3D" unique_id=2100685627]
-transform = Transform3D(0.8083906, -0.5886465, 0, 0.58785063, 0.8072977, 0.051981516, -0.030598735, -0.04202137, 0.99864805, -0.09989677, 0.28819704, -0.023061488)
+transform = Transform3D(0.74639773, -0.6655001, 0, 0.665379, 0.7462619, -0.019077003, 0.012695747, 0.014239032, 0.999818, -0.09989677, 0.28751034, -0.015125007)
 bone_name = "arm-right"
 bone_idx = 5
 
@@ -2864,6 +2866,7 @@ collision_mask = 2
 [node name="InfoLabel" type="Label3D" parent="Visual/InteractRay" unique_id=659816538]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6098494, 0)
+layers = 0
 billboard = 1
 text = "Enter Train [E]"
 
@@ -2878,3 +2881,14 @@ collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Visual/ClimbObjectArea" unique_id=115443733]
 shape = SubResource("SphereShape3D_lobkq")
+
+[node name="CityPartChecker" type="Area3D" parent="Visual" unique_id=1899533678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52794904, 0)
+visible = false
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Visual/CityPartChecker" unique_id=1273816332]
+shape = SubResource("SphereShape3D_b2vmj")
+
+[connection signal="area_entered" from="Visual/CityPartChecker" to="." method="_on_city_part_checker_area_entered"]

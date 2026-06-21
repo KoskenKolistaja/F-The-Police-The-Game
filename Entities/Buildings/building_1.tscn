@@ -23,7 +23,7 @@ height = 4.623535
 
 [node name="BuildingA" type="MeshInstance3D" parent="." unique_id=61403067]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-layers = 2
+layers = 524290
 mesh = ExtResource("1_o3s6c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1873696172]

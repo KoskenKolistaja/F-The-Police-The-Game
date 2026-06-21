@@ -44,8 +44,11 @@
 [ext_resource type="PackedScene" uid="uid://bq5jdu5r4w8ak" path="res://Entities/InteriorBuildings/police_station.tscn" id="42_gugm1"]
 [ext_resource type="PackedScene" uid="uid://2e7idamu2y34" path="res://Entities/InteriorItems/weapon_store_sign.tscn" id="42_ipkqj"]
 [ext_resource type="PackedScene" uid="uid://b3r862ans3gdd" path="res://Entities/InteriorItems/trash_bin.tscn" id="44_18vtu"]
+[ext_resource type="PackedScene" uid="uid://cc0f2fj50dr8o" path="res://Entities/InteriorBuildings/dock.tscn" id="46_ftn0q"]
 [ext_resource type="PackedScene" uid="uid://bul6jl1jeh0m8" path="res://Entities/Utility/NPCManager/npc_manager.tscn" id="46_vc7y2"]
 [ext_resource type="ArrayMesh" uid="uid://kxxjy2is8iyr" path="res://Assets/kenney_city-kit-industrial_1.0 (2)/Models/OBJ format/chimney-basic.obj" id="46_xqdcd"]
+[ext_resource type="Script" uid="uid://bbbhspjcji2ii" path="res://Entities/Utility/Minimap/mini_map_indicators.gd" id="47_ftn0q"]
+[ext_resource type="PackedScene" uid="uid://bxyo76aqeost4" path="res://Entities/Utility/CityPartIndicator/city_part_indicator.tscn" id="47_vc7y2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n5q0i"]
 panorama = ExtResource("1_aasbp")
@@ -185,11 +188,17 @@ environment = SubResource("Environment_kohus")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Ambient" unique_id=1425791634]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_cull_mask = 4294443007
 shadow_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ambient" unique_id=1312210002]
 libraries/ = SubResource("AnimationLibrary_vc7y2")
 autoplay = &"DayNight"
+
+[node name="MinimapLight" type="DirectionalLight3D" parent="Ambient" unique_id=756264108]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 28, 0)
+layers = 524288
+light_cull_mask = 4294443008
 
 [node name="UpperCity" type="Node3D" parent="." unique_id=1051076250]
 unique_name_in_owner = true
@@ -207,6 +216,41 @@ building = NodePath("../../../InteriorPlaces/AmmunitionStore")
 [node name="ExternalDoorPoliceStation" parent="UpperCity/ExternalDoors" unique_id=317537455 node_paths=PackedStringArray("building") instance=ExtResource("3_x2i16")]
 transform = Transform3D(-1, 0, 2.6226832e-07, 0, 1, 0, -2.6226832e-07, 0, -1, 37.147526, 0, 6.85229)
 building = NodePath("../../../InteriorPlaces/PoliceStation")
+
+[node name="ExternalDoorClothinStoreBackdoor" parent="UpperCity/ExternalDoors" unique_id=234714041 node_paths=PackedStringArray("building") instance=ExtResource("3_x2i16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4.4821453)
+building = NodePath("../../../InteriorPlaces/ClothingStore")
+is_backdoor = true
+
+[node name="ExternalDoorPoliceStationBackdoor" parent="UpperCity/ExternalDoors" unique_id=1461890585 node_paths=PackedStringArray("building") instance=ExtResource("3_x2i16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.898834, 0.07999992, 13.676866)
+building = NodePath("../../../InteriorPlaces/PoliceStation")
+is_backdoor = true
+
+[node name="ExternalDoorWeaponStoreBackdoor" parent="UpperCity/ExternalDoors" unique_id=631166953 node_paths=PackedStringArray("building") instance=ExtResource("3_x2i16")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 57.382896, 0.07999992, 11.459414)
+building = NodePath("../../../InteriorPlaces/AmmunitionStore")
+is_backdoor = true
+
+[node name="ClothingStore2Door" parent="UpperCity/ExternalDoors" unique_id=1921938063 node_paths=PackedStringArray("building") instance=ExtResource("3_x2i16")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.0045314, 0.07999992, 17.93459)
+building = NodePath("../../../InteriorPlaces/ClothingStore2")
+
+[node name="ClothingStore2Backdoor" parent="UpperCity/ExternalDoors" unique_id=631055421 node_paths=PackedStringArray("building") instance=ExtResource("3_x2i16")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.7184272, 0.07999992, 17.93459)
+building = NodePath("../../../InteriorPlaces/ClothingStore2")
+is_backdoor = true
+
+[node name="DockDoor" parent="UpperCity/ExternalDoors" unique_id=1968061622 node_paths=PackedStringArray("building") instance=ExtResource("3_x2i16")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 53.761566, 0.07999992, 32.18385)
+building = NodePath("../../../InteriorPlaces/Dock")
+is_mafia = true
+
+[node name="DockBackdoor" parent="UpperCity/ExternalDoors" unique_id=724017133 node_paths=PackedStringArray("building") instance=ExtResource("3_x2i16")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 53.761566, 0.07999992, 25.885654)
+building = NodePath("../../../InteriorPlaces/Dock")
+is_backdoor = true
+is_mafia = true
 
 [node name="Tiles" type="Node3D" parent="UpperCity" unique_id=2060542552]
 
@@ -795,7 +839,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0.001, 10)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0.001, -6)
 
 [node name="Building4" parent="UpperCity/Tiles" unique_id=2062680784 instance=ExtResource("17_mrwcl")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 55, 0.001, -3)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 55, 0.001, 2)
 
 [node name="Building7" parent="UpperCity/Tiles" unique_id=817925991 instance=ExtResource("14_0unmo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0.001, -8)
@@ -912,7 +956,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.001, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.001, 4)
 
 [node name="Building18" parent="UpperCity/Tiles" unique_id=876546267 instance=ExtResource("18_kb58h")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23, 0.001, 8)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23, 0.001, 8.918639)
 
 [node name="Building19" parent="UpperCity/Tiles" unique_id=1806878349 instance=ExtResource("10_lkw2e")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 16, 0.001, 12)
@@ -1110,9 +1154,12 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6, 
 [node name="Building47" parent="UpperCity/Tiles" unique_id=1354728699 instance=ExtResource("16_n21dk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.001, 9)
 
+[node name="Building48" parent="UpperCity/Tiles" unique_id=2122775036 instance=ExtResource("11_24ha5")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 25, 0.001, -17)
+
 [node name="CSGBox3D" type="CSGBox3D" parent="UpperCity" unique_id=1631436414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-layers = 2
+layers = 524290
 use_collision = true
 size = Vector3(1000, 0.23, 1000)
 material = SubResource("StandardMaterial3D_aasbp")
@@ -1136,9 +1183,6 @@ size = Vector3(4, 1, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 16)
 operation = 2
 size = Vector3(4, 1, 4)
-
-[node name="Building10" parent="UpperCity" unique_id=2122775036 instance=ExtResource("11_24ha5")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 25, 0.001, -17)
 
 [node name="Metro" type="Node3D" parent="." unique_id=790084936]
 unique_name_in_owner = true
@@ -1377,7 +1421,7 @@ transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0
 shape = SubResource("BoxShape3D_6h067")
 
 [node name="21" type="PathFollow3D" parent="Metro/Path3D" unique_id=879456940]
-transform = Transform3D(0.99995416, 0, 0.002355725, 0, 1, 0, -0.002355725, 0, 0.99995416, 46.949554, 0, 9.311798)
+transform = Transform3D(0.99995136, 0, 0.0023557183, 0, 1, 0, -0.0023557183, 0, 0.99995136, 46.949554, 0, 9.311798)
 progress = 114.0
 script = ExtResource("27_tdek4")
 is_engine = true
@@ -1867,9 +1911,15 @@ shape = SubResource("BoxShape3D_3efjq")
 
 [node name="InteriorPlaces" type="Node3D" parent="." unique_id=1912720011]
 
-[node name="ClothingStore" parent="InteriorPlaces" unique_id=253064372 node_paths=PackedStringArray("external_door") instance=ExtResource("39_tj85k")]
+[node name="ClothingStore" parent="InteriorPlaces" unique_id=253064372 node_paths=PackedStringArray("external_door", "external_door2") instance=ExtResource("39_tj85k")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 166.32791, 0)
 external_door = NodePath("../../UpperCity/ExternalDoors/ExternalDoorClothingStore")
+external_door2 = NodePath("../../UpperCity/ExternalDoors/ExternalDoorClothinStoreBackdoor")
+
+[node name="ClothingStore2" parent="InteriorPlaces" unique_id=711563910 node_paths=PackedStringArray("external_door", "external_door2") instance=ExtResource("39_tj85k")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 166.32791, 84.75679)
+external_door = NodePath("../../UpperCity/ExternalDoors/ClothingStore2Door")
+external_door2 = NodePath("../../UpperCity/ExternalDoors/ClothingStore2Backdoor")
 
 [node name="AmmunitionStore" parent="InteriorPlaces" unique_id=1759724581 node_paths=PackedStringArray("external_door") instance=ExtResource("41_kppq4")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 92, 166, 0)
@@ -1879,11 +1929,40 @@ external_door = NodePath("../../UpperCity/ExternalDoors/ExternalDoorWeaponStore"
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 236.8889, 0)
 external_door = NodePath("../../UpperCity/ExternalDoors/ExternalDoorPoliceStation")
 
+[node name="Dock" parent="InteriorPlaces" unique_id=768167281 instance=ExtResource("46_ftn0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.755974, 91.363464, 0)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1797617043]
 
 [node name="NPCManager" parent="." unique_id=762099164 node_paths=PackedStringArray("npc_container") instance=ExtResource("46_vc7y2")]
 npc_container = NodePath("../NPCContainer")
 npc_scene = ExtResource("33_28raj")
+
+[node name="MiniMapIndicators" type="Node3D" parent="." unique_id=463620961 groups=["minimap_items"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 29)
+script = ExtResource("47_ftn0q")
+
+[node name="CityAreaIndicators" type="Node3D" parent="." unique_id=1742400476]
+
+[node name="CityPartIndicator" parent="CityAreaIndicators" unique_id=2133300565 instance=ExtResource("47_vc7y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 24)
+text = "Princeton"
+
+[node name="CityPartIndicator2" parent="CityAreaIndicators" unique_id=807621923 instance=ExtResource("47_vc7y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 29)
+text = "Eastia Station"
+
+[node name="CityPartIndicator3" parent="CityAreaIndicators" unique_id=540593765 instance=ExtResource("47_vc7y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+text = "Pilot Memorial Station"
+
+[node name="CityPartIndicator4" parent="CityAreaIndicators" unique_id=548007543 instance=ExtResource("47_vc7y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 4)
+text = "Downtown"
+
+[node name="CityPartIndicator5" parent="CityAreaIndicators" unique_id=997580810 instance=ExtResource("47_vc7y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, 16)
+text = "Industrial Subway Station"
 
 [connection signal="body_entered" from="Metro/Path3D/11/Area3D" to="Metro/Path3D/11" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Metro/Path3D/21/Area3D" to="Metro/Path3D/21" method="_on_area_3d_body_entered"]

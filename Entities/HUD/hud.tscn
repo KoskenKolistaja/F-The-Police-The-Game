@@ -5,6 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://bkldqg07uq48w" path="res://Assets/Textures/Stars.png" id="2_u0j7x"]
 [ext_resource type="Script" uid="uid://dpgs3fahrdj47" path="res://Entities/HUD/criminals.gd" id="4_a328l"]
 [ext_resource type="PackedScene" uid="uid://dkp0dpdvmeufa" path="res://Entities/HUD/player_panel.tscn" id="5_f32or"]
+[ext_resource type="FontFile" uid="uid://c6bq3ja7b824v" path="res://Assets/Fonts/Canterbury.ttf" id="6_pmoji"]
+[ext_resource type="Script" uid="uid://bkkk6som1eia0" path="res://Entities/HUD/city_name_label.gd" id="7_otdhv"]
+[ext_resource type="Texture2D" uid="uid://bec61wls4dxff" path="res://Assets/Textures/Characters/MafiaBoss.png" id="8_no5ck"]
+[ext_resource type="Script" uid="uid://cq7i7m1eq22pg" path="res://Entities/HUD/character_info.gd" id="8_y6y1s"]
+[ext_resource type="Script" uid="uid://eafwxim17cyt" path="res://Entities/HUD/type_writer_label.gd" id="10_n8llm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkm0g"]
 bg_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
@@ -17,7 +22,65 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="HUD" type="Control" unique_id=2024257735]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f32or"]
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="Animation" id="Animation_no5ck"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_otdhv"]
+resource_name = "show_item"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 3.5666666, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_no5ck"]
+_data = {
+&"RESET": SubResource("Animation_no5ck"),
+&"show_item": SubResource("Animation_otdhv")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otdhv"]
+bg_color = Color(0.4731037, 0.80450845, 0.8776704, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.6603492, 0.8234667, 0.9533461, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no5ck"]
+bg_color = Color(0.33620003, 0.6345433, 0.82, 0.6862745)
+
+[node name="HUD" type="Control" unique_id=2024257735 node_paths=PackedStringArray("minimap_camera_pivot")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +88,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u0j7x")
+minimap_camera_pivot = NodePath("MiniMap/SubViewportContainer/SubViewport/MinimapCameraPivot")
 
 [node name="Panel" type="Panel" parent="." unique_id=1644655875]
 custom_minimum_size = Vector2(100, 100)
@@ -149,3 +213,154 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="MiniMap" type="Panel" parent="." unique_id=2137377414]
+clip_contents = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -339.0
+offset_right = 332.0
+offset_bottom = -39.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f32or")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MiniMap" unique_id=1130414964]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="MiniMap/SubViewportContainer" unique_id=925628350]
+handle_input_locally = false
+size = Vector2i(300, 300)
+render_target_update_mode = 4
+
+[node name="MinimapCameraPivot" type="Node3D" parent="MiniMap/SubViewportContainer/SubViewport" unique_id=17210191]
+unique_name_in_owner = true
+
+[node name="MiniMapCamera" type="Camera3D" parent="MiniMap/SubViewportContainer/SubViewport/MinimapCameraPivot" unique_id=1946439263]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 43.301643, 0)
+cull_mask = 524288
+projection = 1
+size = 34.059
+
+[node name="CityNameLabel" type="Label" parent="." unique_id=426293173]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -98.0
+offset_right = -112.0
+offset_bottom = -81.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_pmoji")
+theme_override_font_sizes/font_size = 64
+text = "Blue Lane Subway Station"
+script = ExtResource("7_otdhv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CityNameLabel" unique_id=456953763]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_no5ck")
+
+[node name="CharacterInfo" type="Panel" parent="." unique_id=370878379]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(700, 200)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -347.0
+offset_right = 350.0
+offset_bottom = -147.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_otdhv")
+script = ExtResource("8_y6y1s")
+
+[node name="MarginContainer" type="MarginContainer" parent="CharacterInfo" unique_id=787946210]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CharacterInfo/MarginContainer" unique_id=1324788911]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CharacterInfo/MarginContainer/HBoxContainer" unique_id=339287515]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+
+[node name="CharacterIcon" type="TextureRect" parent="CharacterInfo/MarginContainer/HBoxContainer/Panel" unique_id=1049598862]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_no5ck")
+expand_mode = 1
+
+[node name="TypeWriterLabel" type="Label" parent="CharacterInfo/MarginContainer/HBoxContainer" unique_id=282309920]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("10_n8llm")
+
+[node name="Control" type="Control" parent="CharacterInfo/MarginContainer" unique_id=1907060300]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CharacterInfo/MarginContainer/Control" unique_id=1817711882]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = -28.245
+offset_right = 75.0
+offset_bottom = 11.754999
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_no5ck")
+
+[node name="CharacterName" type="Label" parent="CharacterInfo/MarginContainer/Control/Panel" unique_id=485053890]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Derek"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="animation_finished" from="CityNameLabel/AnimationPlayer" to="CityNameLabel" method="_on_animation_player_animation_finished"]

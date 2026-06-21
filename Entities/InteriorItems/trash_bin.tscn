@@ -16,6 +16,7 @@ script = ExtResource("1_25bna")
 
 [node name="HopperRound" type="MeshInstance3D" parent="." unique_id=1019184563]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+layers = 524289
 mesh = ExtResource("2_h83u7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1005759835]

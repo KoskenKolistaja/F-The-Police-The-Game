@@ -1,14 +1,25 @@
 extends StaticBody3D
 
 @export var building : Node3D
-
-
+@export var is_backdoor : bool
+@export var is_mafia : bool
 
 func on_interacted(player,hand_item):
 	if hand_item:
 		return
 	
-	var new_position = building.get_door_position()
+	if is_mafia:
+		if CrimeManager.get_total_crime_score(player) < -150:
+			return
+	
+	
+	var new_position
+	if is_backdoor:
+		new_position = building.get_backdoor_position()
+	else:
+		new_position = building.get_door_position()
+	
+	
 	player.global_position = new_position
 
 
@@ -16,7 +27,10 @@ func on_interacted(player,hand_item):
 
 func _ready():
 	await get_tree().physics_frame
-	building.external_door = self
+	if is_backdoor:
+		building.external_door2 = self
+	else:
+		building.external_door = self
 
 func get_door_position():
 	return %DoorPosition.global_position

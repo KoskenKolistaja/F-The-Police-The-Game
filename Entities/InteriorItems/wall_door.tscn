@@ -14,6 +14,7 @@ size = Vector3(1, 2.640442, 0.52282715)
 script = ExtResource("1_wmxih")
 
 [node name="WallDoorRotate" type="MeshInstance3D" parent="." unique_id=1271456635]
+layers = 524289
 mesh = ExtResource("1_7yjhb")
 
 [node name="DoorPosition" type="Node3D" parent="." unique_id=975498329]

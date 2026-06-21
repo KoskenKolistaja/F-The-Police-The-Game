@@ -15,6 +15,11 @@ var sprinting: bool = false
 var robbed_recently: bool = false
 var money_sw: bool = false
 
+var character_name = null
+
+
+
+
 var money: int = 100
 var killer: Node3D = null
 var robber: Node3D = null
@@ -41,6 +46,13 @@ var height_layer = 0
 
 var is_ragdoll = false
 
+var cached_intel = null
+
+var hitman = false
+
+signal died
+
+
 func _ready() -> void:
 	randomize()
 	randomize_appearance()
@@ -48,7 +60,7 @@ func _ready() -> void:
 	money *= randi_range(1, 5)
 	investigation_need *= randf_range(2.0, 5.0)
 	
-
+	character_name = ItemData.first_names.pick_random()
 
 
 func _physics_process(delta: float) -> void:
@@ -281,6 +293,9 @@ func investigate(investigator: Node3D) -> void:
 			murder_reported = true
 			investigator.set_money(500)
 		
+		if cached_intel:
+			PoliceIntel.add_appearance_intel(cached_intel)
+		
 		investigation_countdown = 0.0
 		killer = null
 		robber = null
@@ -311,12 +326,14 @@ func start_fleeing_from_robbery(robber_node) -> void:
 	rob_tick_timer = 0.0
 	robbed_recently = true
 	money = 0 
-	PoliceIntel.add_appearance_intel(robber_node.get_appearance_intel())
 	
 	%RobbedIcon.show()
 	%RobberyTimer.start()
 	if is_instance_valid(robber_node):
 		flee_away_from(robber_node)
+	
+	cached_intel = robber_node.get_appearance_intel()
+	
 
 func flee_away_from(robber_node: Node3D) -> void:
 	if not active or not is_instance_valid(robber_node): 
@@ -365,7 +382,7 @@ func rotate_towards(direction: Vector3) -> void:
 
 
 func get_message() -> String:
-	return "Arrest"
+	return "NPC"
 
 func get_arrested() -> void:
 	active = false
@@ -377,13 +394,27 @@ func die(exp_killer = null) -> void:
 		killer = exp_killer
 		if exp_killer.has_method("add_murder_suspicion"):
 			exp_killer.add_murder_suspicion()
+			
+	
+	if hitman:
+		var dic = {
+			"text" : "Good job! See us and you will get rewarded.",
+			"icon_name" : "mafia_boss",
+			"name" : "Derek",
+		}
+		
+		hitman.get_hud().add_character_message(dic)
+	
 	dead = true
+	died.emit()
 	deactivate()
 	state_machine.travel("die")
 	%TearParticles.emitting = false
 	%TearParticles2.emitting = false
 	%ArrestHandcuffs.hide()
 	%RobbedIcon.hide()
+	
+	%MafiaMark.hide()
 	
 	var manager = get_tree().get_first_node_in_group("npc_manager")
 	manager.npc_died()
@@ -406,3 +437,8 @@ func collision_off():
 
 func collision_on():
 	set_collision_layer_value(1, true)
+
+
+func mark_for_mafia(player):
+	%MafiaMark.set_layer_mask_value(player.get_private_visual_layer(),true)
+	hitman = player

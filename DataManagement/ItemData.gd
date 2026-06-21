@@ -38,3 +38,52 @@ var graffitis = [
 	preload("res://Assets/Textures/Graffitis/DonSimeon2.png"),
 	preload("res://Assets/Textures/Graffitis/Veljet.png")
 ]
+
+
+var character_icons = {
+	"police_chief" : preload("res://Assets/Textures/Characters/PoliceChief.png"),
+	"mafia_boss" : preload("res://Assets/Textures/Characters/MafiaBoss.png")
+}
+
+var first_names = [
+	"James",
+	"John",
+	"Robert",
+	"Michael",
+	"William",
+	"David",
+	"Richard",
+	"Joseph",
+	"Thomas",
+	"Charles",
+	"Daniel",
+	"Matthew",
+	"Anthony",
+	"Mark",
+	"Donald",
+	"Steven",
+	"Paul",
+	"Andrew",
+	"Joshua",
+	"Kenneth",
+	"Emily",
+	"Olivia",
+	"Emma",
+	"Sophia",
+	"Charlotte",
+	"Amelia",
+	"Isabella",
+	"Mia",
+	"Evelyn",
+	"Harper",
+	"Abigail",
+	"Ella",
+	"Scarlett",
+	"Grace",
+	"Chloe",
+	"Lily",
+	"Hannah",
+	"Zoe",
+	"Nora",
+	"Aurora"
+]

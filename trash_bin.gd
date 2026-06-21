@@ -8,6 +8,10 @@ var enter_position = null
 func on_interacted(player,hand_item):
 	if cannot_enter:
 		return
+	
+	if hand_item:
+		return
+	
 	if not player_inside:
 		player_inside = player
 		enter_position = player.global_position

@@ -37,7 +37,6 @@ func bank_crime(player: Node3D, amount: int) -> void:
 		evidence_bank[player] = 0
 		
 	
-	_update_total_score(player,amount)
 	evidence_bank[player] += amount
 	print("---- EVIDENCE BANKED FOR ", player.name, " | Unverified Total: ", evidence_bank[player], " ----")
 
@@ -98,3 +97,7 @@ func reset_crime_score_for(player: Node3D) -> void:
 	if active_warrants.has(player):
 		active_warrants.erase(player)
 	print("---- CRIME RECORD RESET FOR: ", player.name, " ----")
+
+
+func is_allowed_to_kill(player : Node3D):
+	pass

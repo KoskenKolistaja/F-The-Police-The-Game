@@ -14,4 +14,4 @@ func get_door_position():
 func on_interacted(player,hand_item):
 	if hand_item:
 		return
-	building.teleport_player(player)
+	building.teleport_player(player,self)

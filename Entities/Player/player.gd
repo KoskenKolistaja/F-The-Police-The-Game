@@ -9,8 +9,9 @@ var player_driving = false
 
 @export var hud : Control
 
+var private_visual_layer = null
 
-var money : int = 100
+var money : int = 10000
 
 
 
@@ -22,6 +23,7 @@ func _ready():
 		await get_tree().physics_frame
 		ItemData.police_id = wrapi(ItemData.police_id + 1, 0, 2)
 	
+	private_visual_layer = player_id + 10
 	
 	
 	if is_police:
@@ -36,6 +38,9 @@ func _ready():
 	%PlayerCharacter.global_position = global_position
 	
 	print("Root print: " + str(is_police) + " Player id: " + str(player_id))
+	
+	%FollowerCamera.set_private_layer(private_visual_layer)
+
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -49,8 +54,17 @@ func _physics_process(delta):
 	else:
 		%FollowerCamera.show_upper()
 	
-	if Input.is_action_just_pressed("open_info"):
+	if Input.is_action_just_pressed("p%s_open_info" % player_id):
 		hud.open_police_info()
+	
+	if player_driving:
+		hud.move_minimap_camera(%PlayerDriver.global_position)
+	else:
+		hud.move_minimap_camera(%PlayerCharacter.global_position)
+	
+	hud.rotate_minimap_camera(%FollowerCamera.rotation_degrees.y)
+	var minimap_items = get_tree().get_first_node_in_group("minimap_items")
+	minimap_items.set_icon_rotation(%FollowerCamera.rotation_degrees.y)
 
 func set_player_driver(vehicle : Node3D,separate_camera_target = null):
 	%PlayerCharacter.hide()

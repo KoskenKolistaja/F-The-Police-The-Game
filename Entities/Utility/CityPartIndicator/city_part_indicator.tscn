@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bxyo76aqeost4"]
+
+[ext_resource type="Script" uid="uid://dc4he44v5h6e8" path="res://Entities/Utility/CityPartIndicator/city_part_indicator.gd" id="1_7y0au"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f54pa"]
+radius = 10.0
+
+[node name="CityPartIndicator" type="Area3D" unique_id=2133300565]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_7y0au")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=589024442]
+shape = SubResource("SphereShape3D_f54pa")

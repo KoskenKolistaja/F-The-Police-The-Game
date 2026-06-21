@@ -38,6 +38,9 @@ func use2():
 				# CONVICT: Send the red-handed score to the Global Singleton.
 				# This automatically triggers player.confirmed_criminal = true 
 				# and unlocks all their archived 'banked' crimes!
+				
+				PoliceIntel.add_appearance_intel(p.get_appearance_intel())
+				
 				CrimeManager.criminalize(p, caught_score)
 				print("Camera: Successfully snapped photo evidence of ", p.name)
 				

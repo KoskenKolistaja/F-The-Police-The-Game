@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://l70avunfxrtg" path="res://Entities/InteriorItems/wall_door.tscn" id="8_f0onk"]
 [ext_resource type="PackedScene" uid="uid://1h8ags7lvm5x" path="res://Entities/InteriorItems/wall.tscn" id="9_bx420"]
 [ext_resource type="PackedScene" uid="uid://cnvkhocj3vy2c" path="res://Entities/InteriorItems/wall_corner.tscn" id="10_aomoh"]
+[ext_resource type="PackedScene" uid="uid://bxyo76aqeost4" path="res://Entities/Utility/CityPartIndicator/city_part_indicator.tscn" id="11_56ka0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ct6va"]
 cull_mode = 2
@@ -21,9 +22,10 @@ material = SubResource("StandardMaterial3D_ct6va")
 radius = 25.0
 height = 50.0
 
-[node name="WeaponStore" type="Node3D" unique_id=253064372 node_paths=PackedStringArray("internal_door")]
+[node name="WeaponStore" type="Node3D" unique_id=253064372 node_paths=PackedStringArray("internal_door", "internal_door2")]
 script = ExtResource("1_mg7nm")
 internal_door = NodePath("WallDoor")
+internal_door2 = NodePath("WallDoor2")
 
 [node name="Floor" parent="." unique_id=1894400298 instance=ExtResource("2_56ka0")]
 
@@ -67,7 +69,7 @@ price = 50
 item_name = "smoke_bomb"
 
 [node name="CashRegister" parent="." unique_id=994580265 instance=ExtResource("5_uhbpv")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, -1)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, 1)
 
 [node name="Floor10" parent="." unique_id=1107880388 instance=ExtResource("6_8j7qf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
@@ -140,9 +142,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
 [node name="Wall9" parent="." unique_id=137661842 instance=ExtResource("9_bx420")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
-
-[node name="Wall10" parent="." unique_id=909933582 instance=ExtResource("9_bx420")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="Wall11" parent="." unique_id=2024984411 instance=ExtResource("9_bx420")]
@@ -174,3 +173,10 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4
 light_energy = 3.214
 spot_range = 8.437
 spot_angle = 61.98
+
+[node name="WallDoor2" parent="." unique_id=871143902 node_paths=PackedStringArray("building") instance=ExtResource("8_f0onk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
+building = NodePath("..")
+
+[node name="CityPartIndicator" parent="." unique_id=2133300565 instance=ExtResource("11_56ka0")]
+text = "Weapon Store"

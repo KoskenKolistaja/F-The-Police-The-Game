@@ -14,18 +14,22 @@ script = ExtResource("1_a648y")
 [node name="ShelfEnd" type="MeshInstance3D" parent="." unique_id=660002436]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.41375166)
+layers = 524289
 mesh = ExtResource("1_pbeko")
 
 [node name="ShelfEnd2" type="MeshInstance3D" parent="ShelfEnd" unique_id=362794874]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.7978211)
+layers = 524289
 mesh = ExtResource("1_pbeko")
 
 [node name="ShelfBags" type="MeshInstance3D" parent="." unique_id=1312045790]
 visible = false
+layers = 524289
 mesh = ExtResource("2_a648y")
 
 [node name="ShelfBoxes" type="MeshInstance3D" parent="." unique_id=385872737]
 visible = false
+layers = 524289
 mesh = ExtResource("3_xatfc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=592374971]

@@ -11,4 +11,5 @@ size = Vector3(1, 0.03, 1)
 shape = SubResource("BoxShape3D_lvypo")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1198561417]
+layers = 524289
 mesh = ExtResource("1_lvypo")

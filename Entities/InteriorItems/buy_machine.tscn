@@ -33,6 +33,7 @@ script = ExtResource("1_xcujm")
 icon = ExtResource("3_f5ccn")
 
 [node name="ScreenPanelSmall" type="MeshInstance3D" parent="." unique_id=539209826]
+layers = 524289
 mesh = ExtResource("1_afk53")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=721159299]

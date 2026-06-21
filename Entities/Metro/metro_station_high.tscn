@@ -59,6 +59,7 @@ size = Vector3(3, 1, 2)
 [node name="Metro" type="Node3D" parent="." unique_id=500916045]
 
 [node name="Cube" type="MeshInstance3D" parent="Metro" unique_id=2131011682]
+layers = 524289
 material_override = SubResource("StandardMaterial3D_rnlsb")
 mesh = SubResource("ArrayMesh_4f07m")
 

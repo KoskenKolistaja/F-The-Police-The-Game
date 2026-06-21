@@ -8,6 +8,7 @@ data = PackedVector3Array(0, 0, -0.35, 0, 0.14999999, 0.39999998, 0, 0.14999999,
 [node name="CashRegister" type="StaticBody3D" unique_id=994580265]
 
 [node name="CashRegister" type="MeshInstance3D" parent="." unique_id=1542757348]
+layers = 524289
 mesh = ExtResource("1_e3x4w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=115167757]

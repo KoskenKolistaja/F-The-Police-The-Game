@@ -28,6 +28,8 @@ func show_upper():
 	height_layer = new_layer
 
 
+func set_private_layer(layer):
+	%Camera.set_cull_mask_value(layer,true)
 
 
 func _physics_process(delta):
