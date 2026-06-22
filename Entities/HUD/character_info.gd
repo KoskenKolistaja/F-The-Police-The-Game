@@ -10,6 +10,9 @@ var _is_processing_queue: bool = false
 
 
 func show_item(new_dic):
+	if not items_to_show.is_empty():
+		if new_dic == items_to_show[0]:
+			return
 	# 1. Add the incoming data to the end of the line
 	items_to_show.append(new_dic)
 	
@@ -28,7 +31,7 @@ func show_item(new_dic):
 func _process_queue() -> void:
 	while items_to_show.size() > 0:
 		# Grab the first item in line and remove it from the array
-		var current_dic = items_to_show.pop_front()
+		var current_dic = items_to_show[0]
 		
 		# Execute your sequential logic safely
 		modulate.a = 0.0
@@ -48,6 +51,6 @@ func _process_queue() -> void:
 		var tween_out = create_tween()
 		tween_out.tween_property(self, "modulate:a", 0.0, 0.5) 
 		await tween_out.finished
-		
+		items_to_show.remove_at(0)
 		# Small delay between items so they don't instantly snap back in
 		await get_tree().create_timer(0.2).timeout

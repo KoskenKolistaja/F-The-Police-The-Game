@@ -29,6 +29,8 @@ var height_layer = -1
 
 var player_id = null
 
+var has_killed = false
+
 # --- REFACTORED STATE ARCHITECTURE ---
 var confirmed_criminal: bool = false
 var suspicion: float = 0.0
@@ -383,6 +385,44 @@ func set_hand_item(value):
 	if value > 0.0:
 		for c in %HandItemSlot.get_children():
 			c.use()
+			if hand_item == "graffiti_bottle":
+				handle_graffiti_pointing()
+			else:
+				%GraffitiAnimation.play("RESET")
+
+
+func handle_graffiti_pointing():
+	var pointing_position = null
+	var collider = %InteractRay.get_collider()
+	
+	if collider:
+		if collider.has_method("get_pointing_position"):
+			pointing_position = collider.get_pointing_position()
+	
+	
+	print(pointing_position)
+	
+	if pointing_position:
+		hand_target_point_towards(pointing_position)
+	else:
+		return
+
+func hand_target_point_towards(pointing_position : Vector3):
+	var target_node = %HandTarget
+	
+	# 1. Get the direction vector
+	var direction = (pointing_position - target_node.global_position).normalized()
+	
+	# 2. Invert the direction (multiplying by -1) to account for the Z-axis offset
+	var target_basis = Basis.looking_at(-direction, Vector3.UP)
+	
+	# 3. Create your custom offset rotation
+	var offset_euler = Vector3(deg_to_rad(23.6), deg_to_rad(59.3), deg_to_rad(-6.2))
+	var offset_basis = Basis.from_euler(offset_euler)
+	
+	# 4. Apply the orientation
+	target_node.global_transform.basis = target_basis * offset_basis
+
 
 func pick_new_npc_target() -> void:
 	var choice = randf()
@@ -428,6 +468,9 @@ func pick_new_npc_target() -> void:
 func get_player_root():
 	return player_root
 
+
+
+
 func set_police():
 	for c in %Skeleton3D.get_children():
 		if c is BoneAttachment3D:
@@ -448,7 +491,9 @@ func set_civilian():
 	inventory.push_back("smoke_bomb")
 
 func die(exp_killer = null):
-	
+	if exp_killer:
+		if exp_killer.has_method("add_murder_suspicion"):
+			exp_killer.add_murder_suspicion()
 	if not active:
 		return
 	
@@ -540,6 +585,7 @@ func add_murder_suspicion():
 	suspicion = SUSPICION_LENGTH
 	if not pending_crimes.has("murder"):
 		pending_crimes.append("murder")
+	has_killed = true
 
 func add_gunfire_suspicion():
 	if is_police():

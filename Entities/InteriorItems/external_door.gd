@@ -9,7 +9,7 @@ func on_interacted(player,hand_item):
 		return
 	
 	if is_mafia:
-		if CrimeManager.get_total_crime_score(player) < 100:
+		if not player.has_killed:
 			var dic = {
 				"text" : "Go back to your momma!",
 				"icon_name" : "mafia_boss",

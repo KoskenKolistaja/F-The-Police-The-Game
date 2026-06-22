@@ -308,6 +308,7 @@ theme_override_constants/margin_bottom = 30
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CharacterInfo/MarginContainer" unique_id=1324788911]
 layout_mode = 2
+theme_override_constants/separation = 37
 
 [node name="Panel" type="Panel" parent="CharacterInfo/MarginContainer/HBoxContainer" unique_id=339287515]
 custom_minimum_size = Vector2(140, 140)
@@ -324,16 +325,30 @@ grow_vertical = 2
 texture = ExtResource("8_no5ck")
 expand_mode = 1
 
-[node name="TypeWriterLabel" type="Label" parent="CharacterInfo/MarginContainer/HBoxContainer" unique_id=282309920]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 100)
+[node name="Control" type="Control" parent="CharacterInfo/MarginContainer/HBoxContainer" unique_id=1403554252]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
-horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="TypeWriterLabel" type="Label" parent="CharacterInfo/MarginContainer/HBoxContainer/Control" unique_id=282309920]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.5
+offset_top = -31.0
+offset_right = 195.5
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+text = "asdasdasdasdasdasd"
 autowrap_mode = 2
 script = ExtResource("10_n8llm")
+typing_speed = 0.01
 
 [node name="Control" type="Control" parent="CharacterInfo/MarginContainer" unique_id=1907060300]
 layout_mode = 2
