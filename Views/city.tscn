@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://duagufueaari1" path="res://Entities/Buildings/building_15.tscn" id="24_hysmm"]
 [ext_resource type="ArrayMesh" uid="uid://8oubwv0tcbxc" path="res://Assets/kenney_train-kit/Models/OBJ format/train-electric-subway-a.obj" id="27_i5sn0"]
 [ext_resource type="Script" uid="uid://dlfqj4oxncy3n" path="res://Entities/Metro/Metro/Metro.gd" id="27_tdek4"]
+[ext_resource type="PackedScene" uid="uid://b5j3pxd5jb46e" path="res://Entities/CityItems/statue.tscn" id="28_q8n31"]
 [ext_resource type="ArrayMesh" uid="uid://dcnng2kfurrx4" path="res://Assets/kenney_train-kit/Models/OBJ format/train-electric-subway-b.obj" id="29_3smow"]
 [ext_resource type="Script" uid="uid://chm5wsg1pjtqc" path="res://Interactable.gd" id="29_wirxj"]
 [ext_resource type="ArrayMesh" uid="uid://b27cds7nlgruv" path="res://Assets/kenney_train-kit/Models/OBJ format/train-electric-subway-c.obj" id="30_6h067"]
@@ -49,6 +50,7 @@
 [ext_resource type="ArrayMesh" uid="uid://kxxjy2is8iyr" path="res://Assets/kenney_city-kit-industrial_1.0 (2)/Models/OBJ format/chimney-basic.obj" id="46_xqdcd"]
 [ext_resource type="Script" uid="uid://bbbhspjcji2ii" path="res://Entities/Utility/Minimap/mini_map_indicators.gd" id="47_ftn0q"]
 [ext_resource type="PackedScene" uid="uid://bxyo76aqeost4" path="res://Entities/Utility/CityPartIndicator/city_part_indicator.tscn" id="47_vc7y2"]
+[ext_resource type="PackedScene" uid="uid://nsy1gbhjapqj" path="res://Entities/Mafia/bomb_target.tscn" id="50_hv421"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n5q0i"]
 panorama = ExtResource("1_aasbp")
@@ -1157,6 +1159,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.001, 9)
 [node name="Building48" parent="UpperCity/Tiles" unique_id=2122775036 instance=ExtResource("11_24ha5")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 25, 0.001, -17)
 
+[node name="Statue" parent="UpperCity/Tiles" unique_id=2061265924 instance=ExtResource("28_q8n31")]
+transform = Transform3D(1.3311836e-07, 0, 1, 0, 1, 0, -1, 0, 1.3311836e-07, 4.9755955, 0.07999992, 0.33509827)
+
 [node name="CSGBox3D" type="CSGBox3D" parent="UpperCity" unique_id=1631436414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 layers = 524290
@@ -1421,7 +1426,7 @@ transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0
 shape = SubResource("BoxShape3D_6h067")
 
 [node name="21" type="PathFollow3D" parent="Metro/Path3D" unique_id=879456940]
-transform = Transform3D(0.99995106, 0, 0.0023557176, 0, 1, 0, -0.0023557176, 0, 0.99995106, 46.949554, 0, 9.311798)
+transform = Transform3D(0.9999499, 0, 0.0023557148, 0, 1, 0, -0.0023557148, 0, 0.9999499, 46.949554, 0, 9.311798)
 progress = 114.0
 script = ExtResource("27_tdek4")
 is_engine = true
@@ -1979,6 +1984,15 @@ text = "Crossland"
 [node name="CityPartIndicator" parent="." unique_id=796431069 instance=ExtResource("47_vc7y2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.794815, 0.03999901, -12.411686)
 text = "Suburbia"
+
+[node name="BombTarget2" parent="." unique_id=1262204773 instance=ExtResource("50_hv421")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 35.96369, 8.234633, 10.956977)
+target_name = "Police Station Roof"
+
+[node name="BombTarget" parent="." unique_id=1938807383 node_paths=PackedStringArray("world_item") instance=ExtResource("50_hv421")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.5568476, 0.5752753, 0.30331218)
+target_name = "Pilot Statue"
+world_item = NodePath("../UpperCity/Tiles/Statue")
 
 [connection signal="body_entered" from="Metro/Path3D/11/Area3D" to="Metro/Path3D/11" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Metro/Path3D/21/Area3D" to="Metro/Path3D/21" method="_on_area_3d_body_entered"]

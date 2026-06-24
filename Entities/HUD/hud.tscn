@@ -170,6 +170,7 @@ offset_top = 104.77
 offset_right = 256.0
 offset_bottom = 232.76999
 max_value = 250.0
+step = 25.0
 nine_patch_stretch = true
 texture_under = ExtResource("2_u0j7x")
 texture_progress = ExtResource("2_u0j7x")
@@ -177,8 +178,7 @@ tint_under = Color(0.34509805, 0.34509805, 0.34509805, 0.25882354)
 
 [node name="Criminals" type="Panel" parent="." unique_id=953101678]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(600, 500)
+custom_minimum_size = Vector2(750, 750)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -213,6 +213,9 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="PlayerPanel" parent="Criminals/MarginContainer/ScrollContainer/PlayerPanelContainer" unique_id=1479572947 instance=ExtResource("5_f32or")]
+layout_mode = 2
 
 [node name="MiniMap" type="Panel" parent="." unique_id=2137377414]
 clip_contents = true
@@ -348,7 +351,7 @@ size_flags_horizontal = 2
 text = "asdasdasdasdasdasd"
 autowrap_mode = 2
 script = ExtResource("10_n8llm")
-typing_speed = 0.01
+typing_speed = 0.02
 
 [node name="Control" type="Control" parent="CharacterInfo/MarginContainer" unique_id=1907060300]
 layout_mode = 2

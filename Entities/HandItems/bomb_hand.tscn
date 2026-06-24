@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bgsxrsfr3wj2a"]
+
+[ext_resource type="Script" uid="uid://cx3mmoy7gpmkn" path="res://Entities/HandItems/bomb_hand.gd" id="1_8kbme"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1n8an"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8kbme"]
+
+[node name="BombHand" type="Node3D" unique_id=1949196254]
+script = ExtResource("1_8kbme")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=132971073]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_1n8an")
+
+[node name="TimeLabel" type="Label3D" parent="." unique_id=1056797464]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.82335436, 0.56752765, 0, -0.56752765, 0.82335436, 0, 0.07270643, 0.09517616)
+text = "0 : 30"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=222881725]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1729256337]
+shape = SubResource("SphereShape3D_8kbme")

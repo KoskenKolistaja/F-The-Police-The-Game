@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://xottcel1lajr" path="res://Entities/InteriorItems/floor.tscn" id="2_llwpl"]
 [ext_resource type="PackedScene" uid="uid://casy8vrm88e35" path="res://Entities/InteriorItems/buy_machine.tscn" id="3_tuliq"]
 [ext_resource type="Texture2D" uid="uid://dgevif7rus7ep" path="res://Assets/Textures/Icons/handcuffs.png" id="4_sy48l"]
+[ext_resource type="Texture2D" uid="uid://duhr5a7gi4mqd" path="res://Assets/Textures/Icons/bolt-cutter.png" id="4_tuliq"]
 [ext_resource type="Texture2D" uid="uid://wtpj0pyt4vc4" path="res://Assets/Textures/kevlar-vest.png" id="5_sy48l"]
 [ext_resource type="PackedScene" uid="uid://cdog85cyebira" path="res://Entities/InteriorItems/floor_2.tscn" id="6_75bwn"]
 [ext_resource type="Texture2D" uid="uid://b1vldfuhk0wdk" path="res://Assets/Textures/Icons/mp5.png" id="6_x6kyg"]
@@ -56,6 +57,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 [node name="BuyMachine" parent="." unique_id=1229419911 instance=ExtResource("3_tuliq")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 0, -2)
 price = 200
+display_name = "Pistol"
+only_police = true
+
+[node name="BuyMachine5" parent="." unique_id=1866162909 instance=ExtResource("3_tuliq")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, -2)
+icon = ExtResource("4_tuliq")
+price = 100
+item_name = "defuse_kit"
+display_name = "Defuse Kit"
 only_police = true
 
 [node name="BuyMachine3" parent="." unique_id=1868116648 instance=ExtResource("3_tuliq")]
@@ -63,6 +73,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 0
 icon = ExtResource("4_sy48l")
 price = 100
 item_name = "handcuffs"
+display_name = "Handcuffs"
 only_police = true
 
 [node name="BuyMachine2" parent="." unique_id=1822535263 instance=ExtResource("3_tuliq")]
@@ -70,6 +81,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 icon = ExtResource("5_sy48l")
 price = 100
 item_name = "armor"
+display_name = "Armor"
 functional = true
 only_police = true
 
@@ -77,6 +89,7 @@ only_police = true
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -2)
 icon = ExtResource("6_x6kyg")
 item_name = "mp5"
+display_name = "MP5"
 only_police = true
 
 [node name="Floor10" parent="." unique_id=1107880388 instance=ExtResource("6_75bwn")]

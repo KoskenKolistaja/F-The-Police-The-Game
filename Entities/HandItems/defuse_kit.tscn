@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c3ab6htrakw1t"]
+
+[ext_resource type="Texture2D" uid="uid://bpdcoh7u5dl6q" path="res://Assets/HandItems/Items_colormap.png" id="1_au2dk"]
+[ext_resource type="Script" uid="uid://dphudf6xh5e6m" path="res://Entities/HandItems/defuse_kit.gd" id="1_d37n7"]
+[ext_resource type="ArrayMesh" uid="uid://md7p3uci6o4p" path="res://Assets/HandItems/DefuseKit.obj" id="2_d37n7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m7on"]
+albedo_texture = ExtResource("1_au2dk")
+
+[node name="DefuseKit" type="Node3D" unique_id=1345274863]
+script = ExtResource("1_d37n7")
+
+[node name="DefuseKit" type="MeshInstance3D" parent="." unique_id=1889301206]
+transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, 0, 0, -0.0681625)
+material_override = SubResource("StandardMaterial3D_3m7on")
+mesh = ExtResource("2_d37n7")

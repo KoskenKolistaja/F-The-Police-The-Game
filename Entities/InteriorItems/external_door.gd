@@ -11,7 +11,7 @@ func on_interacted(player,hand_item):
 	if is_mafia:
 		if not player.has_killed:
 			var dic = {
-				"text" : "Go back to your momma!",
+				"text" : "You ain't no true killer! Go back to your momma!",
 				"icon_name" : "mafia_boss",
 				"name" : "???",
 			}

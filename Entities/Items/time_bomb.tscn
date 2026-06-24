@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://h1h6ntgtmvvh"]
+
+[ext_resource type="Script" uid="uid://xxoijdel73f6" path="res://Entities/Items/time_bomb.gd" id="1_obk15"]
+[ext_resource type="PackedScene" uid="uid://chqijevfxuhpd" path="res://ExplosionFXFree/assets/BinbunVFX_Vol2/ExplosionFX/effects/ground/vfx_ground_explosion_01.tscn" id="2_ouymc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_obk15"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.3
+
+[node name="TimeBomb" type="Node3D" unique_id=522348471]
+script = ExtResource("1_obk15")
+explosion_scene = ExtResource("2_ouymc")
+
+[node name="Timer" type="Timer" parent="." unique_id=240079450]
+unique_name_in_owner = true
+wait_time = 30.0
+one_shot = true
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=615384461]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_obk15")
+
+[node name="TimeLabel" type="Label3D" parent="." unique_id=213038860]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.82335436, 0.56752765, 0, -0.56752765, 0.82335436, 0, 0.07270643, 0.09517616)
+text = "3 : 00"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

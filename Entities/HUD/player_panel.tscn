@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://fii504tnq31x" path="res://Entities/HUD/player_panel.gd" id="1_5jylv"]
 [ext_resource type="Texture2D" uid="uid://cffn4sl6yd1xl" path="res://Assets/Textures/Icons/clothes.png" id="2_66803"]
 [ext_resource type="Texture2D" uid="uid://bkldqg07uq48w" path="res://Assets/Textures/Stars.png" id="3_jnflr"]
+[ext_resource type="Texture2D" uid="uid://dnayo67bgq7sd" path="res://Assets/Textures/Icons/pistol-gun.png" id="4_66803"]
 
 [node name="PlayerPanel" type="Panel" unique_id=1479572947]
 custom_minimum_size = Vector2(0, 200)
+offset_left = -305.0
+offset_right = 317.0
+offset_bottom = 200.0
 script = ExtResource("1_5jylv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1829730368]
@@ -23,12 +27,80 @@ layout_mode = 2
 texture = ExtResource("2_66803")
 expand_mode = 1
 
-[node name="CriminalScore" type="TextureProgressBar" parent="HBoxContainer" unique_id=490278116]
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1738203049]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control" unique_id=280966736]
+layout_mode = 0
+offset_right = 404.0
+offset_bottom = 189.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Control/VBoxContainer" unique_id=880675506]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Control/VBoxContainer/HBoxContainer" unique_id=943207549]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Control/VBoxContainer/HBoxContainer/Control" unique_id=1747801048]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "DON SIMPPA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CriminalScore" type="TextureProgressBar" parent="HBoxContainer/Control/VBoxContainer/HBoxContainer" unique_id=490278116]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 200)
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 max_value = 250.0
+step = 25.0
 nine_patch_stretch = true
 texture_under = ExtResource("3_jnflr")
 texture_progress = ExtResource("3_jnflr")
 tint_under = Color(0.34509805, 0.34509805, 0.34509805, 0.25882354)
+
+[node name="Lethal" type="Panel" parent="HBoxContainer/Control/VBoxContainer" unique_id=2144069907]
+custom_minimum_size = Vector2(7.195, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Control/VBoxContainer/Lethal" unique_id=1052825423]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LethalContainer" type="HBoxContainer" parent="HBoxContainer/Control/VBoxContainer/Lethal/MarginContainer" unique_id=2024006381]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="Pistol" type="TextureRect" parent="HBoxContainer/Control/VBoxContainer/Lethal/MarginContainer/LethalContainer" unique_id=1032943517]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_66803")
+expand_mode = 1
+
+[node name="LethalLabel" type="Label" parent="HBoxContainer/Control/VBoxContainer/Lethal/MarginContainer/LethalContainer" unique_id=190502326]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "LETHAL FORCE NOT ALLOWED"

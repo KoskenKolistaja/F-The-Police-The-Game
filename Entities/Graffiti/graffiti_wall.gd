@@ -71,8 +71,8 @@ func reset():
 	painter = null
 	painted = 0.0
 	investigated = 0.0
-	var mat : StandardMaterial3D= %Graffiti.get_active_material(0)
-	mat.albedo_color.a = painted
+	var mat : ShaderMaterial = %Graffiti.get_active_material(0)
+	mat.set_shader_parameter("reveal_progress", 0.0)
 	%Background.show()
 
 

@@ -348,6 +348,8 @@ func set_inventory_item(index_change):
 	for c in %HandItemSlot.get_children():
 		c.queue_free()
 	
+	print(player_root)
+	
 	if inventory_index == 0:
 		player_root.hud.update_inventory_item("none")
 		hand_item = "none"
@@ -483,12 +485,14 @@ func set_police():
 	inventory.push_back("pistol")
 	inventory.push_back("spyglass")
 	inventory.push_back("handcuffs")
+	inventory.push_back("defuse_kit")
 
 
 func set_civilian():
 	appearance_manager.randomize_appearance()
 	inventory.push_back("graffiti_bottle")
 	inventory.push_back("smoke_bomb")
+	inventory.push_back("pistol")
 
 func die(exp_killer = null):
 	if exp_killer:
@@ -502,6 +506,7 @@ func die(exp_killer = null):
 		player_root.hud.update_armor(armor)
 		return
 	
+	Input.start_joy_vibration(player_id, 0.5, 1.0, 0.3)
 	deactivate()
 	state_machine.travel("die")
 	%ArrestHandcuffs.hide()
@@ -511,7 +516,7 @@ func die(exp_killer = null):
 		respawn("police_station")
 	else:
 		GameManager.arrest(self)
-
+	
 
 
 func remove_item_from_inventory(item_name):
@@ -556,7 +561,6 @@ func is_suspicious() -> bool:
 ## Received Call: Triggered if another player takes a photo of this character
 func interact(player, incoming_hand_item):
 	if incoming_hand_item == "handcuffs" and confirmed_criminal and active:
-		print("INTERACT FUNCTION CALLED")
 		get_arrested()
 		player.remove_item_from_inventory("handcuffs")
 		
@@ -582,6 +586,13 @@ func add_murder_suspicion():
 			inventory.erase("pistol")
 			inventory_index = 0
 			set_inventory_item(0)
+		var dic = {
+		"text" : "Officer! You just shot a innocent civilian! That wont be tolerated. Your firearm has been suspended.",
+		"icon_name" : "police_chief",
+		"name" : "Chief Amanda",
+		}
+		
+		get_hud().add_character_message(dic)
 	suspicion = SUSPICION_LENGTH
 	if not pending_crimes.has("murder"):
 		pending_crimes.append("murder")
@@ -710,8 +721,14 @@ func hand_item_illegality():
 	if CrimeManager.get_total_crime_score(self) > 10:
 		return 0
 	
+	if hand_item == "time_bomb":
+		return 50
+	if hand_item == "uzi":
+		return 50
+	if hand_item == "mp5":
+		return 50
 	if hand_item == "pistol":
-		return 10
+		return 30
 	elif hand_item == "graffiti_bottle":
 		return 5
 	else:
@@ -755,7 +772,7 @@ func set_armor(on : bool):
 
 func respawn(place_name : String):
 	global_position = get_tree().get_first_node_in_group(place_name).global_position
-	player_root.money = 0
+	player_root.money = 100
 	player_root.hud.update_money(player_root.money)
 
 func get_hud():
@@ -808,3 +825,9 @@ func get_closest_from(list, player_reference):
 			closest = item
 
 	return closest
+
+func allowed_to_kill():
+	if CrimeManager.get_total_crime_score(self) >= 150.0:
+		return true
+	else:
+		return false

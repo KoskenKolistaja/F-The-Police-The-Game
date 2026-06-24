@@ -16,6 +16,8 @@ var items = {
 	"uzi" : preload("res://Entities/HandItems/uzi.tscn"),
 	"mp5" : preload("res://Entities/HandItems/mp_5.tscn"),
 	"smoke_bomb" : preload("res://Entities/HandItems/smoke_bomb.tscn"),
+	"time_bomb" : preload("res://Entities/HandItems/bomb_hand.tscn"),
+	"defuse_kit" : preload("res://Entities/HandItems/defuse_kit.tscn")
 }
 
 
@@ -28,6 +30,8 @@ var icons = {
 	"uzi" : preload("res://Assets/Textures/Icons/uzi.png"),
 	"mp5" : preload("res://Assets/Textures/Icons/mp5.png"),
 	"smoke_bomb" : preload("res://Assets/Textures/Icons/stun-grenade.png"),
+	"time_bomb" : preload("res://Assets/Textures/Icons/time-bomb.png"),
+	"defuse_kit" : preload("res://Assets/Textures/Icons/bolt-cutter.png"),
 }
 
 

@@ -41,6 +41,7 @@ npc_spawn=""
 player=""
 player_root=""
 npc=""
+bomb_target=""
 
 [gui]
 
@@ -105,6 +106,7 @@ p1_open_info={
 3d_physics/layer_2="Interact"
 3d_physics/layer_4="NPC Miscellaneous"
 3d_physics/layer_5="Climb Objects"
+3d_physics/layer_6="Bombing Targets"
 3d_physics/layer_7="Spyglass"
 3d_physics/layer_8="City Part Name"
 3d_physics/layer_14="NPC WorldCollisions"

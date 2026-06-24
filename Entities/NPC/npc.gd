@@ -460,7 +460,7 @@ func die(exp_killer = null) -> void:
 	
 	if hitman:
 		var dic = {
-			"text" : "Good job! See us and you will get rewarded.",
+			"text" : "Good job! They have been taken care of. See us and you will get rewarded.",
 			"icon_name" : "mafia_boss",
 			"name" : "Derek",
 		}
@@ -469,14 +469,16 @@ func die(exp_killer = null) -> void:
 	
 	var the_police = get_tree().get_nodes_in_group("police")
 	
-	for p in the_police:
-		var dic = {
-			"text" : "All units be advised. We have a 10-32 at %s. Someone has been shot." % get_closest_city_part_name(),
-			"icon_name" : "police_chief",
-			"name" : "Chief Amanda",
-		}
-		
-		p.get_hud().add_character_message(dic)
+	if exp_killer.has_method("is_police"):
+		if not exp_killer.is_police():
+			for p in the_police:
+				var dic = {
+					"text" : "All units be advised. We have a 10-32 at %s. Someone has been shot." % get_closest_city_part_name(),
+					"icon_name" : "police_chief",
+					"name" : "Chief Amanda",
+				}
+				
+				p.get_hud().add_character_message(dic)
 	
 	
 	dead = true

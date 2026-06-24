@@ -19,6 +19,9 @@ func update():
 		
 		var score = CrimeManager.get_total_crime_score(player)
 		
+		var lethal_force_allowed = player.allowed_to_kill()
+		
+		panel_instance.set_lethality(lethal_force_allowed)
 		panel_instance.set_picture(tex)
 		panel_instance.set_score(score)
 		

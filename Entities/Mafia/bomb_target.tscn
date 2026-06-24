@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://nsy1gbhjapqj"]
+
+[ext_resource type="Script" uid="uid://chm5wsg1pjtqc" path="res://Interactable.gd" id="1_drxuv"]
+[ext_resource type="Script" uid="uid://dhyxxp6l4k4ep" path="res://Entities/Mafia/bomb_target.gd" id="1_idu2j"]
+[ext_resource type="PackedScene" uid="uid://h1h6ntgtmvvh" path="res://Entities/Items/time_bomb.tscn" id="2_h1adi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_drxuv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1adi"]
+transparency = 1
+albedo_color = Color(0, 0.73333335, 1, 0.14509805)
+
+[sub_resource type="BoxMesh" id="BoxMesh_546m8"]
+material = SubResource("StandardMaterial3D_h1adi")
+
+[node name="BombTarget" type="Node3D" unique_id=1262204773 groups=["bomb_target"]]
+script = ExtResource("1_idu2j")
+bomb_scene = ExtResource("2_h1adi")
+
+[node name="Interactable" type="StaticBody3D" parent="." unique_id=799877814]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_drxuv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=592303409]
+shape = SubResource("BoxShape3D_drxuv")
+
+[node name="BombPosition" type="Node3D" parent="." unique_id=1488850553]
+unique_name_in_owner = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1714097825]
+unique_name_in_owner = true
+wait_time = 240.0
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1073120274]
+unique_name_in_owner = true
+layers = 0
+mesh = SubResource("BoxMesh_546m8")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

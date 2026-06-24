@@ -3,6 +3,7 @@ extends StaticBody3D
 @export var icon : Texture
 @export var price : int = 500
 @export var item_name : String = "pistol"
+@export var display_name : String = "DISPLAY NAME"
 
 @export var functional : bool = false
 
@@ -14,7 +15,7 @@ func _ready():
 		var mat : StandardMaterial3D = %IconScreen.get_active_material(0)
 		mat.albedo_texture = icon
 	
-	%Interactable.message = "Buy " + item_name + " " + str(price) + "$"
+	%Interactable.message = "Buy " + display_name + " " + str(price) + "$"
 
 
 func on_interacted(player,hand_item):

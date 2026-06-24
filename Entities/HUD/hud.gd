@@ -34,6 +34,8 @@ func update_suspicion(value):
 
 func update_criminal_score(value):
 	print(value)
+	if value > 0.0:
+		value = clamp(value,13.0,1000.0)
 	%CriminalScore.value = value
 
 func update_armor(on : bool):
