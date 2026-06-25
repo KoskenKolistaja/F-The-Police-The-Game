@@ -213,7 +213,6 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 script = ExtResource("1_ost5d")
 path = NodePath("SEPath")
-lane_speed = 0.2
 in_socket = NodePath("BInSocket")
 out_socket = NodePath("BOutSocket")
 
@@ -274,7 +273,6 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 script = ExtResource("1_ost5d")
 path = NodePath("NEPath")
-lane_speed = 0.5
 in_socket = NodePath("BInSocket")
 out_socket = NodePath("BOutSocket")
 
@@ -305,7 +303,6 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 script = ExtResource("1_ost5d")
 path = NodePath("ENPath")
-lane_speed = 0.2
 in_socket = NodePath("BInSocket")
 out_socket = NodePath("BOutSocket")
 
@@ -336,7 +333,6 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 script = ExtResource("1_ost5d")
 path = NodePath("ESPath")
-lane_speed = 0.3
 in_socket = NodePath("BInSocket")
 out_socket = NodePath("BOutSocket")
 

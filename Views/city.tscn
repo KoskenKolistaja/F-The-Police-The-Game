@@ -42,7 +42,6 @@
 [ext_resource type="Script" uid="uid://cabitlksqmguq" path="res://Entities/Buildings/climb_object_area.gd" id="38_3efjq"]
 [ext_resource type="PackedScene" uid="uid://bltln3sirxdnq" path="res://Entities/InteriorBuildings/clothing_store.tscn" id="39_tj85k"]
 [ext_resource type="PackedScene" uid="uid://ddtp62ls2t2xl" path="res://Entities/InteriorBuildings/weapon_store.tscn" id="41_kppq4"]
-[ext_resource type="PackedScene" uid="uid://drwhkytxws8wl" path="res://Entities/Cars/test_car.tscn" id="42_cd5hx"]
 [ext_resource type="PackedScene" uid="uid://bq5jdu5r4w8ak" path="res://Entities/InteriorBuildings/police_station.tscn" id="42_gugm1"]
 [ext_resource type="PackedScene" uid="uid://2e7idamu2y34" path="res://Entities/InteriorItems/weapon_store_sign.tscn" id="42_ipkqj"]
 [ext_resource type="PackedScene" uid="uid://b3r862ans3gdd" path="res://Entities/InteriorItems/trash_bin.tscn" id="44_18vtu"]
@@ -433,9 +432,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 24, 
 
 [node name="Straight27" parent="UpperCity/Tiles" unique_id=779834469 instance=ExtResource("2_7ikpu")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 0, 0)
-
-[node name="TSection12" parent="UpperCity/Tiles" unique_id=942527597 instance=ExtResource("3_kohus")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16, 0, 0)
 
 [node name="Curve3" parent="UpperCity/Tiles" unique_id=88200607 instance=ExtResource("1_3gof0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10, 0, -2)
@@ -1464,7 +1460,7 @@ transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0
 shape = SubResource("BoxShape3D_6h067")
 
 [node name="21" type="PathFollow3D" parent="Metro/Path3D" unique_id=879456940]
-transform = Transform3D(0.9999481, 0, 0.0023557106, 0, 1, 0, -0.0023557106, 0, 0.9999481, 46.949554, 0, 9.311798)
+transform = Transform3D(0.99994785, 0, 0.0023557101, 0, 1, 0, -0.0023557101, 0, 0.99994785, 46.949554, 0, 9.311798)
 progress = 114.0
 script = ExtResource("27_tdek4")
 is_engine = true
@@ -1930,26 +1926,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.511707, 0.07999897, 36.192
 [node name="NPC41" parent="NPCContainer" unique_id=971026484 instance=ExtResource("33_28raj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.511707, 0.07999897, 36.192818)
 
-[node name="TestCar" parent="NPCContainer" unique_id=933713499 node_paths=PackedStringArray("road") instance=ExtResource("42_cd5hx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 44, 0, 36.6)
-road = NodePath("../../UpperCity/Tiles/Straight47")
-
-[node name="TestCar2" parent="NPCContainer" unique_id=962699221 node_paths=PackedStringArray("road") instance=ExtResource("42_cd5hx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 48, 0, 36.6)
-road = NodePath("../../UpperCity/Tiles/Straight47")
-
-[node name="TestCar3" parent="NPCContainer" unique_id=898581704 node_paths=PackedStringArray("road") instance=ExtResource("42_cd5hx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 52, 0, 36.6)
-road = NodePath("../../UpperCity/Tiles/Straight47")
-
-[node name="TestCar4" parent="NPCContainer" unique_id=2140205378 node_paths=PackedStringArray("road") instance=ExtResource("42_cd5hx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 56, 0, 36.6)
-road = NodePath("../../UpperCity/Tiles/Straight47")
-
-[node name="TestCar5" parent="NPCContainer" unique_id=1987738671 node_paths=PackedStringArray("road") instance=ExtResource("42_cd5hx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 60, 0, 36.6)
-road = NodePath("../../UpperCity/Tiles/Straight47")
-
 [node name="TightRope" type="Node3D" parent="." unique_id=983674383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.79441, 5, 5.2242565)
 
@@ -2015,14 +1991,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.245503, -1.5616236, -20.9
 curve = SubResource("Curve3D_75a3m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="TightRope/Path3D2" unique_id=1144094415 node_paths=PackedStringArray("path")]
-transform = Transform3D(0.4817678, -0.4661725, 0.74202496, -0.83422095, -0.503234, 0.22547714, 0.26829755, -0.7276305, -0.63133615, 0, 0.22, -0.16)
+transform = Transform3D(0.481768, -0.4661727, 0.7420257, -0.8342213, -0.50323427, 0.22547735, 0.2682977, -0.7276308, -0.63133675, 0, 0.22, -0.16)
 loop = false
 script = ExtResource("37_i13jj")
 is_climbable = false
 path = NodePath("..")
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="TightRope/Path3D2" unique_id=1713590243 node_paths=PackedStringArray("path")]
-transform = Transform3D(0.4817678, -0.4661725, 0.74202496, -0.83422095, -0.503234, 0.22547714, 0.26829755, -0.7276305, -0.63133615, 0, 0.22, -0.16)
+transform = Transform3D(0.481768, -0.4661727, 0.7420257, -0.8342213, -0.50323427, 0.22547735, 0.2682977, -0.7276308, -0.63133675, 0, 0.22, -0.16)
 loop = false
 script = ExtResource("37_i13jj")
 is_climbable = false
@@ -2197,6 +2173,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -8)
 
 [node name="Straight" parent="." unique_id=1287856784 instance=ExtResource("2_7ikpu")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 44, 0, -12)
+
+[node name="Straight2" parent="." unique_id=1627578766 instance=ExtResource("2_7ikpu")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16, 0, 0)
 
 [connection signal="body_entered" from="Metro/Path3D/11/Area3D" to="Metro/Path3D/11" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Metro/Path3D/21/Area3D" to="Metro/Path3D/21" method="_on_area_3d_body_entered"]
