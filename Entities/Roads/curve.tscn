@@ -100,7 +100,7 @@ shadow_mesh = SubResource("ArrayMesh_16wwh")
 
 [sub_resource type="Curve3D" id="Curve3D_om02m"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, -1, 0, 0, 0, 0, 0, 2, 0, 1),
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2.7, 0.6, 0, 3, -2.7, 0, 0, 0, 0, 0, 6, 0, -2.4),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -119,7 +119,7 @@ material = SubResource("StandardMaterial3D_eppf4")
 
 [sub_resource type="Curve3D" id="Curve3D_bqd86"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, -2, 0, 0, 2, 0, -1, 0, 0, -2, 0, 0, 0, -2, 0, 3),
+"points": PackedVector3Array(0, 0, 0, -3.5, 0, 0, 2, 0, -1.6, 0, 0, -3.5, 0, 0, 0, -4.6, 0, 5),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -135,7 +135,6 @@ mesh = SubResource("ArrayMesh_70uat")
 [node name="LaneForward" type="Node3D" parent="." unique_id=299455183 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-visible = false
 script = ExtResource("1_72krq")
 path = NodePath("ForwardPath")
 lane_speed = 0.4
@@ -144,30 +143,32 @@ out_socket = NodePath("FOutSocket")
 
 [node name="ForwardPath" type="Path3D" parent="LaneForward" unique_id=2109143107]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
 curve = SubResource("Curve3D_om02m")
 
 [node name="FOutSocket" type="Node3D" parent="LaneForward" unique_id=1581250031 node_paths=PackedStringArray("lane") groups=["out_socket"]]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, 1)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 0, -1.4)
 script = ExtResource("2_eppf4")
 lane = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LaneForward/FOutSocket" unique_id=856171624]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 mesh = SubResource("SphereMesh_1kl6k")
+metadata/_edit_lock_ = true
 
 [node name="FInSocket" type="Node3D" parent="LaneForward" unique_id=317208825 node_paths=PackedStringArray("lane") groups=["in_socket"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 4)
 script = ExtResource("2_eppf4")
 lane = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LaneForward/FInSocket" unique_id=972547264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 mesh = SubResource("SphereMesh_6j3am")
+metadata/_edit_lock_ = true
 
 [node name="LaneBackward" type="Node3D" parent="." unique_id=2019606726 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 script = ExtResource("1_72krq")
 path = NodePath("BackwardPath")
 lane_speed = 0.7
@@ -175,10 +176,11 @@ in_socket = NodePath("BInSocket")
 out_socket = NodePath("BOutSocket")
 
 [node name="BackwardPath" type="Path3D" parent="LaneBackward" unique_id=122734179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 curve = SubResource("Curve3D_bqd86")
 
 [node name="BOutSocket" type="Node3D" parent="LaneBackward" unique_id=1723043742 node_paths=PackedStringArray("lane") groups=["out_socket"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 0, 6)
 script = ExtResource("2_eppf4")
 lane = NodePath("..")
 
@@ -187,7 +189,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 mesh = SubResource("SphereMesh_1kl6k")
 
 [node name="BInSocket" type="Node3D" parent="LaneBackward" unique_id=2073429397 node_paths=PackedStringArray("lane") groups=["in_socket"]]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, -1)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, -0.6)
 script = ExtResource("2_eppf4")
 lane = NodePath("..")
 

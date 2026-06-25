@@ -463,6 +463,7 @@ unique_name_in_owner = true
 
 [node name="RigidBody3D" type="RigidBody3D" parent="FractureContainer" unique_id=507263701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23180334, 0.23604463, 0.1045655)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -475,6 +476,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="FractureContainer" unique_id=1650824274]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033080414, 1.5604197, -0.0060406476)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -487,6 +489,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="FractureContainer" unique_id=1416204675]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40234694, 1.4156404, 0.18030274)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -499,6 +502,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D4" type="RigidBody3D" parent="FractureContainer" unique_id=1991874139]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21384573, 0.17423257, -0.24137962)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -511,6 +515,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D5" type="RigidBody3D" parent="FractureContainer" unique_id=1744914274]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1614148, 1.3432097, -0.15198867)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -523,6 +528,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D6" type="RigidBody3D" parent="FractureContainer" unique_id=846099273]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33339912, 1.4013611, 0.1565285)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -535,6 +541,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D7" type="RigidBody3D" parent="FractureContainer" unique_id=1774315195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12658618, 1.350059, -0.013867833)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -547,6 +554,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D8" type="RigidBody3D" parent="FractureContainer" unique_id=717385659]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16704044, 0.49378216, 0.04408572)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -559,6 +567,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D9" type="RigidBody3D" parent="FractureContainer" unique_id=1041443096]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05116622, 0.9151483, 0.018525071)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -571,6 +580,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D10" type="RigidBody3D" parent="FractureContainer" unique_id=1196935718]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018598288, 0.70581937, 0.019896176)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -583,6 +593,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D11" type="RigidBody3D" parent="FractureContainer" unique_id=1878433655]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3383346, 1.5340765, 0.21429597)
+visible = false
 collision_layer = 0
 freeze = true
 
@@ -595,6 +606,7 @@ shape = SubResource("BoxShape3D_a0d53")
 
 [node name="RigidBody3D12" type="RigidBody3D" parent="FractureContainer" unique_id=1385495826]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12104972, 0.23329313, -0.046265446)
+visible = false
 collision_layer = 0
 freeze = true
 

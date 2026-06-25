@@ -101,7 +101,7 @@ shadow_mesh = SubResource("ArrayMesh_ap2wq")
 
 [sub_resource type="Curve3D" id="Curve3D_b0roc"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 1, 0, -3),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.6, 0, 2, 0, 0, 0, 0, 0, 0, 0.6, 0, -2),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -120,7 +120,7 @@ material = SubResource("StandardMaterial3D_wgrru")
 
 [sub_resource type="Curve3D" id="Curve3D_ap2wq"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1, 0, -3, 0, 0, 0, 0, 0, 0, -1, 0, 3),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.6, 0, -2, 0, 0, 0, 0, 0, 0, -0.6, 0, 2),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -147,24 +147,24 @@ unique_name_in_owner = true
 curve = SubResource("Curve3D_b0roc")
 
 [node name="FOutSocket" type="Node3D" parent="LaneForward" unique_id=1393620920 node_paths=PackedStringArray("lane") groups=["out_socket"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, -2)
 script = ExtResource("3_ap2wq")
 lane = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LaneForward/FOutSocket" unique_id=888990413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-visible = false
 mesh = SubResource("SphereMesh_mtiei")
+metadata/_edit_lock_ = true
 
 [node name="FInSocket" type="Node3D" parent="LaneForward" unique_id=335215697 node_paths=PackedStringArray("lane") groups=["in_socket"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 2)
 script = ExtResource("3_ap2wq")
 lane = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LaneForward/FInSocket" unique_id=367456476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-visible = false
 mesh = SubResource("SphereMesh_wgrru")
+metadata/_edit_lock_ = true
 
 [node name="LaneBackward" type="Node3D" parent="." unique_id=535777583 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
 unique_name_in_owner = true
@@ -177,24 +177,24 @@ out_socket = NodePath("BOutSocket")
 curve = SubResource("Curve3D_ap2wq")
 
 [node name="BOutSocket" type="Node3D" parent="LaneBackward" unique_id=108786014 node_paths=PackedStringArray("lane") groups=["out_socket"]]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1, 0, 3)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6, 0, 2)
 script = ExtResource("3_ap2wq")
 lane = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LaneBackward/BOutSocket" unique_id=1337159690]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-visible = false
 mesh = SubResource("SphereMesh_mtiei")
+metadata/_edit_lock_ = true
 
 [node name="BInSocket" type="Node3D" parent="LaneBackward" unique_id=1450288816 node_paths=PackedStringArray("lane") groups=["in_socket"]]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 0, -3)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.6, 0, -2)
 script = ExtResource("3_ap2wq")
 lane = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LaneBackward/BInSocket" unique_id=547119140]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-visible = false
 mesh = SubResource("SphereMesh_wgrru")
+metadata/_edit_lock_ = true
 
 [node name="RoadStraight" parent="." unique_id=1827531405 instance=ExtResource("4_mtiei")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)

@@ -70,6 +70,7 @@ func set_player_driver(vehicle : Node3D,separate_camera_target = null):
 	%PlayerCharacter.hide()
 	%PlayerCharacter.active = false
 	%PlayerDriver.vehicle = vehicle
+	player_driving = true
 	await get_tree().physics_frame
 	%PlayerDriver.active = true
 	await get_tree().physics_frame
@@ -80,6 +81,7 @@ func set_player_driver(vehicle : Node3D,separate_camera_target = null):
 	%FollowerCamera.driving = true
 
 func exit_vehicle(exp_position):
+	player_driving = false
 	%PlayerCharacter.show()
 	%PlayerCharacter.active = true
 	%PlayerDriver.active = false

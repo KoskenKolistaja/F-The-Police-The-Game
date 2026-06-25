@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://drwhkytxws8wl"]
+
+[ext_resource type="ArrayMesh" uid="uid://5mkisie27xu" path="res://Assets/kenney_car-kit/Models/OBJ format/ambulance.obj" id="1_j1ubh"]
+[ext_resource type="Script" uid="uid://chsmkww5vvxvi" path="res://Entities/Cars/test_car.gd" id="1_y5hxl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y5hxl"]
+size = Vector3(1, 1.1661377, 1.6313477)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhxyw"]
+size = Vector3(1, 0.8654175, 0.34887695)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iqh0n"]
+size = Vector3(1, 0.48361206, 0.34887695)
+
+[node name="TestCar" type="Node3D" unique_id=933713499]
+script = ExtResource("1_y5hxl")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=777027422]
+unique_name_in_owner = true
+transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, 0, 0, 0)
+mesh = ExtResource("1_j1ubh")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1077590822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.557, -1.363)
+spot_range = 9.189
+spot_angle = 24.15
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=214868279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.557, -1.363)
+spot_range = 9.189
+spot_angle = 24.15
+
+[node name="RigidBody" type="RigidBody3D" parent="." unique_id=451640767]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody" unique_id=1871263303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7967093, 0.4753418)
+shape = SubResource("BoxShape3D_y5hxl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody" unique_id=1960518465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5828519, -0.5682857)
+shape = SubResource("BoxShape3D_fhxyw")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody" unique_id=736774940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39194918, -0.9529091)
+shape = SubResource("BoxShape3D_iqh0n")
