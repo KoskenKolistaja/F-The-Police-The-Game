@@ -138,7 +138,7 @@ func start_procedural_murded_quest(player) -> void:
 	var the_police = get_tree().get_nodes_in_group("police")
 	
 	var dic = {
-		"text" : "Listen up. It has come to our attention that the mafia is planning to eliminate %s. We can't let that happen. We have marked them for you." % target_npc.character_name,
+		"text" : "Listen up. It has come to our attention that the mafia is planning to eliminate a citizen named %s. We can't let that happen. We have marked them for you." % target_npc.character_name,
 		"icon_name" : "police_chief",
 		"name" : "Chief Amanda",
 	}

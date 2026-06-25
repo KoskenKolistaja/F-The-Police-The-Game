@@ -119,6 +119,9 @@ func get_appearance() -> Dictionary:
 	dic["time"] = Time.get_ticks_msec()
 	return dic
 
+func is_male() -> bool:
+	var head_num = int(head_name.trim_prefix("head"))
+	return head_num > 6
 
 func get_head_name() -> String:
 	return head_name

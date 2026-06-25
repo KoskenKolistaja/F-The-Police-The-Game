@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bkldqg07uq48w" path="res://Assets/Textures/Stars.png" id="2_u0j7x"]
 [ext_resource type="Script" uid="uid://dpgs3fahrdj47" path="res://Entities/HUD/criminals.gd" id="4_a328l"]
 [ext_resource type="PackedScene" uid="uid://dkp0dpdvmeufa" path="res://Entities/HUD/player_panel.tscn" id="5_f32or"]
+[ext_resource type="PackedScene" uid="uid://cqr0s6prv77a6" path="res://Entities/HUD/map_icon.tscn" id="6_g3cbp"]
 [ext_resource type="FontFile" uid="uid://c6bq3ja7b824v" path="res://Assets/Fonts/Canterbury.ttf" id="6_pmoji"]
 [ext_resource type="Script" uid="uid://bkkk6som1eia0" path="res://Entities/HUD/city_name_label.gd" id="7_otdhv"]
 [ext_resource type="Texture2D" uid="uid://bec61wls4dxff" path="res://Assets/Textures/Characters/MafiaBoss.png" id="8_no5ck"]
@@ -80,7 +81,7 @@ corner_radius_bottom_left = 20
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no5ck"]
 bg_color = Color(0.33620003, 0.6345433, 0.82, 0.6862745)
 
-[node name="HUD" type="Control" unique_id=2024257735 node_paths=PackedStringArray("minimap_camera_pivot")]
+[node name="HUD" type="Control" unique_id=2024257735 node_paths=PackedStringArray("minimap_camera_pivot") groups=["hud"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,6 +90,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u0j7x")
 minimap_camera_pivot = NodePath("MiniMap/SubViewportContainer/SubViewport/MinimapCameraPivot")
+map_icon = ExtResource("6_g3cbp")
 
 [node name="Panel" type="Panel" parent="." unique_id=1644655875]
 custom_minimum_size = Vector2(100, 100)
@@ -178,6 +180,7 @@ tint_under = Color(0.34509805, 0.34509805, 0.34509805, 0.25882354)
 
 [node name="Criminals" type="Panel" parent="." unique_id=953101678]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(750, 750)
 layout_mode = 1
 anchors_preset = 8
@@ -213,9 +216,6 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="PlayerPanel" parent="Criminals/MarginContainer/ScrollContainer/PlayerPanelContainer" unique_id=1479572947 instance=ExtResource("5_f32or")]
-layout_mode = 2
 
 [node name="MiniMap" type="Panel" parent="." unique_id=2137377414]
 clip_contents = true
@@ -253,6 +253,23 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4
 cull_mask = 524288
 projection = 1
 size = 34.059
+
+[node name="Icons" type="Control" parent="MiniMap/SubViewportContainer/SubViewport" unique_id=533910231]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IconContainer" type="Control" parent="MiniMap/SubViewportContainer/SubViewport/Icons" unique_id=1542094014]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CityNameLabel" type="Label" parent="." unique_id=426293173]
 unique_name_in_owner = true

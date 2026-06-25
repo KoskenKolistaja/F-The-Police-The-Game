@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://blwjdi2ccbf5b"]
+
+[ext_resource type="Script" uid="uid://dissk5ccimsuo" path="res://Entities/HUD/world_icon.gd" id="1_lo5sy"]
+[ext_resource type="Texture2D" uid="uid://dnayo67bgq7sd" path="res://Assets/Textures/Icons/pistol-gun.png" id="2_7iodn"]
+
+[node name="WorldIcon" type="Node3D" unique_id=689877099 groups=["world_icon"]]
+script = ExtResource("1_lo5sy")
+texture = ExtResource("2_7iodn")

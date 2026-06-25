@@ -4,8 +4,20 @@ extends Control
 var info_open = false
 
 @export var minimap_camera_pivot : Node3D
+@export var map_icon : PackedScene
+
+func _ready():
+	setup_minimap_icons()
 
 
+func setup_minimap_icons():
+	var world_icons = get_tree().get_nodes_in_group("world_icon")
+	
+	for world_icon in world_icons:
+		var icon_instance = map_icon.instantiate()
+		icon_instance.world_position = world_icon.global_position
+		icon_instance.icon = world_icon.texture
+		%IconContainer.add_child(icon_instance)
 
 func show_city_text(text):
 	%CityNameLabel.add_new_item(text)

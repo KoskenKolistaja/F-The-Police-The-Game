@@ -75,7 +75,11 @@ func _ready() -> void:
 	money *= randi_range(1, 5)
 	investigation_need *= randf_range(2.0, 5.0)
 	
-	character_name = ItemData.first_names.pick_random()
+	
+	if appearance_manager.is_male():
+		character_name = ItemData.male_names.pick_random()
+	else:
+		character_name = ItemData.female_names.pick_random()
 
 
 func _physics_process(delta: float) -> void:
@@ -342,7 +346,7 @@ func investigate(investigator: Node3D) -> void:
 				if is_instance_valid(target_npc):
 					target_npc.mark_for_police()
 					var char_dic = {
-					"text" : "Listen up. It has come to our attention that the mafia is planning to eliminate %s. We can't let that happen. We have marked them for you." % target_npc.character_name,
+					"text" : "Listen up. It has come to our attention that the mafia is planning to eliminate a citizen named %s. We can't let that happen. We have marked them for you." % target_npc.character_name,
 					"icon_name" : "police_chief",
 					"name" : "Chief Amanda",
 					}

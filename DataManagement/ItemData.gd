@@ -60,7 +60,7 @@ var character_icons = {
 	"head11" : preload("res://Assets/Textures/Characters/head11.png"),
 }
 
-var first_names = [
+var male_names = [
 	"James",
 	"John",
 	"Robert",
@@ -80,7 +80,10 @@ var first_names = [
 	"Paul",
 	"Andrew",
 	"Joshua",
-	"Kenneth",
+	"Kenneth"
+]
+
+var female_names = [
 	"Emily",
 	"Olivia",
 	"Emma",

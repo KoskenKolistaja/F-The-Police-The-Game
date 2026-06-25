@@ -25,6 +25,13 @@ func explode():
 	%Mesh.hide()
 	#%ExplosionEffects.emitting = true
 	add_child(explosion_scene.instantiate())
+	
+	var bodies = %DeathArea.get_overlapping_bodies()
+	
+	for b in bodies:
+		if b.has_method("die"):
+			b.die()
+	
 	await get_tree().create_timer(2.5).timeout
 	queue_free()
 

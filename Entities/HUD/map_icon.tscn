@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cqr0s6prv77a6"]
+
+[ext_resource type="Script" uid="uid://b248smeyqfv1w" path="res://Entities/HUD/map_icon.gd" id="1_l2qx1"]
+
+[node name="MapIcon" type="Control" unique_id=1112294431]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+script = ExtResource("1_l2qx1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=454350602]
+z_index = -1
+layout_mode = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+pivot_offset = Vector2(20, 20)
+color = Color(0, 0, 0, 1)
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1135573599]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+pivot_offset = Vector2(20, 20)
+expand_mode = 1
