@@ -29,7 +29,6 @@ func _ready():
 			next_lanes.append(in_socket.get_lane())
 	
 	await get_tree().physics_frame
-	print(TrafficManager.get_id())
 	id = TrafficManager.get_id()
 	await get_tree().physics_frame
 	#var label_3D = Label3D.new()

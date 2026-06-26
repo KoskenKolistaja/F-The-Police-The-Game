@@ -2838,28 +2838,28 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4438228e-15, 0.17625, -0.02875)
 bones/3/enabled = true
 bones/3/position = Vector3(-1.4438228e-15, 0.17625, -0.02875)
-bones/3/rotation = Quaternion(0.0038057726, 0, 0, 0.99999285)
+bones/3/rotation = Quaternion(0.0045867763, 0, 0, 0.99998957)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "arm-left"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09989677, 0.1115, 0.0115)
 bones/4/enabled = true
 bones/4/position = Vector3(0.09989677, 0.1115, 0.0115)
-bones/4/rotation = Quaternion(0, 0, -0.3721105, 0.92818844)
+bones/4/rotation = Quaternion(0, 0, -0.3792947, 0.9252759)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "arm-right"
 bones/5/parent = 3
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09989677, 0.1115, 0.0115)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.09989677, 0.1115, 0.0115)
-bones/5/rotation = Quaternion(0, 0, 0.3721105, 0.92818844)
+bones/5/rotation = Quaternion(0, 0, 0.3792947, 0.9252759)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "head"
 bones/6/parent = 3
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8196893e-09, 0.167, 0.026388777)
 bones/6/enabled = true
 bones/6/position = Vector3(1.8196893e-09, 0.167, 0.026388777)
-bones/6/rotation = Quaternion(0, -0.0038057726, 0, 0.99999285)
+bones/6/rotation = Quaternion(0, -0.0045867763, 0, 0.99998957)
 bones/6/scale = Vector3(1, 1, 1)
 script = ExtResource("2_lobkq")
 
@@ -2875,7 +2875,7 @@ libraries/ = SubResource("AnimationLibrary_d821y")
 speed_scale = 0.35
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/character-male-a/Skeleton3D" unique_id=2100685627]
-transform = Transform3D(0.7230676, -0.6907773, 0, 0.6907573, 0.72304666, -0.00761149, 0.0052578445, 0.0055036214, 0.99997103, -0.09989677, 0.28765923, -0.016401652)
+transform = Transform3D(0.7122711, -0.7019045, 0, 0.7018749, 0.7122411, -0.009173456, 0.0064388895, 0.0065339874, 0.9999579, -0.09989677, 0.2876398, -0.016227644)
 bone_name = "arm-right"
 bone_idx = 5
 
@@ -2905,6 +2905,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 target_position = Vector3(0, 0, 1)
 collision_mask = 2
+hit_from_inside = true
 
 [node name="InfoLabel" type="Label3D" parent="Visual/InteractRay" unique_id=659816538]
 unique_name_in_owner = true
@@ -2915,7 +2916,7 @@ text = "Enter Train [E]"
 
 [node name="HandTarget" type="Node3D" parent="Visual" unique_id=1362386538]
 unique_name_in_owner = true
-transform = Transform3D(0.47024974, 0.39822266, 0.7875807, -0.09938822, 0.91062796, -0.40109608, -0.8769188, 0.11033909, 0.46780148, -0.15305984, 0.4878637, 0.015695706)
+transform = Transform3D(0.47024974, 0.39822266, 0.7875807, -0.09938822, 0.91062796, -0.40109608, -0.8769188, 0.11033909, 0.46780145, -0.15305984, 0.4878637, 0.015695706)
 
 [node name="ClimbObjectArea" type="Area3D" parent="Visual" unique_id=1450745345]
 unique_name_in_owner = true

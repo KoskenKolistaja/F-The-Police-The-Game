@@ -57,8 +57,6 @@ func function(player):
 	var money = player.get_money()
 	var player_root = player.get_player_root()
 	
-	print(money)
-	print(money >= price)
 	
 	if money < price:
 		return

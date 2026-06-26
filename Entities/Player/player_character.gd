@@ -55,6 +55,7 @@ var climb_object = null
 var snapped_on_rope = false
 
 func _ready():
+	%InteractRay.add_exception(self)
 	randomize()
 	city = get_tree().get_first_node_in_group("city")
 	%HandIK.start()
@@ -62,7 +63,6 @@ func _ready():
 	
 	await get_tree().create_timer(1.0).timeout
 	
-	print("Character print: " + str(is_police()))
 	
 	if player_root.is_police:
 		set_police()
@@ -348,7 +348,6 @@ func set_inventory_item(index_change):
 	for c in %HandItemSlot.get_children():
 		c.queue_free()
 	
-	print(player_root)
 	
 	if inventory_index == 0:
 		player_root.hud.update_inventory_item("none")
@@ -402,7 +401,6 @@ func handle_graffiti_pointing():
 			pointing_position = collider.get_pointing_position()
 	
 	
-	print(pointing_position)
 	
 	if pointing_position:
 		hand_target_point_towards(pointing_position)
@@ -780,6 +778,7 @@ func respawn(place_name : String):
 	global_position = get_tree().get_first_node_in_group(place_name).global_position
 	player_root.money = 100
 	player_root.hud.update_money(player_root.money)
+	%ArrestHandcuffs.hide()
 
 func get_hud():
 	return player_root.hud

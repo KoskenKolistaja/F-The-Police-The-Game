@@ -44,7 +44,9 @@ var graffitis = [
 	preload("res://Assets/Textures/Graffitis/Veljet.png"),
 	preload("res://Assets/Textures/Graffitis/Classi.png"),
 	preload("res://Assets/Textures/Graffitis/fthecops.png"),
-	preload("res://Assets/Textures/Graffitis/Duck.png")
+	preload("res://Assets/Textures/Graffitis/Duck.png"),
+	preload("res://Assets/Textures/Graffitis/Wilzu.png"),
+	preload("res://Assets/Textures/Graffitis/Prince.png"),
 ]
 
 

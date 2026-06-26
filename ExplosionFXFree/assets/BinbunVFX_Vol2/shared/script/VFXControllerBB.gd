@@ -83,7 +83,6 @@ func stop() -> void:
 	stopped.emit()
 
 func _restart_particles() -> void:
-	print("AA")
 	for p in particles:
 		p.restart()
 

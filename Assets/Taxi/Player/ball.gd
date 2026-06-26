@@ -46,7 +46,6 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 		
 		if impact_speed > 0.1:
 			get_parent().take_damage(impact_speed)
-			print("yeah")
 	else:
 		return
 

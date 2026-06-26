@@ -456,6 +456,7 @@ func get_arrested() -> void:
 	%ArrestHandcuffs.show()
 
 func die(exp_killer = null) -> void:
+	remove_from_group("npc")
 	if exp_killer:
 		killer = exp_killer
 		if exp_killer.has_method("add_murder_suspicion"):

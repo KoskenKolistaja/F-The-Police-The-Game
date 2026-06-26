@@ -23,7 +23,6 @@ func _physics_process(delta):
 			if exit_position:
 				player_root.exit_vehicle(exit_position)
 				if vehicle.has_method("player_exited"):
-					print("JUU")
 					vehicle.player_exited()
 					print(vehicle.cannot_enter)
 	
