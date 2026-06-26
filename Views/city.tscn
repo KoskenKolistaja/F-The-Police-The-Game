@@ -1229,6 +1229,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 16)
 operation = 2
 size = Vector3(4, 1, 4)
 
+[node name="Tile" parent="UpperCity" unique_id=467233508 instance=ExtResource("9_sde3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -4)
+
+[node name="Tile2" parent="UpperCity" unique_id=1141964434 instance=ExtResource("9_sde3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -8)
+
+[node name="Straight" parent="UpperCity" unique_id=1287856784 instance=ExtResource("2_7ikpu")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 44, 0, -12)
+
+[node name="Straight2" parent="UpperCity" unique_id=1627578766 instance=ExtResource("2_7ikpu")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16, 0, 0)
+
 [node name="Metro" type="Node3D" parent="." unique_id=790084936]
 unique_name_in_owner = true
 
@@ -1466,7 +1478,7 @@ transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0
 shape = SubResource("BoxShape3D_6h067")
 
 [node name="21" type="PathFollow3D" parent="Metro/Path3D" unique_id=879456940]
-transform = Transform3D(0.9999462, 0, 0.0023557062, 0, 1, 0, -0.0023557062, 0, 0.9999462, 46.949554, 0, 9.311798)
+transform = Transform3D(0.99994594, 0, 0.0023557055, 0, 1, 0, -0.0023557055, 0, 0.99994594, 46.949554, 0, 9.311798)
 progress = 114.0
 script = ExtResource("27_tdek4")
 is_engine = true
@@ -2022,14 +2034,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.245503, -1.5616236, -20.9
 curve = SubResource("Curve3D_75a3m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="TightRope/Path3D2" unique_id=1144094415 node_paths=PackedStringArray("path")]
-transform = Transform3D(0.4817687, -0.46617392, 0.74203134, -0.8342225, -0.5032356, 0.22547908, 0.2682981, -0.7276327, -0.6313416, 0, 0.22, -0.16)
+transform = Transform3D(0.4817687, -0.46617392, 0.74203223, -0.8342225, -0.5032356, 0.22547935, 0.2682981, -0.7276327, -0.63134235, 0, 0.22, -0.16)
 loop = false
 script = ExtResource("37_i13jj")
 is_climbable = false
 path = NodePath("..")
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="TightRope/Path3D2" unique_id=1713590243 node_paths=PackedStringArray("path")]
-transform = Transform3D(0.4817687, -0.46617392, 0.74203134, -0.8342225, -0.5032356, 0.22547908, 0.2682981, -0.7276327, -0.6313416, 0, 0.22, -0.16)
+transform = Transform3D(0.4817687, -0.46617392, 0.74203223, -0.8342225, -0.5032356, 0.22547935, 0.2682981, -0.7276327, -0.63134235, 0, 0.22, -0.16)
 loop = false
 script = ExtResource("37_i13jj")
 is_climbable = false
@@ -2165,18 +2177,9 @@ text = "Blumlein Subway station"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.530018, 0.07999802, -15.787993)
 text = "Crossland"
 
-[node name="CityPartIndicator" parent="." unique_id=796431069 instance=ExtResource("47_vc7y2")]
+[node name="CityPartIndicator9" parent="CityAreaIndicators" unique_id=796431069 instance=ExtResource("47_vc7y2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.794815, 0.03999901, -12.411686)
 text = "Suburbia"
-
-[node name="BombTarget2" parent="." unique_id=1262204773 instance=ExtResource("50_hv421")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 35.96369, 8.234633, 10.956977)
-target_name = "Police Station Roof"
-
-[node name="BombTarget" parent="." unique_id=1938807383 node_paths=PackedStringArray("world_item") instance=ExtResource("50_hv421")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.5568476, 0.5752753, 0.30331218)
-target_name = "Pilot Statue"
-world_item = NodePath("../UpperCity/Tiles/Statue")
 
 [node name="PlayerBoundaries" type="StaticBody3D" parent="." unique_id=2112830618]
 
@@ -2196,17 +2199,12 @@ shape = SubResource("BoxShape3D_1f0fm")
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 23.795086, 0, 40.105576)
 shape = SubResource("BoxShape3D_1f0fm")
 
-[node name="Tile" parent="." unique_id=467233508 instance=ExtResource("9_sde3x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -4)
+[node name="BombTargets" type="Node3D" parent="." unique_id=140653914]
 
-[node name="Tile2" parent="." unique_id=1141964434 instance=ExtResource("9_sde3x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -8)
-
-[node name="Straight" parent="." unique_id=1287856784 instance=ExtResource("2_7ikpu")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 44, 0, -12)
-
-[node name="Straight2" parent="." unique_id=1627578766 instance=ExtResource("2_7ikpu")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16, 0, 0)
+[node name="BombTarget" parent="BombTargets" unique_id=1938807383 node_paths=PackedStringArray("world_item") instance=ExtResource("50_hv421")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.5568476, 0.5752753, 0.30331218)
+target_name = "Pilot Statue"
+world_item = NodePath("../../UpperCity/Tiles/Statue")
 
 [connection signal="body_entered" from="Metro/Path3D/11/Area3D" to="Metro/Path3D/11" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Metro/Path3D/21/Area3D" to="Metro/Path3D/21" method="_on_area_3d_body_entered"]

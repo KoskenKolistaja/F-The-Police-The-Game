@@ -5,9 +5,8 @@ extends Node3D
 @export var min_max = 5.0
 @export var max_max = 8.0
 
-
 var lane : Lane
-var next_lane
+var next_lane # Cached next lane for look-ahead & speed transitions
 
 var progress : float = 0.0
 
@@ -20,8 +19,9 @@ var is_truck : bool = false
 var target = null
 
 var body_y = 0
-
 var idle_time = 0.0
+var lane_speed_ratio = 1.0
+
 
 func _ready() -> void:
 	if not lane:
@@ -43,21 +43,47 @@ func _physics_process(delta: float) -> void:
 	else:
 		accelerate()
 	
+	# Continuously handle look-ahead caching
+	if next_lane == null or next_lane == lane:
+		_update_next_lane()
 	
-	if next_lane:
-		current_lane_speed = move_toward(current_lane_speed, next_lane.lane_speed, 0.01)
+	# --- SMOOTH SPEED TRANSITION LOGIC ---
+	var target_lane_speed = lane.lane_speed
 	
-	# Reverted to your exact progress logic
-	progress += speed * delta
+	if next_lane and next_lane != lane:
+		var remaining_dist = lane.length - progress
+		
+		# FIX 1: Only blend ahead if the next lane is SLOWER (Anticipatory braking).
+		# If the next lane is faster, we keep target_lane_speed equal to our current slow lane.
+		if next_lane.lane_speed < lane.lane_speed:
+			var blend_distance = clamp(speed * 1.2, 3.0, 6.0)
+			if remaining_dist < blend_distance:
+				var weight = 1.0 - (remaining_dist / blend_distance)
+				target_lane_speed = lerp(lane.lane_speed, next_lane.lane_speed, clamp(weight, 0.0, 1.0))
+	
+	# FIX 2: Asymmetric acceleration rate.
+	# Slowing down happens fast (4.0) for safety, but speeding up happens gradually (1.2).
+	var transition_rate = 1.2 if target_lane_speed > lane_speed_ratio else 4.0
+	lane_speed_ratio = move_toward(lane_speed_ratio, target_lane_speed, delta * transition_rate)
+	# --------------------------------------
+	
+	# Progress logic
+	progress += speed * delta * lane_speed_ratio
 	
 	# Handle moving to the next lane
 	if progress >= lane.length:
 		progress -= lane.length
 		
 		if not directions:
-			var new_lane = lane.get_next_lane(self)
-			lane = new_lane
-			next_lane = lane.get_next_lane(self)
+			if next_lane and next_lane != lane:
+				lane = next_lane
+			else:
+				var new_lane = lane.get_next_lane(self)
+				if new_lane == lane: 
+					return 
+				lane = new_lane
+			
+			next_lane = null 
 		else:
 			directions.remove_at(0)
 			if directions.is_empty():
@@ -65,18 +91,22 @@ func _physics_process(delta: float) -> void:
 				return 
 			else:
 				lane = directions[0]
+				next_lane = null
 	
 	# 1. Set the current global position
 	var pos = lane.sample_position(progress)
 	global_position = pos
 	
-	# 2. Look ahead smoothly
+	# 2. Look ahead smoothly and sample across boundaries accurately
 	var look_ahead_distance := 1.0
 	var look_progress = progress + look_ahead_distance
-	var look_lane = lane
+	var future_pos : Vector3
 	
-	var future_pos = look_lane.sample_position(look_progress)
-	
+	if look_progress > lane.length and next_lane and next_lane != lane:
+		var leftover_dist = look_progress - lane.length
+		future_pos = next_lane.sample_position(leftover_dist)
+	else:
+		future_pos = lane.sample_position(look_progress)
 	
 	# 3. Orient the car
 	if global_position.distance_squared_to(future_pos) > 0.001:
@@ -85,10 +115,24 @@ func _physics_process(delta: float) -> void:
 	
 	%AnimatableBody3D.position = Vector3.ZERO
 
+
+func _update_next_lane() -> void:
+	if not directions:
+		var fetched = lane.get_next_lane(self)
+		if fetched != lane:
+			next_lane = fetched
+	else:
+		if directions.size() > 1:
+			next_lane = directions[1]
+		else:
+			next_lane = null
+
+
 func brake():
-	speed = move_toward(speed,0.0,0.2)
-	idle_time = move_toward(idle_time,200.0,0.03)
+	speed = move_toward(speed, 0.0, 0.2)
+	idle_time = move_toward(idle_time, 200.0, 0.03)
+
 
 func accelerate():
-	speed = move_toward(speed,max_speed,0.1)
-	idle_time = move_toward(idle_time,0.0,0.01)
+	speed = move_toward(speed, max_speed, 0.1)
+	idle_time = move_toward(idle_time, 0.0, 0.01)

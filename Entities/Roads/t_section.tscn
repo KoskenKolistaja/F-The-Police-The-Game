@@ -180,6 +180,7 @@ mesh = SubResource("ArrayMesh_tgs2a")
 
 [node name="LaneSN" type="Node3D" parent="." unique_id=1577102746 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("1_ost5d")
 path = NodePath("SNPath")
 in_socket = NodePath("FInSocket")
@@ -211,8 +212,10 @@ metadata/_edit_lock_ = true
 
 [node name="LaneSE" type="Node3D" parent="." unique_id=614626511 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("1_ost5d")
 path = NodePath("SEPath")
+lane_speed = 0.4
 in_socket = NodePath("BInSocket")
 out_socket = NodePath("BOutSocket")
 
@@ -241,6 +244,7 @@ metadata/_edit_lock_ = true
 
 [node name="LaneNS" type="Node3D" parent="." unique_id=1862092812 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("1_ost5d")
 path = NodePath("NSPath")
 in_socket = NodePath("BInSocket")
@@ -271,8 +275,10 @@ metadata/_edit_lock_ = true
 
 [node name="LaneNE" type="Node3D" parent="." unique_id=1942972553 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("1_ost5d")
 path = NodePath("NEPath")
+lane_speed = 0.7
 in_socket = NodePath("BInSocket")
 out_socket = NodePath("BOutSocket")
 
@@ -301,8 +307,10 @@ metadata/_edit_lock_ = true
 
 [node name="LaneEN" type="Node3D" parent="." unique_id=76613695 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("1_ost5d")
 path = NodePath("ENPath")
+lane_speed = 0.4
 in_socket = NodePath("BInSocket")
 out_socket = NodePath("BOutSocket")
 
@@ -331,8 +339,10 @@ metadata/_edit_lock_ = true
 
 [node name="LaneES" type="Node3D" parent="." unique_id=1782789806 node_paths=PackedStringArray("path", "in_socket", "out_socket") groups=["lane"]]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("1_ost5d")
 path = NodePath("ESPath")
+lane_speed = 0.8
 in_socket = NodePath("BInSocket")
 out_socket = NodePath("BOutSocket")
 

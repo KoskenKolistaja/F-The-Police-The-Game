@@ -137,7 +137,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 script = ExtResource("1_72krq")
 path = NodePath("ForwardPath")
-lane_speed = 0.4
+lane_speed = 0.8
 in_socket = NodePath("FInSocket")
 out_socket = NodePath("FOutSocket")
 
@@ -171,7 +171,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 script = ExtResource("1_72krq")
 path = NodePath("BackwardPath")
-lane_speed = 0.7
+lane_speed = 0.9
 in_socket = NodePath("BInSocket")
 out_socket = NodePath("BOutSocket")
 
