@@ -485,14 +485,12 @@ func set_police():
 	inventory.push_back("pistol")
 	inventory.push_back("spyglass")
 	inventory.push_back("handcuffs")
-	inventory.push_back("defuse_kit")
 
 
 func set_civilian():
 	appearance_manager.randomize_appearance()
 	inventory.push_back("graffiti_bottle")
 	inventory.push_back("smoke_bomb")
-	inventory.push_back("pistol")
 
 func die(exp_killer = null):
 	if exp_killer:
@@ -516,7 +514,10 @@ func die(exp_killer = null):
 		respawn("police_station")
 	else:
 		GameManager.arrest(self)
-	
+		await get_tree().create_timer(10).timeout
+		respawn("police_station")
+		CrimeManager.reset_crime_score_for(self)
+		activate()
 
 
 func remove_item_from_inventory(item_name):
@@ -545,6 +546,9 @@ func get_arrested():
 	inventory_index = 0
 	set_inventory_item(0)
 	%ArrestHandcuffs.show()
+	await get_tree().create_timer(10).timeout
+	respawn("police_station")
+	activate()
 
 # --- GLOBAL PROFILE STATUS CHECK ---
 func get_criminality() -> bool:
@@ -771,6 +775,8 @@ func set_armor(on : bool):
 
 
 func respawn(place_name : String):
+	if not get_tree():
+		return
 	global_position = get_tree().get_first_node_in_group(place_name).global_position
 	player_root.money = 100
 	player_root.hud.update_money(player_root.money)

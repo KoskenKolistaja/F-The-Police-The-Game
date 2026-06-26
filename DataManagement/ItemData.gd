@@ -40,7 +40,11 @@ var graffitis = [
 	preload("res://Assets/Textures/Graffitis/SampoGraffiti.png"),
 	preload("res://Assets/Textures/Graffitis/DonSimeon.png"),
 	preload("res://Assets/Textures/Graffitis/DonSimeon2.png"),
-	preload("res://Assets/Textures/Graffitis/Veljet.png")
+	preload("res://Assets/Textures/Graffitis/DonSimeon3.png"),
+	preload("res://Assets/Textures/Graffitis/Veljet.png"),
+	preload("res://Assets/Textures/Graffitis/Classi.png"),
+	preload("res://Assets/Textures/Graffitis/fthecops.png"),
+	preload("res://Assets/Textures/Graffitis/Duck.png")
 ]
 
 
@@ -80,7 +84,10 @@ var male_names = [
 	"Paul",
 	"Andrew",
 	"Joshua",
-	"Kenneth"
+	"Kenneth",
+	"Touko",
+	"Leo",
+	"Ville",
 ]
 
 var female_names = [

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://4bytte6dl4u4"]
+
+[ext_resource type="Script" uid="uid://chsmkww5vvxvi" path="res://Entities/Cars/test_car.gd" id="1_qly6m"]
+[ext_resource type="ArrayMesh" uid="uid://c3y33gcgbyl8l" path="res://Assets/kenney_car-kit/Models/OBJ format/van.obj" id="2_qly6m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhxyw"]
+size = Vector3(1, 0.875267, 1.5558662)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iqh0n"]
+size = Vector3(1, 0.5019665, 0.3704605)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_regsa"]
+size = Vector3(1, 0.9038086, 1.012085)
+
+[node name="Car3" type="Node3D" unique_id=1133525487]
+script = ExtResource("1_qly6m")
+max_max = 6.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1077590822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.49270004, -1.0791742)
+spot_range = 9.189
+spot_angle = 24.15
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=214868279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.49270004, -1.0791742)
+spot_range = 9.189
+spot_angle = 24.15
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=1139812914]
+unique_name_in_owner = true
+collision_layer = 9
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1960518465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5779271, 0.18484426)
+shape = SubResource("BoxShape3D_fhxyw")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=736774940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39838362, -0.79877627)
+shape = SubResource("BoxShape3D_iqh0n")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1856248589]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44775808, -1.3587635)
+collision_layer = 0
+collision_mask = 40
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1919609857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048095703, -0.14971924)
+shape = SubResource("BoxShape3D_regsa")
+
+[node name="Van" type="MeshInstance3D" parent="." unique_id=264522224]
+transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, 0, 0, 0)
+mesh = ExtResource("2_qly6m")

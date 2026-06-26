@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://drwhkytxws8wl"]
+[gd_scene format=3 uid="uid://bus7753sxsbqn"]
 
-[ext_resource type="Script" uid="uid://chsmkww5vvxvi" path="res://Entities/Cars/test_car.gd" id="1_y5hxl"]
+[ext_resource type="Script" uid="uid://chsmkww5vvxvi" path="res://Entities/Cars/test_car.gd" id="1_regsa"]
+[ext_resource type="ArrayMesh" uid="uid://5mkisie27xu" path="res://Assets/kenney_car-kit/Models/OBJ format/ambulance.obj" id="2_p0rad"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y5hxl"]
 size = Vector3(1, 0.9219055, 1.6313477)
@@ -11,8 +12,18 @@ size = Vector3(1, 0.5727997, 0.34887695)
 [sub_resource type="BoxShape3D" id="BoxShape3D_iqh0n"]
 size = Vector3(1, 0.19438934, 0.34887695)
 
-[node name="TestCar" type="Node3D" unique_id=1133525487]
-script = ExtResource("1_y5hxl")
+[sub_resource type="BoxShape3D" id="BoxShape3D_regsa"]
+size = Vector3(1, 0.9038086, 1.012085)
+
+[node name="Ambulance" type="Node3D" unique_id=1133525487]
+script = ExtResource("1_regsa")
+min_max = 3.0
+max_max = 5.0
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=777027422]
+unique_name_in_owner = true
+transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, 0, 0, 0)
+mesh = ExtResource("2_p0rad")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1077590822]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.557, -1.363)
@@ -26,6 +37,7 @@ spot_angle = 24.15
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=1139812914]
 unique_name_in_owner = true
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1871263303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9188254, 0.4753418)
@@ -38,3 +50,13 @@ shape = SubResource("BoxShape3D_fhxyw")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=736774940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53656054, -0.9529091)
 shape = SubResource("BoxShape3D_iqh0n")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1856248589]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44775808, -1.5137085)
+collision_layer = 0
+collision_mask = 40
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1919609857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048095703, -0.14971924)
+shape = SubResource("BoxShape3D_regsa")

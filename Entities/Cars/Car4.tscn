@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://diyhud3hry171"]
+
+[ext_resource type="Script" uid="uid://chsmkww5vvxvi" path="res://Entities/Cars/test_car.gd" id="1_tepla"]
+[ext_resource type="ArrayMesh" uid="uid://kunjhrw3n0ua" path="res://Assets/kenney_car-kit/Models/OBJ format/truck.obj" id="3_j3cw2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y5hxl"]
+size = Vector3(1, 0.33278084, 1.1070938)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhxyw"]
+size = Vector3(1, 0.875267, 0.37654114)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iqh0n"]
+size = Vector3(1, 0.48635483, 0.65971375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tepla"]
+size = Vector3(0.09313965, 0.16235352, 1.1124268)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j3cw2"]
+size = Vector3(0.6616211, 0.1430664, 0.08392334)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_regsa"]
+size = Vector3(1, 0.9038086, 1.012085)
+
+[node name="Car4" type="Node3D" unique_id=1133525487]
+script = ExtResource("1_tepla")
+min_max = 4.0
+max_max = 6.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1077590822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.49270004, -1.0791742)
+spot_range = 9.189
+spot_angle = 24.15
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=214868279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.49270004, -1.0791742)
+spot_range = 9.189
+spot_angle = 24.15
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=1139812914]
+unique_name_in_owner = true
+collision_layer = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1871263303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31477284, 0.5949135)
+shape = SubResource("BoxShape3D_y5hxl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1960518465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5779271, -0.16930652)
+shape = SubResource("BoxShape3D_fhxyw")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=736774940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3905778, -0.7183281)
+shape = SubResource("BoxShape3D_iqh0n")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1861815364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40301514, 0.55979156, 0.5952759)
+shape = SubResource("BoxShape3D_tepla")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1455929901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.403, 0.56, 0.595)
+shape = SubResource("BoxShape3D_tepla")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1728481147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012207031, 0.5609766, 1.1180842)
+shape = SubResource("BoxShape3D_j3cw2")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1856248589]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44775808, -1.4226704)
+collision_layer = 0
+collision_mask = 40
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1919609857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048095703, -0.14971924)
+shape = SubResource("BoxShape3D_regsa")
+
+[node name="Truck" type="MeshInstance3D" parent="." unique_id=1656835654]
+transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, 0, 0, 0)
+mesh = ExtResource("3_j3cw2")

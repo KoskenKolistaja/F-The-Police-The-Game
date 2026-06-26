@@ -104,6 +104,8 @@ func mark_for_mafia(player):
 	var layer_id = player.get_private_visual_layer()
 	%Mesh.set_layer_mask_value(layer_id,true)
 
+func mark_for_police(player = null):
+	pass
 
 func _on_timer_timeout():
 	add_to_group("bomb_target")

@@ -69,7 +69,7 @@ func on_interacted(player, hand_item) -> void:
 
 func start_procedural_quest(player):
 	var choice = randf()
-	if choice > 0.01 and not get_tree().get_nodes_in_group("bomb_target").is_empty():
+	if choice > 0.5 and not get_tree().get_nodes_in_group("bomb_target").is_empty():
 		start_procedural_bombing_quest(player)
 	else:
 		start_procedural_murded_quest(player)

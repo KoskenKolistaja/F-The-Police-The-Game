@@ -50,10 +50,16 @@
 [ext_resource type="ArrayMesh" uid="uid://kxxjy2is8iyr" path="res://Assets/kenney_city-kit-industrial_1.0 (2)/Models/OBJ format/chimney-basic.obj" id="46_xqdcd"]
 [ext_resource type="Script" uid="uid://bbbhspjcji2ii" path="res://Entities/Utility/Minimap/mini_map_indicators.gd" id="47_ftn0q"]
 [ext_resource type="PackedScene" uid="uid://bxyo76aqeost4" path="res://Entities/Utility/CityPartIndicator/city_part_indicator.tscn" id="47_vc7y2"]
+[ext_resource type="PackedScene" uid="uid://gv2yygww6ac1" path="res://Entities/Cars/Taxi.tscn" id="47_vp8p4"]
 [ext_resource type="PackedScene" uid="uid://nsy1gbhjapqj" path="res://Entities/Mafia/bomb_target.tscn" id="50_hv421"]
 [ext_resource type="Texture2D" uid="uid://buwg2urbwwoak" path="res://Assets/Textures/Icons/scorpio.png" id="51_1f0fm"]
 [ext_resource type="Texture2D" uid="uid://cffn4sl6yd1xl" path="res://Assets/Textures/Icons/clothes.png" id="51_nbfrx"]
 [ext_resource type="PackedScene" uid="uid://blwjdi2ccbf5b" path="res://Entities/HUD/world_icon.tscn" id="52_kckvb"]
+[ext_resource type="PackedScene" uid="uid://bus7753sxsbqn" path="res://Entities/Cars/Ambulance.tscn" id="55_cd5hx"]
+[ext_resource type="PackedScene" uid="uid://bulk6b442a13p" path="res://Entities/Cars/Car2.tscn" id="56_7j1rf"]
+[ext_resource type="PackedScene" uid="uid://4bytte6dl4u4" path="res://Entities/Cars/Car3.tscn" id="57_vp8p4"]
+[ext_resource type="PackedScene" uid="uid://diyhud3hry171" path="res://Entities/Cars/Car4.tscn" id="58_oeop2"]
+[ext_resource type="PackedScene" uid="uid://xiu31xy246bp" path="res://Entities/Cars/Car1.tscn" id="59_5x1oe"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n5q0i"]
 panorama = ExtResource("1_aasbp")
@@ -1460,7 +1466,7 @@ transform = Transform3D(1, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 1, 0, 0
 shape = SubResource("BoxShape3D_6h067")
 
 [node name="21" type="PathFollow3D" parent="Metro/Path3D" unique_id=879456940]
-transform = Transform3D(0.99994785, 0, 0.0023557101, 0, 1, 0, -0.0023557101, 0, 0.99994785, 46.949554, 0, 9.311798)
+transform = Transform3D(0.9999462, 0, 0.0023557062, 0, 1, 0, -0.0023557062, 0, 0.9999462, 46.949554, 0, 9.311798)
 progress = 114.0
 script = ExtResource("27_tdek4")
 is_engine = true
@@ -1751,7 +1757,6 @@ render_target_update_mode = 4
 
 [node name="Player" parent="PlayerViews/HBoxContainer/SubViewportContainer2/SubViewport" unique_id=579485344 node_paths=PackedStringArray("hud") instance=ExtResource("22_n5q0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.719997, 0.040000916, -10.558754)
-player_id = 1
 hud = NodePath("../HUD")
 
 [node name="HUD" parent="PlayerViews/HBoxContainer/SubViewportContainer2/SubViewport" unique_id=1946661568 instance=ExtResource("36_75a3m")]
@@ -1772,11 +1777,13 @@ render_target_update_mode = 0
 screen_space_aa = 2
 oversampling_override = 1.0
 mode = 3
-position = Vector2i(0, 36)
+initial_position = 3
+current_screen = 1
 content_scale_mode = 1
 
 [node name="Player" parent="PlayerViews/HBoxContainer/Window" unique_id=492139098 node_paths=PackedStringArray("hud") instance=ExtResource("22_n5q0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -8)
+player_id = 1
 hud = NodePath("../HUD")
 
 [node name="HUD" parent="PlayerViews/HBoxContainer/Window" unique_id=2024257735 instance=ExtResource("36_75a3m")]
@@ -1926,6 +1933,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.511707, 0.07999897, 36.192
 [node name="NPC41" parent="NPCContainer" unique_id=971026484 instance=ExtResource("33_28raj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.511707, 0.07999897, 36.192818)
 
+[node name="Ambulance" parent="NPCContainer" unique_id=1133525487 node_paths=PackedStringArray("road") instance=ExtResource("55_cd5hx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.635315, 3.2174647, 37.04314)
+road = NodePath("../../UpperCity/Tiles/Straight61")
+
+[node name="Car2" parent="NPCContainer" unique_id=1706267453 node_paths=PackedStringArray("road") instance=ExtResource("56_7j1rf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 3, 41)
+road = NodePath("../../UpperCity/Tiles/Straight58")
+
+[node name="Car3" parent="NPCContainer" unique_id=1595784218 node_paths=PackedStringArray("road") instance=ExtResource("57_vp8p4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 3, 41)
+road = NodePath("../../UpperCity/Tiles/Straight4")
+
+[node name="Car4" parent="NPCContainer" unique_id=231646404 node_paths=PackedStringArray("road") instance=ExtResource("58_oeop2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 3, 41)
+road = NodePath("../../UpperCity/Tiles/Straight41")
+
+[node name="Car1" parent="NPCContainer" unique_id=155548236 node_paths=PackedStringArray("road") instance=ExtResource("59_5x1oe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 3, 41)
+road = NodePath("../../UpperCity/Tiles/Straight25")
+
+[node name="Taxi" parent="NPCContainer" unique_id=1610929813 node_paths=PackedStringArray("road") instance=ExtResource("47_vp8p4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 42)
+road = NodePath("../../UpperCity/Tiles/Straight15")
+
 [node name="TightRope" type="Node3D" parent="." unique_id=983674383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.79441, 5, 5.2242565)
 
@@ -1991,14 +2022,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.245503, -1.5616236, -20.9
 curve = SubResource("Curve3D_75a3m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="TightRope/Path3D2" unique_id=1144094415 node_paths=PackedStringArray("path")]
-transform = Transform3D(0.481768, -0.4661727, 0.7420257, -0.8342213, -0.50323427, 0.22547735, 0.2682977, -0.7276308, -0.63133675, 0, 0.22, -0.16)
+transform = Transform3D(0.4817687, -0.46617392, 0.74203134, -0.8342225, -0.5032356, 0.22547908, 0.2682981, -0.7276327, -0.6313416, 0, 0.22, -0.16)
 loop = false
 script = ExtResource("37_i13jj")
 is_climbable = false
 path = NodePath("..")
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="TightRope/Path3D2" unique_id=1713590243 node_paths=PackedStringArray("path")]
-transform = Transform3D(0.481768, -0.4661727, 0.7420257, -0.8342213, -0.50323427, 0.22547735, 0.2682977, -0.7276308, -0.63133675, 0, 0.22, -0.16)
+transform = Transform3D(0.4817687, -0.46617392, 0.74203134, -0.8342225, -0.5032356, 0.22547908, 0.2682981, -0.7276327, -0.6313416, 0, 0.22, -0.16)
 loop = false
 script = ExtResource("37_i13jj")
 is_climbable = false

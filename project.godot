@@ -33,6 +33,7 @@ QuestManager="*uid://bcomfqiuy4cld"
 
 [display]
 
+window/size/mode=3
 window/subwindows/embed_subwindows=false
 
 [global_group]

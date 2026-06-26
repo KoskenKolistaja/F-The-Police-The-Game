@@ -133,7 +133,7 @@ func handle_input_and_movement(delta):
 	
 	var desired = 75 + (ball.linear_velocity.length() *4)
 	
-	$taxi_mesh/CameraPivot/Camera3D.fov = move_toward($taxi_mesh/CameraPivot/Camera3D.fov,desired,0.1)
+	#$taxi_mesh/CameraPivot/Camera3D.fov = move_toward($taxi_mesh/CameraPivot/Camera3D.fov,desired,0.1)
 	
 	
 	

@@ -339,7 +339,7 @@ func investigate(investigator: Node3D) -> void:
 		if not QuestManager.active_tasks.is_empty():
 			var key = QuestManager.active_tasks.keys().pick_random()
 			
-			if not QuestManager.active_tasks[key]["police_informed"]:
+			if not QuestManager.active_tasks[key]["police_informed"] and QuestManager.active_tasks[key]["type"] == "murder":
 				var dic = QuestManager.active_tasks[key]
 				dic["police_informed"] = true
 				var target_npc = dic["target_node"]
