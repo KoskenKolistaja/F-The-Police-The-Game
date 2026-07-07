@@ -472,23 +472,31 @@ func get_player_root():
 
 
 func set_police():
-	for c in %Skeleton3D.get_children():
-		if c is BoneAttachment3D:
-			continue
-		c.hide()
+	#for c in %Skeleton3D.get_children():
+		#if c is BoneAttachment3D:
+			#continue
+		#c.hide()
 	add_to_group("police")
-	
 	appearance_manager.set_police()
-	inventory.push_back("camera")
-	inventory.push_back("pistol")
-	inventory.push_back("spyglass")
-	inventory.push_back("handcuffs")
-
+	setup_police_inventory()
 
 func set_civilian():
 	appearance_manager.randomize_appearance()
-	inventory.push_back("graffiti_bottle")
-	inventory.push_back("smoke_bomb")
+	setup_civilian_inventory()
+
+func setup_police_inventory():
+	inventory.clear()
+	add_item_to_inventory("none")
+	add_item_to_inventory("camera")
+	add_item_to_inventory("pistol")
+	add_item_to_inventory("spyglass")
+	add_item_to_inventory("handcuffs")
+
+func setup_civilian_inventory():
+	inventory.clear()
+	add_item_to_inventory("none")
+	add_item_to_inventory("graffiti_bottle")
+	add_item_to_inventory("smoke_bomb")
 
 func die(exp_killer = null):
 	if exp_killer:
@@ -517,9 +525,14 @@ func die(exp_killer = null):
 		CrimeManager.reset_crime_score_for(self)
 		activate()
 
+func add_item_to_inventory(item_name):
+	if not inventory.has(item_name):
+		inventory.append(item_name)
+
 
 func remove_item_from_inventory(item_name):
-	inventory.erase(item_name)
+	if inventory.has(item_name):
+		inventory.erase(item_name)
 	inventory_index = 0
 	set_inventory_item(0)
 
@@ -585,7 +598,7 @@ func add_graffiti_suspicion():
 func add_murder_suspicion():
 	if is_police():
 		if inventory.has("pistol"):
-			inventory.erase("pistol")
+			remove_item_from_inventory("pistol")
 			inventory_index = 0
 			set_inventory_item(0)
 		var dic = {
@@ -777,8 +790,13 @@ func respawn(place_name : String):
 		return
 	global_position = get_tree().get_first_node_in_group(place_name).global_position
 	player_root.money = 100
-	player_root.hud.update_money(player_root.money)
+	get_hud().update_money(player_root.money)
 	%ArrestHandcuffs.hide()
+	if is_police():
+		setup_police_inventory()
+	else:
+		setup_civilian_inventory()
+
 
 func get_hud():
 	return player_root.hud

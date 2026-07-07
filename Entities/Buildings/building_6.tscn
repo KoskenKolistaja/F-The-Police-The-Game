@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://x3u6x0raq6c"]
 
 [ext_resource type="ArrayMesh" uid="uid://fvgprlo2nkw2" path="res://Assets/kenney_city-kit-industrial_1.0 (2)/Models/OBJ format/building-a.obj" id="1_b2a4p"]
+[ext_resource type="Script" uid="uid://pk8hb74y7ea3" path="res://Entities/Buildings/building.gd" id="1_o6o33"]
 [ext_resource type="Script" uid="uid://lkvg6173dq6y" path="res://Entities/Buildings/ClimbObject.gd" id="2_ll22d"]
 [ext_resource type="Script" uid="uid://cabitlksqmguq" path="res://Entities/Buildings/climb_object_area.gd" id="3_kvjlr"]
 [ext_resource type="Script" uid="uid://d2lsuncseryhy" path="res://Entities/Buildings/path_target.gd" id="3_yl2cq"]
@@ -19,7 +20,9 @@ point_count = 2
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o6o33"]
 height = 4.623535
 
-[node name="Building6" type="StaticBody3D" unique_id=1148019197]
+[node name="Building6" type="StaticBody3D" unique_id=1148019197 node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_o6o33")
+mesh = NodePath("BuildingA")
 
 [node name="BuildingA" type="MeshInstance3D" parent="." unique_id=1031539198]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

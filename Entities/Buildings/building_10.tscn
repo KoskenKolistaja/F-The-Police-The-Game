@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvbdoupjy3dfe"]
 
-[ext_resource type="Script" uid="uid://pk8hb74y7ea3" path="res://Entities/Buildings/building_10.gd" id="1_cn786"]
+[ext_resource type="Script" uid="uid://pk8hb74y7ea3" path="res://Entities/Buildings/building.gd" id="1_cn786"]
 [ext_resource type="ArrayMesh" uid="uid://c5u7ch8u7031u" path="res://Assets/kenney_city-kit-industrial_1.0 (2)/Models/OBJ format/building-t.obj" id="1_xvrf1"]
 [ext_resource type="Script" uid="uid://lkvg6173dq6y" path="res://Entities/Buildings/ClimbObject.gd" id="3_tjmwm"]
 [ext_resource type="Script" uid="uid://cabitlksqmguq" path="res://Entities/Buildings/climb_object_area.gd" id="4_sipm0"]
@@ -30,8 +30,9 @@ point_count = 2
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tjmwm"]
 height = 1.4523926
 
-[node name="Building10" type="StaticBody3D" unique_id=1308819074]
+[node name="Building10" type="StaticBody3D" unique_id=1308819074 node_paths=PackedStringArray("mesh")]
 script = ExtResource("1_cn786")
+mesh = NodePath("BuildingT")
 
 [node name="BuildingT" type="MeshInstance3D" parent="." unique_id=832444224]
 unique_name_in_owner = true

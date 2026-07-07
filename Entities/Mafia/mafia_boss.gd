@@ -93,7 +93,7 @@ func start_procedural_bombing_quest(player) -> void:
 	var target_name = target.get_target_name()
 	var text = intro_bombing_templates.pick_random() % target_name
 	
-	player.inventory.push_back("time_bomb")
+	player.add_item_to_inventory("time_bomb")
 	player.inventory_last_item()
 	
 	send_hud_message(player, text)

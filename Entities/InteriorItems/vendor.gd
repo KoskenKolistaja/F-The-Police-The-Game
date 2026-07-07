@@ -48,7 +48,7 @@ func on_interacted(player,hand_item):
 		return
 	
 	player_root.set_money(-price)
-	player.inventory.push_back(item_name)
+	player.add_item_to_inventory(item_name)
 	player.inventory_last_item()
 
 

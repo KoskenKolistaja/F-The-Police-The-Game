@@ -32,7 +32,7 @@ spot_angle = 24.15
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=1139812914]
 unique_name_in_owner = true
-collision_layer = 9
+collision_layer = 257
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1871263303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39198136, 0.7693939)
@@ -50,7 +50,7 @@ shape = SubResource("BoxShape3D_iqh0n")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44775808, -1.3587635)
 collision_layer = 0
-collision_mask = 40
+collision_mask = 296
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1919609857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048095703, -0.14971924)
@@ -59,4 +59,5 @@ shape = SubResource("BoxShape3D_regsa")
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1572139063]
 unique_name_in_owner = true
 transform = Transform3D(-0.8, 0, 6.9938224e-08, 0, 0.8, 0, -6.9938224e-08, 0, -0.8, 0, 0, 0)
+layers = 2
 mesh = ExtResource("3_qhypo")

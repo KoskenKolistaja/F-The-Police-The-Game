@@ -76,4 +76,5 @@ shape = SubResource("BoxShape3D_regsa")
 
 [node name="Truck" type="MeshInstance3D" parent="." unique_id=1656835654]
 transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, 0, 0, 0)
+layers = 2
 mesh = ExtResource("3_j3cw2")

@@ -125,6 +125,7 @@ p2_open_info={
 3d_physics/layer_6="Players"
 3d_physics/layer_7="Spyglass"
 3d_physics/layer_8="City Part Name"
+3d_physics/layer_9="Cars"
 3d_physics/layer_14="NPC WorldCollisions"
 
 [physics]

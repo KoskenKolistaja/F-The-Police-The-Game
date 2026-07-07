@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://qw1q0msajwhe"]
 
+[ext_resource type="Script" uid="uid://pk8hb74y7ea3" path="res://Entities/Buildings/building.gd" id="1_mup2v"]
 [ext_resource type="ArrayMesh" uid="uid://b31r41o04vgu5" path="res://Assets/kenney_city-kit-commercial_2.1 (1)/Models/OBJ format/building-c.obj" id="1_nlldc"]
 [ext_resource type="Script" uid="uid://lkvg6173dq6y" path="res://Entities/Buildings/ClimbObject.gd" id="2_lokok"]
 [ext_resource type="Script" uid="uid://cabitlksqmguq" path="res://Entities/Buildings/climb_object_area.gd" id="3_75lcv"]
@@ -19,7 +20,9 @@ point_count = 2
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mup2v"]
 height = 3.05542
 
-[node name="Building2" type="StaticBody3D" unique_id=2108886601]
+[node name="Building2" type="StaticBody3D" unique_id=2108886601 node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_mup2v")
+mesh = NodePath("BuildingC")
 
 [node name="BuildingC" type="MeshInstance3D" parent="." unique_id=1972639309]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

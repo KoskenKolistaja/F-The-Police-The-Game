@@ -36,8 +36,6 @@ var icons = {
 
 
 var graffitis = [
-	preload("res://Assets/Textures/Graffitis/Graffiti.png"),
-	preload("res://Assets/Textures/Graffitis/SampoGraffiti.png"),
 	preload("res://Assets/Textures/Graffitis/DonSimeon.png"),
 	preload("res://Assets/Textures/Graffitis/DonSimeon2.png"),
 	preload("res://Assets/Textures/Graffitis/DonSimeon3.png"),
@@ -47,6 +45,11 @@ var graffitis = [
 	preload("res://Assets/Textures/Graffitis/Duck.png"),
 	preload("res://Assets/Textures/Graffitis/Wilzu.png"),
 	preload("res://Assets/Textures/Graffitis/Prince.png"),
+	preload("res://Assets/Textures/Graffitis/sampo1.png"),
+	preload("res://Assets/Textures/Graffitis/sampo2.png"),
+	preload("res://Assets/Textures/Graffitis/sampo3.png"),
+	preload("res://Assets/Textures/Graffitis/sampo4.png"),
+	preload("res://Assets/Textures/Graffitis/sampo5.png"),
 ]
 
 

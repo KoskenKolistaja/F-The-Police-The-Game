@@ -50,4 +50,5 @@ shape = SubResource("BoxShape3D_regsa")
 
 [node name="Van" type="MeshInstance3D" parent="." unique_id=264522224]
 transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, 0, 0, 0)
+layers = 2
 mesh = ExtResource("2_qly6m")

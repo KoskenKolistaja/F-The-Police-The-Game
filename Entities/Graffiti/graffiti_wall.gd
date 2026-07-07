@@ -9,11 +9,16 @@ var painter = null
 
 var investigated = 0.0
 
+@export var graffiti_texture : Texture
 
 func _ready():
 	# Make sure your material in the editor is a ShaderMaterial
 	var mat : ShaderMaterial = %Graffiti.get_active_material(0)
-	mat.set_shader_parameter("albedo_texture", ItemData.graffitis.pick_random())
+	
+	if not graffiti_texture:
+		graffiti_texture = ItemData.graffitis.pick_random()
+	
+	mat.set_shader_parameter("albedo_texture", graffiti_texture)
 	# Ensure it starts hidden
 	mat.set_shader_parameter("reveal_progress", 0.0)
 

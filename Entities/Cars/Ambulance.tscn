@@ -23,6 +23,7 @@ max_max = 5.0
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=777027422]
 unique_name_in_owner = true
 transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, 0, 0, 0)
+layers = 2
 mesh = ExtResource("2_p0rad")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1077590822]
