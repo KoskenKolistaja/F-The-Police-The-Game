@@ -20,7 +20,8 @@ func use():
 	var npcs = %Area3D.get_overlapping_bodies()
 	
 	for npc in npcs:
-		npc.being_robbed(player_character)
+		if npc.has_method("being_robbed"):
+			npc.being_robbed(player_character)
 
 
 func use2():

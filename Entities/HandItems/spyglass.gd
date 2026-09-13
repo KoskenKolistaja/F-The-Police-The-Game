@@ -7,7 +7,8 @@ var player_character = null
 func use():
 	var npcs = %Area3D.get_overlapping_bodies()
 	for npc in npcs:
-		npc.investigate(player_character)
+		if npc.has_method("investigate"):
+			npc.investigate(player_character)
 	
 	var items = %Area3D2.get_overlapping_bodies()
 	for item in items:

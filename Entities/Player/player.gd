@@ -18,10 +18,10 @@ var money : int = 100
 
 func _ready():
 	
-	if ItemData.police_id == player_id:
-		is_police = true
-		await get_tree().physics_frame
-		ItemData.police_id = wrapi(ItemData.police_id + 1, 0, 3)
+	#if ItemData.police_id == player_id:
+		#is_police = true
+		#await get_tree().physics_frame
+		#ItemData.police_id = wrapi(ItemData.police_id + 1, 0, 3)
 	
 	private_visual_layer = player_id + 10
 	
